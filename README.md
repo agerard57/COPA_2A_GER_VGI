@@ -1,1 +1,1 @@
-# COPA_2A_GER_VGI
+# Projet 2020 -- COPA -- GERARD / GIANGRECO 
