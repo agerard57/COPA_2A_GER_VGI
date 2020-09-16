@@ -1,6 +1,9 @@
 package Main_app;
 
 import java.util.Scanner;
+
+import clients.Client;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,12 +16,12 @@ public class Main {
 			System.out.println("Bienvenue dans la boutique des meilleurs pires pulls !");
 			
 			int selection = 0;
-			
+
 			do
 			{
-				System.out.println("[1] Choix du produit");
-				System.out.println("[2] Gestion de la commande");
-				System.out.println("[3] Paramètres clients");
+				System.out.println("[1] Gestion des produits");
+				System.out.println("[2] Gestion des commandes");
+				System.out.println("[3] Gestion des clients");
 				System.out.println("[4] Quitter");	
 				
 			System.out.println("Utilisez le clavier numérique pour faire votre choix...");
@@ -26,20 +29,22 @@ public class Main {
 			selection = LireConsole.nextInt();
 //			LireConsole.close();
 				
-				
 				switch (selection)
 				{
 				
 				case 1 :
-					test.choix1();
+					Choix.choixAccueil1();
 					break;
+					
 				case 2 :
-				    clearScreen();  
-					test.choix2();;
-					break;				
+					Choix.choixAccueil2();;
+					break;	
+					
 				case 3 :
-					test.choix3();
-					break;				
+					Choix.choixAccueil3();
+					Client.Menu();
+					break;	
+					
 				case 4 :
 					System.out.println("--------GERARD-GIANGRECO--TP1-CPOA--------");
 					System.exit(0);
@@ -48,16 +53,10 @@ public class Main {
 				default :
 					System.out.println ("La séléction est incorrecte !");
 					}
-				
-				
+				return;
 			} while (selection != 4);
 			
-
+		
 			
 }
-	
-	public static void clearScreen() {   
-	    System.out.print("\033[H\033[2J");   
-	    System.out.flush();   
-	   } 
 	}
