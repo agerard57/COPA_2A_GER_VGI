@@ -24,6 +24,7 @@ public class Main {
 			System.out.println("Utilisez le clavier numérique pour faire votre choix...");
 			Scanner LireConsole = new Scanner(System.in);
 			selection = LireConsole.nextInt();
+//			LireConsole.close();
 				
 				
 				switch (selection)
@@ -33,13 +34,14 @@ public class Main {
 					test.choix1();
 					break;
 				case 2 :
+				    clearScreen();  
 					test.choix2();;
 					break;				
 				case 3 :
 					test.choix3();
 					break;				
 				case 4 :
-					System.out.println("----------------");
+					System.out.println("--------GERARD-GIANGRECO--TP1-CPOA--------");
 					System.exit(0);
 					break;
 					
@@ -52,4 +54,10 @@ public class Main {
 			
 
 			
-}}
+}
+	
+	public static void clearScreen() {   
+	    System.out.print("\033[H\033[2J");   
+	    System.out.flush();   
+	   } 
+	}
