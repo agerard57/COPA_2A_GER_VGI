@@ -1,8 +1,13 @@
 package clients;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Scanner;
 
+import com.sun.jndi.ldap.Connection;
+
 import Main_app.Choix;
+import MySql.Connexion;
 
 public class Client {
 	protected int idClient;
@@ -15,8 +20,8 @@ public class Client {
 	protected String adrCodePostal;
 	protected String adrVille;
 	protected String adrPays;
-	
-	
+
+
 	public int getIdClient() {
 		return idClient;
 	}
@@ -105,75 +110,57 @@ public class Client {
 		Client.selection = selection;
 	}
 
-
-
-	
-	
-	
-	
 	protected static int selection;
 
-	public static void Menu() {
-		System.out.println("hello");
 
-		do
+
+	/*public static void ListeClient() {
+
+
+		Statement stmt = java.sql.Connection.createStatement();
+		ResultSet resultSet = stmt.executeQuery("SELECT * from Client");
+		while(resultSet.next())
 		{
-			System.out.println("[1] Ajouter un client");
-			System.out.println("[2] Supprimer un client");
-			System.out.println("[3] Modifier un client");
-			
-		System.out.println("Utilisez le clavier numérique pour faire votre choix...");
-		Scanner LireConsole = new Scanner(System.in);
-		selection = LireConsole.nextInt();
-//		LireConsole.close();
-			
-			switch (selection)
-			{
-			
-			case 1 :
-				Choix.choixMenuClient1();
-				break;
-				
-			case 2 :
-				Choix.choixMenuClient2();;
-				break;	
-				
-			case 3 :
-				Choix.choixMenuClient3();
-				ModifierClient.MenuModifierClient();
-				break;	
-				
-			default :
-				System.out.println ("La séléction est incorrecte !");
-				}
-			return;
-		} while (selection != 3);
- }
+			String nomColonne1= resultSet.getString("nomColonne1");
+			int nomColonne2= resultSet.getInt("nomColonne2");
+			float nomColonne3= resultSet.getFloat("nomColonne3");
+			System.out.println(nomColonne1+"\t"+ nomColonne2+"\t"+ nomColonne3);
+		}
 
-public Client() {
-}
+
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+*/
+
+
+
+
+	public Client() {
+	}
 
 
 	public Client( String nom, String prenom, int identifiant) {
 		super(); // appeler le constructeur de la classe dont tu hérites
 		this.nom = nom;
 		this.prenom = prenom;
-	
-}
+
+	}
 
 	public static void Choixmenu() {
 	}
 
 
 
-@Override
-public boolean equals(Object o) {
-	Client c = (Client) o ;
-	if ( o == null )
-		return false;
-	else 
-		return this.identifiant == c.identifiant;
-}
+	@Override
+	public boolean equals(Object o) {
+		Client c = (Client) o ;
+		if ( o == null )
+			return false;
+		else 
+			return this.identifiant == c.identifiant;
+	}
 
 }
 
