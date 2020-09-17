@@ -1,11 +1,15 @@
 package clients;
 
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
 import com.sun.jndi.ldap.Connection;
-
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import Main_app.Choix;
 import MySql.Connexion;
 
@@ -114,25 +118,9 @@ public class Client {
 
 
 
-	/*public static void ListeClient() {
+	
+	
 
-
-		Statement stmt = java.sql.Connection.createStatement();
-		ResultSet resultSet = stmt.executeQuery("SELECT * from Client");
-		while(resultSet.next())
-		{
-			String nomColonne1= resultSet.getString("nomColonne1");
-			int nomColonne2= resultSet.getInt("nomColonne2");
-			float nomColonne3= resultSet.getFloat("nomColonne3");
-			System.out.println(nomColonne1+"\t"+ nomColonne2+"\t"+ nomColonne3);
-		}
-
-
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
-*/
 
 
 
