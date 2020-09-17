@@ -1,18 +1,5 @@
 package clients;
 
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.Scanner;
-
-import com.sun.jndi.ldap.Connection;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import Main_app.Choix;
-import MySql.Connexion;
-
 public class Client {
 	protected int idClient;
 	protected String nom;
@@ -158,7 +145,7 @@ public class Client {
 	}
 	@Override
 	public String toString() {
-		return ("Id : " + idClient + "Nom : "+ nom + " Prénom : " + "identifiant : " + identifiant + "ville : " + adrVille);
+		return ("Client n°" + idClient + " - "+ nom + " " +prenom+ " | Identifiant : " + identifiant);
 	}
 }
 

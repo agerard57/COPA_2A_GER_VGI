@@ -45,7 +45,7 @@ public class ClientSQL {
 		}
 		catch(SQLException sqle)
 		{
-			System.out.println("C KA C");
+			System.out.println("Erreur !");
 		}
 		return (i == 1);
 
@@ -60,7 +60,7 @@ public boolean delete(Client objet) {
 		try {
 			Connection c1 = c.creeConnexion();
 			
-			PreparedStatement requete = c1.prepareStatement("DELETE FROM Client WHERE id_client = ?");
+			PreparedStatement requete = c1.prepareStatement("DELETE FROM Client WHERE id_client = ? ");
 			requete.setInt(1, objet.getIdClient());
 			i = requete.executeUpdate();
 			

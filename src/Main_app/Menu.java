@@ -3,15 +3,18 @@ package Main_app;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import clients.AjouterClient;
 import clients.Client;
 import clients.ClientSQL;
-import clients.ModifierClient;
+import produits.Produit;
+import produits.ProduitSQL;
 
 public class Menu {
 	protected static int selection;
+	protected static ClientSQL clientBdD;
+	protected static ProduitSQL produitBdD;
 
 
+	@SuppressWarnings("resource")
 	public static void MenuAccueil() {
 		do
 		{
@@ -110,7 +113,8 @@ public class Menu {
 	public static void MenuAjouterClient() {
 		String boeufHeure = new String();
 		Client client = new Client();
-
+		clientBdD = new ClientSQL();
+		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Entrez le nom : ");
 		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
@@ -118,46 +122,48 @@ public class Menu {
 		}
 		client.setNom(boeufHeure);
 		System.out.println("Entrez le prénom : ");
-		while (sc.nextLine().trim().equals("")) {
+		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
 			System.out.println("Veuillez saisir le champ prénom. ");
 		}
-		client.setPrenom(sc.nextLine());
+		client.setPrenom(boeufHeure);
 		System.out.println("Entrez l'identifiant : ");
-		while (sc.nextLine().trim().equals("")) {
+		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
 			System.out.println("Veuillez saisir le champ identifiant. ");
 		}
-		client.setIdentifiant(sc.nextLine());
+		client.setIdentifiant(boeufHeure);
 		System.out.println("Entrez le mot de passe: ");
-		while (sc.nextLine().trim().equals("")) {
+		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
 			System.out.println("Veuillez saisir le champ mot de passe. ");
 		}
-		client.setMotDePasse(sc.nextLine());
+		client.setMotDePasse(boeufHeure);
 		System.out.println("Entrez le numéro de l'adresse : ");
-		while (sc.nextLine().trim().equals("")) {
+		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
 			System.out.println("Veuillez saisir le champ adresse. ");
 		}
-		client.setAdrNumero(sc.nextLine());
+		client.setAdrNumero(boeufHeure);
 		System.out.println("Entrez le nom de la rue : ");
-		while (sc.nextLine().trim().equals("")) {
+		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
 			System.out.println("Veuillez saisir le champ rue. ");
 		}
-		client.setAdrVoie(sc.nextLine());
+		client.setAdrVoie(boeufHeure);
 		System.out.println("Entrez le code postal : ");
-		while (sc.nextLine().trim().equals("")) {
+		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
 			System.out.println("Veuillez saisir le champ code postal. ");
 		}
-		client.setAdrCodePostal(sc.nextLine());
+		client.setAdrCodePostal(boeufHeure);
 		System.out.println("Entrez la ville : ");
-		while (sc.nextLine().trim().equals("")) {
+		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
 			System.out.println("Veuillez saisir le champ ville. ");
 		}
-		client.setAdrVille(sc.nextLine());
+		client.setAdrVille(boeufHeure);
 		System.out.println("Entrez le pays : ");
-		while (sc.nextLine().trim().equals("")) {
+		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
 			System.out.println("Veuillez saisir le champ pays. ");
 		}
-		client.setAdrPays(sc.nextLine());
+		client.setAdrPays(boeufHeure);
 
+		clientBdD.ajouterClient(client);
+		Menu.MenuClient();
 	}
 
 
@@ -176,19 +182,23 @@ public class Menu {
 			c++;
 		}
 
-		//faire la saisie de l'index 
-		clientBdD.delete(listeClient.get(listeClient.indexOf(new Client(index))));
 
+		clientBdD.delete(listeClient.get(listeClient.indexOf(new Client(index))));
+		Scanner LireConsole = new Scanner(System.in);
+		selection = LireConsole.nextInt();
+		index = selection;
+		System.out.println(+index);
 	}
 
 
 	public static void MenuModifierClient1() {
-		System.out.println("Quel client voulez vous modifer ?(entrez le champ \" id_client \") ");
+		System.out.println("Quel client voulez vous modifier ?(entrez le champ \" id_client \") ");
 		//ClientSQL.ListeClient();
 		Menu.MenuModifierClient2();
 		
 }
 
+	@SuppressWarnings("resource")
 	public static void MenuModifierClient2() {
 		int selection = 0;
 		System.out.println("Quel champ modifier ?");
@@ -226,6 +236,7 @@ public class Menu {
 		} while (selection != 3);
 	}
 	
+	@SuppressWarnings("resource")
 	public static void MenuProduits() {
 		do
 		{
@@ -270,38 +281,41 @@ public class Menu {
 	}
 
 
-	private static void MenuAjouterProduit() {
-	/*	Produit produit = new Produit();
-
+	public static void MenuAjouterProduit() {
+		String boeufHeure = new String();
+		Produit produit = new Produit();
+		produitBdD = new ProduitSQL();
+		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Entrez le nom : ");
-		while (sc.nextLine().trim().equals("")) {
+		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
 			System.out.println("Veuillez saisir le champ nom. ");
 		}
-		produit.setNom(sc.nextLine());
+		produit.setNom(boeufHeure);
 		System.out.println("Entrez la description : ");
-		while (sc.nextLine().trim().equals("")) {
-			System.out.println("Veuillez saisir le champ description. ");
+		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
+			System.out.println("Veuillez saisir la description. ");
 		}
-		produit.setDescription(sc.nextLine());
+		produit.setDescription(boeufHeure);
 		System.out.println("Entrez le tarif : ");
-		while (sc.nextLine().trim().equals("")) {
-			System.out.println("Veuillez saisir le champ tarif. ");
+		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
+			System.out.println("Veuillez saisir le tarif. ");
 		}
-		produit.setTarif(sc.nextLine());
+		produit.setTarif(boeufHeure);
 		System.out.println("Entrez le visuel: ");
-		while (sc.nextLine().trim().equals("")) {
-			System.out.println("Veuillez saisir le champ visuel. ");
+		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
+			System.out.println("Veuillez saisir le champ du visuel. ");
 		}
-		produit.setVisuel(sc.nextLine());
-		System.out.println("Entrez le nom de la catégorie: ");
-		while (sc.nextLine().trim().equals("")) {
-			System.out.println("Veuillez saisir le champ catégorie. ");
+		produit.setVisuel(boeufHeure);
+		System.out.println("Entrez le numéro de la catégorie : ");
+		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
+			System.out.println("Veuillez saisir la catégorie. ");
 		}
-		produit.setCategorie(sc.nextLine());
+		produit.setIdCategorie(boeufHeure);
 
-		*/
-			}
+		produitBdD.ajouterProduit(produit);
+		Menu.MenuProduits();
+	}
 
 
 	private static void MenuSupprimerProduit() {
@@ -316,55 +330,7 @@ public class Menu {
 		Menu.MenuModifierClient2();		
 	}
 	
-	private static void MenuModifierProduit2() {
-		int selection = 0;
-		System.out.println("Quel champ modifier ?");
-
-		do
-		{
-			System.out.println("[1] Le nom");
-			System.out.println("[2] La description");
-			System.out.println("[3] Le tarif");
-			System.out.println("[4] Le visuel");
-			System.out.println("[5] La catégorie");
-			System.out.println("[6] Retour");
-
-			System.out.println("Utilisez le clavier numérique pour faire votre choix...");
-			Scanner LireConsole = new Scanner(System.in);
-			selection = LireConsole.nextInt();
-			//			LireConsole.close();
-
-			switch (selection)
-			{
-
-			case 1 :
-				System.out.println("Vous avez choisi : ||Le nom||");
-				break;
-
-			case 2 :
-				System.out.println("Vous avez choisi : ||La description||");
-				break;	
-			case 3 :
-				System.out.println("Vous avez choisi : ||Le tarif||");
-				break;	
-			case 4 :
-				System.out.println("Vous avez choisi : ||Le visuel||");
-				break;	
-			case 5 :
-				System.out.println("Vous avez choisi : ||La catégorie||");
-				break;
-			case 6 :
-				System.out.println("Vous avez choisi : ||Retour||");
-				Menu.MenuProduits();
-				break;
-
-			default :
-				System.out.println ("La séléction est incorrecte !");
-			}
-			return;
-		} while (selection != 6);
-		
-	}
+	@SuppressWarnings("resource")
 	public static void MenuCategories() {
 		do
 		{
@@ -431,46 +397,9 @@ public class Menu {
 	}
 
 	private static void MenuModifierCategorie1() {
-		System.out.println("Quel client voulez vous modifer ?(entrez le champ \" id_client \" ");
+		System.out.println("Quel client voulez vous modifier ?(entrez le champ \" id_client \" ");
 		//ClientSQL.ListeClient();
 		Menu.MenuModifierClient2();				
-	}
-	
-	private static void MenuModifierCategorie2() {
-		int selection = 0;
-		System.out.println("Quel champ modifier ?");
-
-		do
-		{
-			System.out.println("[1] Le titre");
-			System.out.println("[2] La visuel");
-			System.out.println("[3] Retour");
-
-			System.out.println("Utilisez le clavier numérique pour faire votre choix...");
-			Scanner LireConsole = new Scanner(System.in);
-			selection = LireConsole.nextInt();
-			//			LireConsole.close();
-
-			switch (selection)
-			{
-
-			case 1 :
-				System.out.println("Vous avez choisi : ||Le titre||");
-				break;
-
-			case 2 :
-				System.out.println("Vous avez choisi : ||Le visuel||");
-				break;	
-			case 3 :
-				System.out.println("Vous avez choisi : ||Retour||");
-				Menu.MenuProduits();
-				break;
-
-			default :
-				System.out.println ("La séléction est incorrecte !");
-			}
-			return;
-		} while (selection != 3);		
 	}
 
 
