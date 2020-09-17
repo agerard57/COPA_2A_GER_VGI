@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,36 +18,7 @@ public class ClientSQL {
 
 	public ClientSQL() {
 	}
-	public static void ListeClient() {
 
-		String url = "jdbc:mysql://devbdd.iutmetz.univ-lorraine.fr:3306/gerard326u_CPOA2020";
-		url += "?serverTimezone=Europe/Paris";
-		String user = "gerard326u_appli";
-		String password = "3630";
-
-		String query = "SELECT * FROM Client";
-
-		try (Connection con = DriverManager.getConnection(url, user, password);
-				PreparedStatement pst = con.prepareStatement(query);
-				ResultSet rs = pst.executeQuery()) {
-
-			while (rs.next()) {
-
-				int id_client = rs.getInt(1);
-				String nom = rs.getString("nom");
-				String prenom = rs.getString("prenom");
-				System.out.println("- " + id_client + " : " + nom + " " + prenom);
-			}
-
-
-
-		} catch (SQLException ex) {
-
-			Logger lgr = Logger.getLogger(Connexion.class.getName());
-			lgr.log(Level.SEVERE, ex.getMessage(), ex);
-		}
-		System.out.println("Choisis !");
-	}
 	public boolean ajouterClient(Client c) {
 		Connexion connect = new Connexion();
 		int i = 0;
@@ -80,8 +52,51 @@ public class ClientSQL {
 
 
 	}
+public boolean delete(Client objet) {
+		
+		Connexion c = new Connexion();
+		int i = 0;
+		
+		try {
+			Connection c1 = c.creeConnexion();
+			
+			PreparedStatement requete = c1.prepareStatement("DELETE FROM Client WHERE id_client = ?");
+			requete.setInt(1, objet.getIdClient());
+			i = requete.executeUpdate();
+			
+			c1.close();
+		}
+		catch (SQLException sqle) {
+			System.out.println("Probleme delete client");
+		}
+		
+		return (i == 1);
+	}
 
 
+	public ArrayList<Client> findAll() {
+		Connexion c = new Connexion();
+		ArrayList<Client> liste = new ArrayList<Client>();
+
+		try {
+			Connection c1 = c.creeConnexion();
+			
+			Statement requete = c1.createStatement();
+			ResultSet res = requete.executeQuery("SELECT * FROM Client");
+			while (res.next()) {
+
+				liste.add(new Client(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10)));
+
+			}
+			
+			c1.close();
+		}
+		catch (SQLException sqle) {
+			System.out.println("Problemes select * client");
+		}
+		
+		return (liste);
+	}
 
 
 

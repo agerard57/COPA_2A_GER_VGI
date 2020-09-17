@@ -128,27 +128,37 @@ public class Client {
 	public Client() {
 	}
 
-
-	public Client( String nom, String prenom, int identifiant) {
-		super(); // appeler le constructeur de la classe dont tu hérites
+	public Client(int idClient, String nom, String prenom, String identifiant, String motDePasse, String adrNumero,
+			String adrVoie, String adrCodePostal, String adrVille, String adrPays) {
+		super();
+		this.idClient = idClient;
 		this.nom = nom;
 		this.prenom = prenom;
-
+		this.identifiant = identifiant;
+		this.motDePasse = motDePasse;
+		this.adrNumero = adrNumero;
+		this.adrVoie = adrVoie;
+		this.adrCodePostal = adrCodePostal;
+		this.adrVille = adrVille;
+		this.adrPays = adrPays;
 	}
 
-	public static void Choixmenu() {
+	public Client(int id){
+		idClient = id;
 	}
-
 
 
 	@Override
 	public boolean equals(Object o) {
 		Client c = (Client) o ;
 		if ( o == null )
-			return false;
+			return (this == null);
 		else 
-			return this.identifiant == c.identifiant;
+			return this.idClient == c.idClient;
 	}
-
+	@Override
+	public String toString() {
+		return ("Id : " + idClient + "Nom : "+ nom + " Prénom : " + "identifiant : " + identifiant + "ville : " + adrVille);
+	}
 }
 

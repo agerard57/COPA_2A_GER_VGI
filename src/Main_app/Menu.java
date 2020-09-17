@@ -1,5 +1,6 @@
 package Main_app;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import clients.AjouterClient;
@@ -107,15 +108,15 @@ public class Menu {
 
 
 	public static void MenuAjouterClient() {
-
+		String boeufHeure = new String();
 		Client client = new Client();
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Entrez le nom : ");
-		while (sc.nextLine().trim().equals("")) {
+		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
 			System.out.println("Veuillez saisir le champ nom. ");
 		}
-		client.setNom(sc.nextLine());
+		client.setNom(boeufHeure);
 		System.out.println("Entrez le prénom : ");
 		while (sc.nextLine().trim().equals("")) {
 			System.out.println("Veuillez saisir le champ prénom. ");
@@ -162,10 +163,21 @@ public class Menu {
 
 
 	public static void MenuSupprimerClient() {
+		int index = -1;
+		ArrayList<Client> listeClient = new ArrayList<Client>();
+		ClientSQL clientBdD = new ClientSQL();
 		System.out.println("Quel client voulez vous supprimer ? ");
-		//ClientSQL.ListeClient();
+		int c = 0;
+		
+		listeClient = clientBdD.findAll();
+		while ( c < listeClient.size())
+		{
+			System.out.println(listeClient.get(c));
+			c++;
+		}
 
-
+		//faire la saisie de l'index 
+		clientBdD.delete(listeClient.get(listeClient.indexOf(new Client(index))));
 
 	}
 
