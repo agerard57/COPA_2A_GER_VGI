@@ -90,6 +90,7 @@ public boolean delete(Client objet) {
 			}
 			
 			c1.close();
+			res.close();
 		}
 		catch (SQLException sqle) {
 			System.out.println("Problemes select * client");

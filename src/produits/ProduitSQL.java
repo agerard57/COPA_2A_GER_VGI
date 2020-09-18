@@ -26,10 +26,10 @@ public class ProduitSQL {
 			Connection connect1 = connect.creeConnexion();
 			PreparedStatement requete = connect1.prepareStatement("INSERT INTO Produit(nom, description, tarif, visuel, id_categorie) VALUES ( ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			requete.setString(1,  p.getNom());
-			requete.setString(2,  p.getDescr());
-			requete.setString(3,  p.getTarif());
+			requete.setString(2,  p.getDescription());
+			requete.setFloat(3,  p.getTarif());
 			requete.setString(4,  p.getVisuel());
-			requete.setString(5,  p.getCat());
+			requete.setInt(5,  p.getIdCategorie());
 
 
 			i = requete.executeUpdate();

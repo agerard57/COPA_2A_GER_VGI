@@ -21,11 +21,11 @@ public class Menu {
 			System.out.println("Bienvenue dans la boutique des meilleurs pires pulls !");
 
 			System.out.println("[1] Gestion des produits");
-			System.out.println("[2] Gestion des catégories");
+			System.out.println("[2] Gestion des catï¿½gories");
 			System.out.println("[3] Gestion des clients");
 			System.out.println("[4] Quitter");	
 
-			System.out.println("Utilisez le clavier numérique pour faire votre choix...");
+			System.out.println("Utilisez le clavier numï¿½rique pour faire votre choix...");
 			Scanner LireConsole = new Scanner(System.in);
 			selection = LireConsole.nextInt();
 			//	LireConsole.close();
@@ -41,7 +41,7 @@ public class Menu {
 				break;
 
 			case 2 :
-				System.out.println("Vous avez choisi : ||Gestion des catégories||");
+				System.out.println("Vous avez choisi : ||Gestion des catï¿½gories||");
 				Menu.MenuCategories();
 				break;	
 
@@ -56,7 +56,7 @@ public class Menu {
 				break;
 
 			default :
-				System.out.println ("La séléction est incorrecte !");
+				System.out.println ("La sï¿½lï¿½ction est incorrecte !");
 			}
 			return;
 		} while (selection != 4);
@@ -75,7 +75,7 @@ public class Menu {
 			System.out.println("[3] Modifier un client");
 			System.out.println("[4] Retour");
 
-			System.out.println("Utilisez le clavier numérique pour faire votre choix...");
+			System.out.println("Utilisez le clavier numï¿½rique pour faire votre choix...");
 			Scanner LireConsole = new Scanner(System.in);
 			selection = LireConsole.nextInt();
 			//		LireConsole.close();
@@ -103,7 +103,7 @@ public class Menu {
 				break;
 
 			default :
-				System.out.println ("La séléction est incorrecte !");
+				System.out.println ("La sï¿½lï¿½ction est incorrecte !");
 			}
 			return;
 		} while (selection != 4);
@@ -121,9 +121,9 @@ public class Menu {
 			System.out.println("Veuillez saisir le champ nom. ");
 		}
 		client.setNom(boeufHeure);
-		System.out.println("Entrez le prénom : ");
+		System.out.println("Entrez le prï¿½nom : ");
 		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
-			System.out.println("Veuillez saisir le champ prénom. ");
+			System.out.println("Veuillez saisir le champ prï¿½nom. ");
 		}
 		client.setPrenom(boeufHeure);
 		System.out.println("Entrez l'identifiant : ");
@@ -136,7 +136,7 @@ public class Menu {
 			System.out.println("Veuillez saisir le champ mot de passe. ");
 		}
 		client.setMotDePasse(boeufHeure);
-		System.out.println("Entrez le numéro de l'adresse : ");
+		System.out.println("Entrez le numï¿½ro de l'adresse : ");
 		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
 			System.out.println("Veuillez saisir le champ adresse. ");
 		}
@@ -178,10 +178,9 @@ public class Menu {
 		listeClient = clientBdD.findAll();
 		while ( c < listeClient.size())
 		{
-			System.out.println(listeClient.get(c));
-			c++;
+			System.out.println(listeClient.get(c++));
 		}
-
+		
 
 		clientBdD.delete(listeClient.get(listeClient.indexOf(new Client(index))));
 		Scanner LireConsole = new Scanner(System.in);
@@ -206,10 +205,10 @@ public class Menu {
 		do
 		{
 			System.out.println("[1] Le nom");
-			System.out.println("[2] Le prénom");
+			System.out.println("[2] Le prï¿½nom");
 			System.out.println("[3] Retour");
 
-			System.out.println("Utilisez le clavier numérique pour faire votre choix...");
+			System.out.println("Utilisez le clavier numï¿½rique pour faire votre choix...");
 			Scanner LireConsole = new Scanner(System.in);
 			selection = LireConsole.nextInt();
 			//			LireConsole.close();
@@ -222,7 +221,7 @@ public class Menu {
 				break;
 
 			case 2 :
-				System.out.println("Vous avez choisi : ||Le prénom||");
+				System.out.println("Vous avez choisi : ||Le prï¿½nom||");
 				break;	
 			case 3 :
 				System.out.println("Vous avez choisi : ||Retour||");
@@ -230,7 +229,7 @@ public class Menu {
 				break;
 
 			default :
-				System.out.println ("La séléction est incorrecte !");
+				System.out.println ("La sï¿½lï¿½ction est incorrecte !");
 			}
 			return;
 		} while (selection != 3);
@@ -245,7 +244,7 @@ public class Menu {
 			System.out.println("[3] Modifier un produit");
 			System.out.println("[4] Retour");
 
-			System.out.println("Utilisez le clavier numérique pour faire votre choix...");
+			System.out.println("Utilisez le clavier numï¿½rique pour faire votre choix...");
 			Scanner LireConsole = new Scanner(System.in);
 			selection = LireConsole.nextInt();
 			//		LireConsole.close();
@@ -273,7 +272,7 @@ public class Menu {
 				break;
 
 			default :
-				System.out.println ("La séléction est incorrecte !");
+				System.out.println ("La sï¿½lï¿½ction est incorrecte !");
 			}
 			return;
 		} while (selection != 4);
@@ -283,6 +282,8 @@ public class Menu {
 
 	public static void MenuAjouterProduit() {
 		String boeufHeure = new String();
+		Float boeufHeurefloat = null;
+		int boeufHeureInt = 0;
 		Produit produit = new Produit();
 		produitBdD = new ProduitSQL();
 		
@@ -298,20 +299,20 @@ public class Menu {
 		}
 		produit.setDescription(boeufHeure);
 		System.out.println("Entrez le tarif : ");
-		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
+		while (boeufHeurefloat == null) {
 			System.out.println("Veuillez saisir le tarif. ");
 		}
-		produit.setTarif(boeufHeure);
+		produit.setTarif(boeufHeurefloat);
 		System.out.println("Entrez le visuel: ");
 		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
 			System.out.println("Veuillez saisir le champ du visuel. ");
 		}
 		produit.setVisuel(boeufHeure);
-		System.out.println("Entrez le numéro de la catégorie : ");
-		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
-			System.out.println("Veuillez saisir la catégorie. ");
+		System.out.println("Entrez le numï¿½ro de la catï¿½gorie : ");
+		while (boeufHeureInt == 0) {
+			System.out.println("Veuillez saisir la catï¿½gorie. ");
 		}
-		produit.setIdCategorie(boeufHeure);
+		produit.setIdCategorie(boeufHeureInt);
 
 		produitBdD.ajouterProduit(produit);
 		Menu.MenuProduits();
@@ -334,12 +335,12 @@ public class Menu {
 	public static void MenuCategories() {
 		do
 		{
-			System.out.println("[1] Ajouter une catégorie");
-			System.out.println("[2] Supprimer une catégorie");
-			System.out.println("[3] Modifier une catégorie");
+			System.out.println("[1] Ajouter une catï¿½gorie");
+			System.out.println("[2] Supprimer une catï¿½gorie");
+			System.out.println("[3] Modifier une catï¿½gorie");
 			System.out.println("[4] Retour");
 
-			System.out.println("Utilisez le clavier numérique pour faire votre choix...");
+			System.out.println("Utilisez le clavier numï¿½rique pour faire votre choix...");
 			Scanner LireConsole = new Scanner(System.in);
 			selection = LireConsole.nextInt();
 			//		LireConsole.close();
@@ -348,17 +349,17 @@ public class Menu {
 			{
 
 			case 1 :
-				System.out.println("Vous avez choisi : ||Ajouter une catégorie||");
+				System.out.println("Vous avez choisi : ||Ajouter une catï¿½gorie||");
 				Menu.MenuAjouterCategorie();
 				break;
 
 			case 2 :
-				System.out.println("Vous avez choisi : ||Supprimer une catégorie||");
+				System.out.println("Vous avez choisi : ||Supprimer une catï¿½gorie||");
 				Menu.MenuSupprimerCategorie();
 				break;	
 
 			case 3 :
-				System.out.println("Vous avez choisi : ||Modifier une catégorie||");
+				System.out.println("Vous avez choisi : ||Modifier une catï¿½gorie||");
 				Menu.MenuModifierCategorie1();
 				break;	
 			case 4 :
@@ -367,7 +368,7 @@ public class Menu {
 				break;
 
 			default :
-				System.out.println ("La séléction est incorrecte !");
+				System.out.println ("La sï¿½lï¿½ction est incorrecte !");
 			}
 			return;
 		} while (selection != 4);
@@ -391,7 +392,7 @@ public class Menu {
 	}
 
 	private static void MenuSupprimerCategorie() {
-		System.out.println("Quelle catégorie voulez vous supprimer ? ");
+		System.out.println("Quelle catï¿½gorie voulez vous supprimer ? ");
 		//ClientSQL.ListeClient();
 				
 	}
