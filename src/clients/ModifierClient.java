@@ -2,7 +2,6 @@ package clients;
 
 import java.util.Scanner;
 
-import Main_app.Choix;
 import Main_app.Menu;
 
 public class ModifierClient{
