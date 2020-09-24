@@ -134,7 +134,7 @@ public boolean update(Client objet) {
 			res.close();
 		}
 		catch (SQLException sqle) {
-			System.out.println("Problemes select * client");
+			System.out.println("Problemes select * Client");
 		}
 		
 		return (liste);

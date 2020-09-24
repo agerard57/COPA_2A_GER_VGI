@@ -109,11 +109,11 @@ public class Produit {
 
 	@Override
 	public boolean equals(Object o) {
-		Produit c = (Produit) o ;
+		Produit p = (Produit) o ;
 		if ( o == null )
 			return (this == null);
 		else 
-			return this.idProduit == c.idProduit;
+			return this.idProduit == p.idProduit;
 	}
 	
 	
