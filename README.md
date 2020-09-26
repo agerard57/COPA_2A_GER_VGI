@@ -18,6 +18,8 @@ quantité. Pour des raisons fiscales, on stocke le tarif unitaire du produit au 
 En conséquence, on vous demande de développer un logiciel permettant de
 saisir/modifier/supprimer/visualiser les données pour l'ensemble des produits vendus, des catégories, des clients et des commandes
 ---
+## Trello
+We've made a Trello board. You can easily access it by clicking  __[HERE](https://trello.com/invite/b/DcAjprl2/13a303fce6c355e2e568927e7705c048/cpoa2020gerardgiangreco)__.
 
 ## JAR Used
 
@@ -30,8 +32,9 @@ saisir/modifier/supprimer/visualiser les données pour l'ensemble des produits v
 We made the project (all be it with some errors that we will mention down there) with most functions working on this project :
 
 - There's a fully functionnal multi-layer menu using commands. (with return options)
-- You can view the client's list
-- You can also add a client
+- You can edit/delete/add the client's list
+- You can edit/delete/add the products's list
+- You can edit/delete/add the orders's list
 
 
 ## Problems faced
@@ -61,11 +64,9 @@ Trying something different from what is proposed will result in an error message
 
 We want to improve on this course, that is why we will start by continuing the project during our free time;
 We will be implementing:
- - Fixes for what is already present
- - Add, Delete and Modify "Category"
- - Finish Delete and Modify for the Client
+ - Fixes for what is already 
  - Overall redesign of the code and improvement of the packages
-
+ - View lists
 
 License
 ----
