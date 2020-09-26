@@ -83,7 +83,7 @@ public class Menu {
 			System.out.println("[3] Modifier un client");
 			System.out.println("[4] Retour");
 
-			System.out.println("Utilisez le clavier numï¿erique pour faire votre choix...");
+			System.out.println("Utilisez le clavier numï¿½erique pour faire votre choix...");
 			Scanner LireConsole = new Scanner(System.in);
 			selection = LireConsole.nextInt();
 			//		LireConsole.close();
@@ -131,9 +131,9 @@ public class Menu {
 			System.out.println("Veuillez saisir le champ nom. ");
 		}
 		client.setNom(boeufHeure);
-		System.out.println("Entrez le prénom : ");
+		System.out.println("Entrez le prï¿½nom : ");
 		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
-			System.out.println("Veuillez saisir le champ pré½nom. ");
+			System.out.println("Veuillez saisir le champ prï¿½nom. ");
 		}
 		client.setPrenom(boeufHeure);
 		System.out.println("Entrez l'identifiant : ");
@@ -204,7 +204,7 @@ public class Menu {
 		selection = LireConsole.nextInt();
 		
 		clientBdD.delete(listeClient.get(listeClient.indexOf(new Client(selection))));
-		System.out.println("ID de client supprimé : " + selection);
+		System.out.println("ID de client supprimï¿½ : " + selection);
 		Menu.MenuClient();
 	}
 
@@ -215,11 +215,13 @@ public class Menu {
 	public static void MenuModifierClient1() {
 		int index = -1;
 		ClientSQL clientBdD = new ClientSQL();
-		Scanner sc = new Scanner(System.in);
 		Client client = new Client();
+		Scanner sc = new Scanner(System.in);
+		Scanner nouveauScannerDeTest = new Scanner(System.in);
+
 		String boeufHeure = new String();
 		ArrayList<Client> listeClient = new ArrayList<Client>();
-
+		String selectionChangement;
 		int selection = 0;
 		int c = 0;
 
@@ -254,40 +256,52 @@ public class Menu {
 			System.out.println("[3] Retour");
 
 			System.out.println("Utilisez le clavier numerique pour faire votre choix...");
-
+			
 			selection = sc.nextInt();
-
+			selectionChangement = sc.nextLine();
 			//LireConsole.close();
-
-			if (selection == 1) {
+			switch(selection) {
+			case 1:{
 
 				System.out.println("Vous avez choisi : ||Le nom||");
-				System.out.println("Entrez le nom : "); // on demande de saisir le nom puis on regarde si la selection est vide ou non. Si non, on l'affecte au nom d'un nouveau client
-				while ((boeufHeure = sc.nextLine()).trim().equals(" ")) {
+				System.out.println("Entrez le nom : ");// on demande de saisir le nom puis on regarde si la selection est vide ou non. Si non, on l'affecte au nom d'un nouveau client
+				System.out.println("1 : " + boeufHeure  + " : 1 " + selection + " : 2 " + selectionChangement + " : 3" );
+				while ((boeufHeure = nouveauScannerDeTest.nextLine()).trim().equals("")) {
+					System.out.println("2 : " +boeufHeure  + " : 1 " + selection + " : 2 " + selectionChangement + " : 3 " );
+
 					System.out.println("Veuillez saisir le champ nom. ");
 				}
+				System.out.println("3 : " + boeufHeure  + " : 1 " + selection + " : 2 " + selectionChangement + " : 3" );
+
 				client.setNom(boeufHeure);
+				break;
 			}
 
 
-			else if (selection == 2) {
+			case 2: {
 				System.out.println("Vous avez choisi : ||Le prenom||");
-				System.out.println("Entrez le prénom : ");
-				while ((boeufHeure = sc.nextLine()).trim().equals(" ")) {
-					System.out.println("Veuillez saisir le champ pré½nom. ");
+				System.out.println("Entrez le prï¿½nom : ");
+				while ((boeufHeure = nouveauScannerDeTest.nextLine()).trim().equals("")) {
+					System.out.println("Veuillez saisir le champ prï¿½nom. ");
 				}
 				client.setPrenom(boeufHeure);
+				break;
+
 			}	
-			else if (selection == 3) {
+			case 3: {
 				System.out.println("Vous avez choisi : ||Retour||");
 				Menu.MenuClient();
-			}
-			else  
-				System.out.println ("La sï¿½lï¿½ction est incorrecte !");
-		
-	} while (selection != 3);
+				break;
 
-	clientBdD.ajouterClient(client);
+			}
+			default:  
+				System.out.println ("La sï¿½lï¿½ction est incorrecte !");
+				break;
+
+		
+	} }while (selection != 3);
+
+	clientBdD.update(client);
 	Menu.MenuClient();
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -415,7 +429,7 @@ private static void MenuSupprimerProduit() {
 	selection = LireConsole.nextInt();
 	
 	produitBdD.delete(listeProduit.get(listeProduit.indexOf(new Produit(selection))));
-	System.out.println("ID de produit supprimé : " + selection);
+	System.out.println("ID de produit supprimï¿½ : " + selection);
 	Menu.MenuProduits();
 
 }
@@ -533,7 +547,7 @@ private static void MenuSupprimerCategorie() {
 	selection = LireConsole.nextInt();
 	
 	categorieBdD.delete(listeCategorie.get(listeCategorie.indexOf(new Categorie(selection))));
-	System.out.println("ID de la categorie supprimée : " + selection);
+	System.out.println("ID de la categorie supprimï¿½e : " + selection);
 	Menu.MenuCategories();
 
 }
