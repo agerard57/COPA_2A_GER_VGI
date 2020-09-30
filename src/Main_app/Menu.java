@@ -202,7 +202,7 @@ public class Menu {
 			boeufHeure = LireConsole.nextLine();
 		}
 		selection = LireConsole.nextInt();
-		
+
 		clientBdD.delete(listeClient.get(listeClient.indexOf(new Client(selection))));
 		System.out.println("ID de client supprim� : " + selection);
 		Menu.MenuClient();
@@ -232,14 +232,17 @@ public class Menu {
 			System.out.println(listeClient.get(c++));
 		}
 		System.out.println("Quel client voulez vous modifier ? (entrez le champ \" id_client \") ");
-
+		
 
 		while (!sc.hasNextInt())
 		{
 			System.out.println("Veuillez entrer l'ID du client.");
 			sc.nextLine();
 		}
+		
 		selection = sc.nextInt(); 
+		
+		client = listeClient.get(listeClient.indexOf(new Client(selection)));
 		// afficher la liste de clients et lui demander d'entrer un ID + message erreur
 
 
@@ -248,6 +251,7 @@ public class Menu {
 
 		System.out.println("Quel champ modifier ?");
 
+		System.out.println(client);
 
 		do
 		{
@@ -256,7 +260,7 @@ public class Menu {
 			System.out.println("[3] Retour");
 
 			System.out.println("Utilisez le clavier numerique pour faire votre choix...");
-			
+
 			selection = sc.nextInt();
 			selectionChangement = sc.nextLine();
 			//LireConsole.close();
@@ -274,6 +278,7 @@ public class Menu {
 				System.out.println("3 : " + boeufHeure  + " : 1 " + selection + " : 2 " + selectionChangement + " : 3" );
 
 				client.setNom(boeufHeure);
+				System.out.println(client);
 				break;
 			}
 
@@ -290,6 +295,7 @@ public class Menu {
 			}	
 			case 3: {
 				System.out.println("Vous avez choisi : ||Retour||");
+				clientBdD.update(client);
 				Menu.MenuClient();
 				break;
 
@@ -298,267 +304,266 @@ public class Menu {
 				System.out.println ("La s�l�ction est incorrecte !");
 				break;
 
-		
-	} }while (selection != 3);
 
-	clientBdD.update(client);
-	Menu.MenuClient();
-}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			}
+			System.out.println("fin while : " + client);
+		}while (selection != 3);
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-public static void MenuProduits() {
-	do
-	{
-		System.out.println("[1] Ajouter un produit");
-		System.out.println("[2] Supprimer un produit");
-		System.out.println("[3] Modifier un produit");
-		System.out.println("[4] Retour");
-
-		System.out.println("Utilisez le clavier numerique pour faire votre choix...");
-		Scanner LireConsole = new Scanner(System.in);
-		selection = LireConsole.nextInt();
-		//		LireConsole.close();
-
-		switch (selection)
+	public static void MenuProduits() {
+		do
 		{
+			System.out.println("[1] Ajouter un produit");
+			System.out.println("[2] Supprimer un produit");
+			System.out.println("[3] Modifier un produit");
+			System.out.println("[4] Retour");
 
-		case 1 :
-			System.out.println("Vous avez choisi : ||Ajouter un produit||");
-			Menu.MenuAjouterProduit();
-			break;
+			System.out.println("Utilisez le clavier numerique pour faire votre choix...");
+			Scanner LireConsole = new Scanner(System.in);
+			selection = LireConsole.nextInt();
+			//		LireConsole.close();
 
-		case 2 :
-			System.out.println("Vous avez choisi : ||Supprimer un produit||");
-			Menu.MenuSupprimerProduit();
-			break;	
+			switch (selection)
+			{
 
-		case 3 :
-			System.out.println("Vous avez choisi : ||Modifier un produit||");
-			Menu.MenuModifierProduit1();
-			break;	
-		case 4 :
-			System.out.println("Vous avez choisi : ||Retour||");
-			Menu.MenuAccueil();
-			break;
+			case 1 :
+				System.out.println("Vous avez choisi : ||Ajouter un produit||");
+				Menu.MenuAjouterProduit();
+				break;
 
-		default :
-			System.out.println ("La selection est incorrecte !");
+			case 2 :
+				System.out.println("Vous avez choisi : ||Supprimer un produit||");
+				Menu.MenuSupprimerProduit();
+				break;	
+
+			case 3 :
+				System.out.println("Vous avez choisi : ||Modifier un produit||");
+				Menu.MenuModifierProduit1();
+				break;	
+			case 4 :
+				System.out.println("Vous avez choisi : ||Retour||");
+				Menu.MenuAccueil();
+				break;
+
+			default :
+				System.out.println ("La selection est incorrecte !");
+			}
+		} while (selection != 4);
+
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public static void MenuAjouterProduit() {
+		String boeufHeure = new String();
+		Float boeufHeurefloat = null;
+		int boeufHeureInt = 0;
+		Produit produit = new Produit();
+		ProduitSQL produitBdD = new ProduitSQL();
+		Scanner sc = new Scanner(System.in);
+
+
+		System.out.println("Entrez le nom : ");
+		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
+			System.out.println("Veuillez saisir le champ nom. ");
 		}
-	} while (selection != 4);
+		produit.setNom(boeufHeure);
 
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-public static void MenuAjouterProduit() {
-	String boeufHeure = new String();
-	Float boeufHeurefloat = null;
-	int boeufHeureInt = 0;
-	Produit produit = new Produit();
-	ProduitSQL produitBdD = new ProduitSQL();
-	Scanner sc = new Scanner(System.in);
-	
-	
-	System.out.println("Entrez le nom : ");
-	while ((boeufHeure = sc.nextLine()).trim().equals("")) {
-		System.out.println("Veuillez saisir le champ nom. ");
-	}
-	produit.setNom(boeufHeure);
-	
-	System.out.println("Entrez la description : ");
-	while ((boeufHeure = sc.nextLine()).trim().equals(" ")) {
-		System.out.println("Veuillez saisir la description. ");
-	}
-	produit.setDescription(boeufHeure);
-
-	
-	System.out.println("Entrez le visuel : ");
-	while ((boeufHeure = sc.nextLine()).trim().equals(" ")) {
-		System.out.println("Veuillez saisir le champ du visuel. ");
-	}
-	produit.setVisuel(boeufHeure);
-
-	System.out.println("Entrez le tarif : ");
-	while (!sc.hasNextFloat()) {
-		System.out.println("Veuillez saisir le tarif. ");
-		boeufHeure = sc.nextLine();
-	}
-	produit.setTarif(sc.nextFloat());
-	
-	System.out.println("Entrez le numero de la categorie : ");
-	while (!sc.hasNextInt()) {
-		System.out.println("Veuillez saisir le numero de la categorie. ");
-		boeufHeure = sc.nextLine();
-	}
-	produit.setIdCategorie(sc.nextInt());
-
-	produitBdD.ajouterProduit(produit);
-	Menu.MenuProduits();
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		System.out.println("Entrez la description : ");
+		while ((boeufHeure = sc.nextLine()).trim().equals(" ")) {
+			System.out.println("Veuillez saisir la description. ");
+		}
+		produit.setDescription(boeufHeure);
 
 
-private static void MenuSupprimerProduit() {
-	ArrayList<Produit> listeProduit = new ArrayList<Produit>();
-	ProduitSQL produitBdD = new ProduitSQL();
-	Scanner LireConsole = new Scanner(System.in);
-	String boeufHeure;
-	int selection;
+		System.out.println("Entrez le visuel : ");
+		while ((boeufHeure = sc.nextLine()).trim().equals(" ")) {
+			System.out.println("Veuillez saisir le champ du visuel. ");
+		}
+		produit.setVisuel(boeufHeure);
 
-	System.out.println("Quel produit voulez vous supprimer ? ");
-	int c = 0;
-	//pour supprimer un client, on les affiche tous et on selectionne un id qui permettra de le supr
-	listeProduit = produitBdD.findAll();
-	while ( c < listeProduit.size())
-	{
-		System.out.println(listeProduit.get(c++));
+		System.out.println("Entrez le tarif : ");
+		while (!sc.hasNextFloat()) {
+			System.out.println("Veuillez saisir le tarif. ");
+			boeufHeure = sc.nextLine();
+		}
+		produit.setTarif(sc.nextFloat());
+
+		System.out.println("Entrez le numero de la categorie : ");
+		while (!sc.hasNextInt()) {
+			System.out.println("Veuillez saisir le numero de la categorie. ");
+			boeufHeure = sc.nextLine();
+		}
+		produit.setIdCategorie(sc.nextInt());
+
+		produitBdD.ajouterProduit(produit);
+		Menu.MenuProduits();
 	}
 
-
-	while (!LireConsole.hasNextInt())
-	{
-		System.out.println("Veuillez entrer l'ID du produit.");
-		boeufHeure = LireConsole.nextLine();
-	}
-	selection = LireConsole.nextInt();
-	
-	produitBdD.delete(listeProduit.get(listeProduit.indexOf(new Produit(selection))));
-	System.out.println("ID de produit supprim� : " + selection);
-	Menu.MenuProduits();
-
-}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-private static void MenuModifierProduit1() {
-	System.out.println("Quel produit voulez vous modifer ?(entrez le champ \" id_client \" ");
-	//ClientSQL.ListeClient();
-}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@SuppressWarnings("resource")
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-public static void MenuCategories() {
-	do
-	{
-		System.out.println("[1] Ajouter une categorie");
-		System.out.println("[2] Supprimer une categorie");
-		System.out.println("[3] Modifier une categorie");
-		System.out.println("[4] Retour");
-
-		System.out.println("Utilisez le clavier numerique pour faire votre choix...");
+	private static void MenuSupprimerProduit() {
+		ArrayList<Produit> listeProduit = new ArrayList<Produit>();
+		ProduitSQL produitBdD = new ProduitSQL();
 		Scanner LireConsole = new Scanner(System.in);
-		selection = LireConsole.nextInt();
-		//		LireConsole.close();
+		String boeufHeure;
+		int selection;
 
-		switch (selection)
+		System.out.println("Quel produit voulez vous supprimer ? ");
+		int c = 0;
+		//pour supprimer un client, on les affiche tous et on selectionne un id qui permettra de le supr
+		listeProduit = produitBdD.findAll();
+		while ( c < listeProduit.size())
 		{
-
-		case 1 :
-			System.out.println("Vous avez choisi : ||Ajouter une categorie||");
-			Menu.MenuAjouterCategorie();
-			break;
-
-		case 2 :
-			System.out.println("Vous avez choisi : ||Supprimer une categorie||");
-			Menu.MenuSupprimerCategorie();
-			break;	
-
-		case 3 :
-			System.out.println("Vous avez choisi : ||Modifier une categorie||");
-			Menu.MenuModifierCategorie1();
-			break;	
-		case 4 :
-			System.out.println("Vous avez choisi : ||Retour||");
-			Menu.MenuAccueil();
-			break;
-
-		default :
-			System.out.println ("La selection est incorrecte !");
+			System.out.println(listeProduit.get(c++));
 		}
-	} while (selection != 4);
-
-}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-private static void MenuAjouterCategorie() {
-	Categorie categorie = new Categorie();
-	CategorieSQL categorieBdD = new CategorieSQL();
-	String boeufHeure = new String();
+		while (!LireConsole.hasNextInt())
+		{
+			System.out.println("Veuillez entrer l'ID du produit.");
+			boeufHeure = LireConsole.nextLine();
+		}
+		selection = LireConsole.nextInt();
+
+		produitBdD.delete(listeProduit.get(listeProduit.indexOf(new Produit(selection))));
+		System.out.println("ID de produit supprim� : " + selection);
+		Menu.MenuProduits();
+
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	private static void MenuModifierProduit1() {
+		System.out.println("Quel produit voulez vous modifer ?(entrez le champ \" id_client \" ");
+		//ClientSQL.ListeClient();
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	@SuppressWarnings("resource")
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	public static void MenuCategories() {
+		do
+		{
+			System.out.println("[1] Ajouter une categorie");
+			System.out.println("[2] Supprimer une categorie");
+			System.out.println("[3] Modifier une categorie");
+			System.out.println("[4] Retour");
+
+			System.out.println("Utilisez le clavier numerique pour faire votre choix...");
+			Scanner LireConsole = new Scanner(System.in);
+			selection = LireConsole.nextInt();
+			//		LireConsole.close();
+
+			switch (selection)
+			{
+
+			case 1 :
+				System.out.println("Vous avez choisi : ||Ajouter une categorie||");
+				Menu.MenuAjouterCategorie();
+				break;
+
+			case 2 :
+				System.out.println("Vous avez choisi : ||Supprimer une categorie||");
+				Menu.MenuSupprimerCategorie();
+				break;	
+
+			case 3 :
+				System.out.println("Vous avez choisi : ||Modifier une categorie||");
+				Menu.MenuModifierCategorie1();
+				break;	
+			case 4 :
+				System.out.println("Vous avez choisi : ||Retour||");
+				Menu.MenuAccueil();
+				break;
+
+			default :
+				System.out.println ("La selection est incorrecte !");
+			}
+		} while (selection != 4);
+
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	private static void MenuAjouterCategorie() {
+		Categorie categorie = new Categorie();
+		CategorieSQL categorieBdD = new CategorieSQL();
+		String boeufHeure = new String();
 
 		Scanner sc = new Scanner(System.in);
-		
-		
+
+
 		System.out.println("Entrez le titre : ");
 		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
 			System.out.println("Veuillez saisir le champ titre. ");
 		}
 		categorie.setTitre(boeufHeure);
-		
-		
+
+
 		System.out.println("Entrez le visuel : ");
 		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
 			System.out.println("Veuillez saisir le champ visuel. ");
 		}
 		categorie.setVisuel(boeufHeure);
-		
+
 		categorieBdD.ajouterCategorie(categorie);
 		Menu.MenuProduits();
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-private static void MenuSupprimerCategorie() {
-	ArrayList<Categorie> listeCategorie = new ArrayList<Categorie>();
-	CategorieSQL categorieBdD = new CategorieSQL();
-	Scanner LireConsole = new Scanner(System.in);
-	String boeufHeure;
-	int selection;
-
-	System.out.println("Quel categorie voulez vous supprimer ? ");
-	int c = 0;
-	//pour supprimer un client, on les affiche tous et on selectionne un id qui permettra de le supr
-	listeCategorie = categorieBdD.findAll();
-	while ( c < listeCategorie.size())
-	{
-		System.out.println(listeCategorie.get(c++));
 	}
 
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	while (!LireConsole.hasNextInt())
-	{
-		System.out.println("Veuillez entrer l'ID de la categorie.");
-		boeufHeure = LireConsole.nextLine();
+
+	private static void MenuSupprimerCategorie() {
+		ArrayList<Categorie> listeCategorie = new ArrayList<Categorie>();
+		CategorieSQL categorieBdD = new CategorieSQL();
+		Scanner LireConsole = new Scanner(System.in);
+		String boeufHeure;
+		int selection;
+
+		System.out.println("Quel categorie voulez vous supprimer ? ");
+		int c = 0;
+		//pour supprimer un client, on les affiche tous et on selectionne un id qui permettra de le supr
+		listeCategorie = categorieBdD.findAll();
+		while ( c < listeCategorie.size())
+		{
+			System.out.println(listeCategorie.get(c++));
+		}
+
+
+		while (!LireConsole.hasNextInt())
+		{
+			System.out.println("Veuillez entrer l'ID de la categorie.");
+			boeufHeure = LireConsole.nextLine();
+		}
+		selection = LireConsole.nextInt();
+
+		categorieBdD.delete(listeCategorie.get(listeCategorie.indexOf(new Categorie(selection))));
+		System.out.println("ID de la categorie supprim�e : " + selection);
+		Menu.MenuCategories();
+
 	}
-	selection = LireConsole.nextInt();
-	
-	categorieBdD.delete(listeCategorie.get(listeCategorie.indexOf(new Categorie(selection))));
-	System.out.println("ID de la categorie supprim�e : " + selection);
-	Menu.MenuCategories();
-
-}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-private static void MenuModifierCategorie1() {
-	System.out.println("Quel client voulez vous modifier ?(entrez le champ \" id_client \" ");
-	//ClientSQL.ListeClient();
-}
+	private static void MenuModifierCategorie1() {
+		System.out.println("Quel client voulez vous modifier ?(entrez le champ \" id_client \" ");
+		//ClientSQL.ListeClient();
+	}
 
 
 
