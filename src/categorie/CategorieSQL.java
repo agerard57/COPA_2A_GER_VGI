@@ -58,7 +58,7 @@ int i = 0;
 try {
 Connection c1 = c.creeConnexion();
 
-PreparedStatement requete = c1.prepareStatement("UPDATE Categorie SET titre = ?, visuel = ?, WHERE id_categorie = ?");
+PreparedStatement requete = c1.prepareStatement("UPDATE Categorie SET titre = ?, visuel = ? WHERE id_categorie = ?");
 requete.setString(1, objet.getTitre());
 requete.setString(2, objet.getVisuel());
 requete.setInt(3, objet.getIdCategorie());
