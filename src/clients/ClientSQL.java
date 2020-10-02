@@ -69,7 +69,7 @@ public boolean update(Client objet) {
 		try {
 			Connection c1 = c.creeConnexion();
 			
-			PreparedStatement requete = c1.prepareStatement("UPDATE Client SET nom = ?, prenom = ?, WHERE id_client = ?");
+			PreparedStatement requete = c1.prepareStatement("UPDATE Client SET nom = ?, prenom = ? WHERE id_client = ?");
 			requete.setString(1, objet.getNom());
 			requete.setString(2, objet.getPrenom());
 			requete.setInt(3, objet.getIdClient());
@@ -127,7 +127,6 @@ public boolean update(Client objet) {
 			while (res.next()) {
 
 				liste.add(new Client(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10)));
-
 			}
 			
 			c1.close();

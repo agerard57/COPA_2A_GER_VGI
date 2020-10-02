@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import com.mysql.cj.xdevapi.PreparableStatement;
 
 import MySql.Connexion;
+import clients.Client;
 
 public class ProduitSQL {
 
@@ -57,6 +58,33 @@ public class ProduitSQL {
 
 	}
 	
+	
+public boolean update(Produit objet) {
+		
+		Connexion c = new Connexion();
+		int i = 0;
+		
+		try {
+			Connection c1 = c.creeConnexion();
+			
+			PreparedStatement requete = c1.prepareStatement("UPDATE Produit SET nom = ?, description = ?, tarif = ?, visuel = ?, id_categorie = ? WHERE id_client = ?");
+			requete.setString(1, objet.getNom());
+			requete.setString(2, objet.getDescription());
+			requete.setFloat(3, objet.getTarif());
+			requete.setString(4, objet.getVisuel());
+			requete.setInt(5, objet.getIdCategorie());
+			requete.setInt(6, objet.getIdProduit());
+
+			i = requete.executeUpdate();
+			
+			c1.close();
+		}
+		catch (SQLException sqle) {
+			System.out.println("Probleme update produit");
+		}
+		
+		return (i == 1);
+	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
