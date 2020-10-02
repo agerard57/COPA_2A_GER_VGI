@@ -1,4 +1,12 @@
-package commandes;
+package dao.mysql;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import MySql.Connexion;
+import commandes.LigneDeCommande;
+import dao.LigneCommandeDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,11 +18,25 @@ import java.util.ArrayList;
 import MySql.Connexion;
 import clients.Client;
 
-public class LigneDeCommandeSQL {
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+public class MySQLigneCommandeDAO implements LigneCommandeDAO{
+
+
+	private static MySQLigneCommandeDAO instance;
+
+	public static MySQLigneCommandeDAO getInstance() {
+
+		if (instance == null) {
+			instance = new MySQLigneCommandeDAO();
+		}
+
+		return instance;
+	}
+
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public LigneDeCommandeSQL() {
+	public MySQLigneCommandeDAO() {
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -107,14 +129,14 @@ public class LigneDeCommandeSQL {
 	public ArrayList<LigneDeCommande> findAll() {
 		Connexion c = new Connexion();
 		ArrayList<LigneDeCommande> liste = new ArrayList<LigneDeCommande>();
-		
+
 		try {
 			Connection c1 = c.creeConnexion();
 
 			Statement requete = c1.createStatement();
 			ResultSet res = requete.executeQuery("SELECT * FROM Ligne_Commande");
 			while (res.next()) {
-				
+
 				liste.add(new LigneDeCommande(res.getInt(1), res.getInt(2), res.getInt(3), res.getFloat(4)));
 
 			}
@@ -130,4 +152,12 @@ public class LigneDeCommandeSQL {
 	}
 
 
+
+
+
+
+
+
 }
+
+
