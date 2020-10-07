@@ -1042,7 +1042,7 @@ public static void MenuCommande() {
 				System.out.println(ligneDeCommande);
 				break;
 			}
-s
+
 
 			case 2: {
 				System.out.println("Vous avez choisi : ||modifier une ligne de commande||");
