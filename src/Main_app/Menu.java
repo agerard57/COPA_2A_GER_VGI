@@ -1,5 +1,6 @@
 package Main_app;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,6 +10,8 @@ import clients.Client;
 import clients.ClientSQL;
 import commandes.Commande;
 import commandes.CommandeSQL;
+import commandes.LigneDeCommande;
+import commandes.LigneDeCommandeSQL;
 import produits.Produit;
 import produits.ProduitSQL;
 
@@ -114,7 +117,7 @@ public class Menu {
 				Menu.MenuModifierClient();
 				break;	
 			case 4 :
-				System.out.println("Vous avez choisi : ||Visualiser les catégories||");
+				System.out.println("Vous avez choisi : ||Visualiser les catï¿½gories||");
 				int c = 0;
 				selection = 0;
 				listeClient = clientBdD.findAll();
@@ -369,7 +372,7 @@ public class Menu {
 				Menu.MenuModifierProduit();
 				break;	
 			case 4 :
-				System.out.println("Vous avez choisi : ||Visualiser les catégories||");
+				System.out.println("Vous avez choisi : ||Visualiser les catï¿½gories||");
 				int c = 0;
 				selection = 0;
 				listeCategorie = categorieBdD.findAll();
@@ -637,7 +640,7 @@ public class Menu {
 				Menu.MenuModifierCategorie();
 				break;	
 			case 4 :
-				System.out.println("Vous avez choisi : ||Visualiser les catégories||");
+				System.out.println("Vous avez choisi : ||Visualiser les catï¿½gories||");
 				int c = 0;
 				selection = 0;
 				listeCategories = categorieBdD.findAll();
@@ -818,10 +821,10 @@ public class Menu {
 			}while (selection != 3);
 		}
 
-
-	/*public static void MenuCommande() {
+public static void MenuCommande() {
 		ArrayList<Commande> listeCommande = new ArrayList<Commande>();
 		CommandeSQL commandeBdD = new CommandeSQL();
+		
 		do
 		{
 			System.out.println("[1] Ajouter une commande");
@@ -883,75 +886,36 @@ public class Menu {
 
 		public static void MenuAjouterCommande() {
 		String boeufHeure = new String();
+		ArrayList<Commande> listeCommande = new ArrayList<Commande>();
 		Commande commande = new Commande();
 		CommandeSQL commandeBdD = new CommandeSQL();
 		Scanner LireConsole = new Scanner(System.in);
-
-
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Entrez le nom : "); // on demande de saisir le nom puis on regarde si la selection est vide ou non. Si non, on l'affecte au nom d'un nouveau client
-		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
-			System.out.println("Veuillez saisir le champ nom. ");
-		}
-		commande.setNom(boeufHeure);
-		
-		
-		System.out.println("Quel categorie voulez vous supprimer ? ");
+		ArrayList<Client> listeClient = new ArrayList<Client>();
+		ClientSQL clientBdD = new ClientSQL();
 		int c = 0;
-		//pour supprimer un client, on les affiche tous et on selectionne un id qui permettra de le supr
-		listeCategorie = categorieBdD.findAll();
-		while ( c < listeCategorie.size())
-		{
-			System.out.println(listeCategorie.get(c++));
-		}
-
-
-		while (!LireConsole.hasNextInt())
-		{
-			System.out.println("Veuillez entrer l'ID de la categorie.");
-			boeufHeure = LireConsole.nextLine();
-		}
-		selection = LireConsole.nextInt();
+		Scanner sc = new Scanner(System.in);
 		
 		
-		System.out.println("Entrez l'identifiant : ");
-		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
-			System.out.println("Veuillez saisir le champ identifiant. ");
-		}
-		client.setIdentifiant(boeufHeure);
-		System.out.println("Entrez le mot de passe: ");
-		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
-			System.out.println("Veuillez saisir le champ mot de passe. ");
-		}
-		client.setMotDePasse(boeufHeure);
-		System.out.println("Entrez le numero de l'adresse : ");
-		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
-			System.out.println("Veuillez saisir le champ adresse. ");
-		}
-		client.setAdrNumero(boeufHeure);
-		System.out.println("Entrez le nom de la rue : ");
-		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
-			System.out.println("Veuillez saisir le champ rue. ");
-		}
-		client.setAdrVoie(boeufHeure);
-		System.out.println("Entrez le code postal : ");
-		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
-			System.out.println("Veuillez saisir le champ code postal. ");
-		}
-		client.setAdrCodePostal(boeufHeure);
-		System.out.println("Entrez la ville : ");
-		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
-			System.out.println("Veuillez saisir le champ ville. ");
-		}
-		client.setAdrVille(boeufHeure);
-		System.out.println("Entrez le pays : ");
-		while ((boeufHeure = sc.nextLine()).trim().equals("")) {
-			System.out.println("Veuillez saisir le champ pays. ");
-		}
-		client.setAdrPays(boeufHeure);
+		
+				listeClient = clientBdD.findAll();
+				while ( c < listeClient.size())
+				{
+					System.out.println(listeClient.get(c++));
+				}
+				System.out.println("Pour quel client voulez vous ajouter une commande ? (entrez le champ \" id_produit \") ");
 
-		clientBdD.ajouterClient(client);
-		Menu.MenuClient();
+				while (!sc.hasNextInt())
+				{
+					System.out.println("Veuillez entrer l'ID du client.");
+					sc.nextLine();
+				}
+				
+				selection = sc.nextInt(); 
+		commande.setIdClient(selection);
+		commande.setDateCommande(LocalDate.now());
+		
+		commandeBdD.ajouterCommande(commande);
+		Menu.MenuCommande();
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -964,7 +928,7 @@ public class Menu {
 		String boeufHeure;
 		int selection;
 
-		System.out.println("Quel client voulez vous supprimer ? ");
+		System.out.println("Quelle commande voulez vous supprimer ? ");
 		int c = 0;
 		//pour supprimer un client, on les affiche tous et on selectionne un id qui permettra de le supr
 		listeCommande = commandeBdD.findAll();
@@ -981,7 +945,7 @@ public class Menu {
 		}
 		selection = LireConsole.nextInt();
 
-		commandeBdD.delete(listeCommande.get(listeCommande.indexOf(new Commande(selection))));
+		//commandeBdD.delete(listeCommande.get(listeCommande.indexOf(new Commande(selection))));
 		System.out.println("ID de la commande supprimï¿½ : " + selection);
 		Menu.MenuCommande();
 	}
@@ -992,12 +956,19 @@ public class Menu {
 
 	public static void MenuModifierCommande() {
 		int index = -1;
-		CommandeSQL commandeBdD = new CommandeSQL();
 		Commande commande = new Commande();
+		CommandeSQL commandeBdD = new CommandeSQL();
+		LigneDeCommandeSQL ligneDeCommandeBdD = new LigneDeCommandeSQL();
+
 		Scanner sc = new Scanner(System.in);
 		Scanner nouveauScannerDeTest = new Scanner(System.in);
-
+		Scanner LireConsole = new Scanner(System.in);
+		ArrayList<Produit> listeProduit = new ArrayList<Produit>();
+		ProduitSQL produitBdD = new ProduitSQL();
 		String boeufHeure = new String();
+		LigneDeCommande ligneDeCommande = new LigneDeCommande();
+		ArrayList<LigneDeCommande> listeLigneDeCommande = new ArrayList<LigneDeCommande>();
+
 		ArrayList<Commande> listeCommande = new ArrayList<Commande>();
 		String selectionChangement;
 		int selection = 0;
@@ -1020,20 +991,16 @@ public class Menu {
 		
 		selection = sc.nextInt(); 
 		
-		commande = listeCommande.get(listeCommande.indexOf(new Commande(selection)));
-		// afficher la liste de clients et lui demander d'entrer un ID + message erreur
+		//commande = listeCommande.get(listeCommande.indexOf(new Commande(selection)));
 
-
-		//ClientSQL.ListeClient();
-		//pour supprimer un client, on les affiche tous et on selectionne un id qui permettra de le supr
-
-		System.out.println("Quel champ modifier ?");
+		System.out.println("Que faut il modifier ?");
 
 		do
 		{
-			System.out.println("[1] Le nom");
-			System.out.println("[2] Le prenom");
-			System.out.println("[3] Retour");
+			System.out.println("[1] Ajouter une ligne de commande");
+			System.out.println("[2] modifier une ligne de commande");
+			System.out.println("[3] supprimer une ligne de commande");
+			System.out.println("[4] Retour");
 
 			System.out.println("Utilisez le clavier numerique pour faire votre choix...");
 
@@ -1043,31 +1010,94 @@ public class Menu {
 			switch(selection) {
 			case 1:{
 
-				System.out.println("Vous avez choisi : ||Le nom||");
-				System.out.println("Entrez le nom : ");// on demande de saisir le nom puis on regarde si la selection est vide ou non. Si non, on l'affecte au nom d'un nouveau client
-				while ((boeufHeure = nouveauScannerDeTest.nextLine()).trim().equals("")) {
-					System.out.println("Veuillez saisir le champ nom. ");
+				System.out.println("Vous avez choisi : ||Ajouter une ligne de commande||");
+				System.out.println("Entrez l'ID du produit: ");
+				listeProduit = produitBdD.findAll();
+				while ( c < listeProduit.size())
+				{
+					System.out.println(listeProduit.get(c++));
 				}
-				client.setNom(boeufHeure);
-				System.out.println(client);
+
+
+				while (!LireConsole.hasNextInt())
+				{
+					System.out.println("Veuillez entrer l'ID du produit.");
+					boeufHeure = LireConsole.nextLine();
+				}
+				selection = LireConsole.nextInt();
+			
+				ligneDeCommande.setIdProduit(selection);
+			//	ligneDeCommande.setTarifUnitaire(selection.IndexOf(tarifUnitaire));
+				System.out.println("Entrez une quantite: ");
+
+				while (!LireConsole.hasNextInt())
+				{
+					System.out.println("Veuillez entrer une quantite.");
+					boeufHeure = LireConsole.nextLine();
+				}
+				selection = LireConsole.nextInt();
+			
+				ligneDeCommande.setQuantite(selection);
+				
+				System.out.println(ligneDeCommande);
 				break;
 			}
 
 
 			case 2: {
-				System.out.println("Vous avez choisi : ||Le prenom||");
+				System.out.println("Vous avez choisi : ||modifier une ligne de commande||");
+				while ( c < listeLigneDeCommande.size())
+				{
+					System.out.println(listeLigneDeCommande.get(c++));
+				}
+				System.out.println("Quelle commande voulez vous supprimer ? (entrez le champ \" id_categorie \") ");
+				
+
+				while (!sc.hasNextInt())
+				{
+					System.out.println("Veuillez entrer l'ID de la ligne de commande.");
+					sc.nextLine();
+				}
+				
+				selection = sc.nextInt(); 
+				
 				System.out.println("Entrez le prï¿½nom : ");
 				while ((boeufHeure = nouveauScannerDeTest.nextLine()).trim().equals("")) {
 					System.out.println("Veuillez saisir le champ prï¿½nom. ");
 				}
-				client.setPrenom(boeufHeure);
 				break;
 
 			}	
 			case 3: {
+				System.out.println("Vous avez choisi : ||supprimer une ligne de commande||");
+				System.out.println("Entrez le prï¿½nom : ");
+				while ((boeufHeure = nouveauScannerDeTest.nextLine()).trim().equals("")) {
+					System.out.println("Veuillez saisir le champ prï¿½nom. ");
+					while ( c < listeLigneDeCommande.size())
+					{
+						System.out.println(listeLigneDeCommande.get(c++));
+					}
+					System.out.println("Quelle commande voulez vous supprimer ? (entrez le champ \" id_categorie \") ");
+					
+
+					while (!sc.hasNextInt())
+					{
+						System.out.println("Veuillez entrer l'ID de la ligne de commande.");
+						sc.nextLine();
+					}
+					
+					selection = sc.nextInt(); 
+					//ligneDeCommandeBdD.delete(ligneDeCommandeBdD.get(ligneDeCommandeBdD.indexOf(new LigneDeCommande(selection))));
+					System.out.println("ID de la categorie supprimï¿½e : " + selection);
+				}
+				break;
+
+			}	
+			case 4: {
 				System.out.println("Vous avez choisi : ||Retour||");
-				clientBdD.update(client);
-				Menu.MenuClient();
+				commandeBdD.update(commande);
+				ligneDeCommandeBdD.update(ligneDeCommande);
+				Menu.MenuCommande();
 				break;
 
 			}
@@ -1077,7 +1107,7 @@ public class Menu {
 
 
 			}
-		}while (selection != 3);
+		}while (selection != 4);
 	}
-*/
+
 }
