@@ -1029,6 +1029,7 @@ public static void MenuCommande() {
 				ligneDeCommande.setIdProduit(selection);
 			//	ligneDeCommande.setTarifUnitaire(selection.IndexOf(tarifUnitaire));
 				System.out.println("Entrez une quantite: ");
+				
 
 				while (!LireConsole.hasNextInt())
 				{
