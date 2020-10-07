@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import MySql.Connexion;
 import categorie.Categorie;
 import categorie.CategorieSQL;
 import clients.Client;
@@ -734,7 +735,7 @@ public class Menu {
 			Categorie categorie = new Categorie();
 			Scanner sc = new Scanner(System.in);
 			Scanner nouveauScannerDeTest = new Scanner(System.in);
-
+			
 			String boeufHeure = new String();
 			ArrayList<Categorie> listeCategorie = new ArrayList<Categorie>();
 			String selectionChangement;
@@ -824,7 +825,8 @@ public class Menu {
 public static void MenuCommande() {
 		ArrayList<Commande> listeCommande = new ArrayList<Commande>();
 		CommandeSQL commandeBdD = new CommandeSQL();
-		
+		int selection;
+
 		do
 		{
 			System.out.println("[1] Ajouter une commande");
@@ -892,6 +894,7 @@ public static void MenuCommande() {
 		Scanner LireConsole = new Scanner(System.in);
 		ArrayList<Client> listeClient = new ArrayList<Client>();
 		ClientSQL clientBdD = new ClientSQL();
+		int selection;
 		int c = 0;
 		Scanner sc = new Scanner(System.in);
 		
@@ -966,14 +969,16 @@ public static void MenuCommande() {
 		ArrayList<Produit> listeProduit = new ArrayList<Produit>();
 		ProduitSQL produitBdD = new ProduitSQL();
 		String boeufHeure = new String();
-		LigneDeCommande ligneDeCommande = new LigneDeCommande();
+		LigneDeCommande ligneDeCommande;
 		ArrayList<LigneDeCommande> listeLigneDeCommande = new ArrayList<LigneDeCommande>();
 
 		ArrayList<Commande> listeCommande = new ArrayList<Commande>();
 		String selectionChangement;
-		int selection = 0;
 		int c = 0;
-
+		int selectionIDProduit = 0;
+		int selectionIDCommande = 0;
+		int selectionChoix = 0;
+		int selectionQuantite = 0;
 		//pour supprimer un client, on les affiche tous et on selectionne un id qui permettra de le supr
 		listeCommande = commandeBdD.findAll();
 		while ( c < listeCommande.size())
@@ -989,7 +994,7 @@ public static void MenuCommande() {
 			sc.nextLine();
 		}
 		
-		selection = sc.nextInt(); 
+		selectionIDCommande = sc.nextInt(); 
 		
 		//commande = listeCommande.get(listeCommande.indexOf(new Commande(selection)));
 
@@ -1004,12 +1009,12 @@ public static void MenuCommande() {
 
 			System.out.println("Utilisez le clavier numerique pour faire votre choix...");
 
-			selection = sc.nextInt();
+			selectionChoix = sc.nextInt();
 			selectionChangement = sc.nextLine();
 			//LireConsole.close();
-			switch(selection) {
+			switch(selectionChoix) {
 			case 1:{
-
+				ligneDeCommande = new LigneDeCommande();
 				System.out.println("Vous avez choisi : ||Ajouter une ligne de commande||");
 				System.out.println("Entrez l'ID du produit: ");
 				listeProduit = produitBdD.findAll();
@@ -1024,21 +1029,21 @@ public static void MenuCommande() {
 					System.out.println("Veuillez entrer l'ID du produit.");
 					boeufHeure = LireConsole.nextLine();
 				}
-				selection = LireConsole.nextInt();
+				selectionIDProduit = LireConsole.nextInt();
 			
-				ligneDeCommande.setIdProduit(selection);
-			//	ligneDeCommande.setTarifUnitaire(selection.IndexOf(tarifUnitaire));
-				System.out.println("Entrez une quantite: ");
+				ligneDeCommande.setIdProduit(selectionIDProduit);
+				ligneDeCommande.setTarifUnitaire(listeProduit.get(listeProduit.indexOf(new Produit(selectionIDProduit))).getTarif());
 				
+				System.out.println("Entrez une quantite: ");
 
 				while (!LireConsole.hasNextInt())
 				{
 					System.out.println("Veuillez entrer une quantite.");
 					boeufHeure = LireConsole.nextLine();
 				}
-				selection = LireConsole.nextInt();
+				selectionQuantite = LireConsole.nextInt();
 			
-				ligneDeCommande.setQuantite(selection);
+				ligneDeCommande.setQuantite(selectionQuantite);
 				
 				System.out.println(ligneDeCommande);
 				break;
@@ -1046,12 +1051,14 @@ public static void MenuCommande() {
 
 
 			case 2: {
+				ligneDeCommande = new LigneDeCommande();
+
 				System.out.println("Vous avez choisi : ||modifier une ligne de commande||");
 				while ( c < listeLigneDeCommande.size())
 				{
 					System.out.println(listeLigneDeCommande.get(c++));
 				}
-				System.out.println("Quelle commande voulez vous supprimer ? (entrez le champ \" id_categorie \") ");
+				System.out.println("Quelle ligne de commande voulez vous modifier ? (entrez le champ \" id_categorie \") ");
 				
 
 				while (!sc.hasNextInt())
@@ -1060,55 +1067,52 @@ public static void MenuCommande() {
 					sc.nextLine();
 				}
 				
-				selection = sc.nextInt(); 
+				selectionIDCommande = sc.nextInt(); 
 				
-				System.out.println("Entrez le pr�nom : ");
+				System.out.println("Entrez le prenom : ");
 				while ((boeufHeure = nouveauScannerDeTest.nextLine()).trim().equals("")) {
-					System.out.println("Veuillez saisir le champ pr�nom. ");
+					System.out.println("Veuillez saisir le champ prenom. ");
 				}
+				ligneDeCommandeBdD.update(ligneDeCommande);
+
 				break;
 
 			}	
 			case 3: {
+				ligneDeCommande = new LigneDeCommande();
 				System.out.println("Vous avez choisi : ||supprimer une ligne de commande||");
-				System.out.println("Entrez le pr�nom : ");
-				while ((boeufHeure = nouveauScannerDeTest.nextLine()).trim().equals("")) {
-					System.out.println("Veuillez saisir le champ pr�nom. ");
-					while ( c < listeLigneDeCommande.size())
-					{
-						System.out.println(listeLigneDeCommande.get(c++));
-					}
-					System.out.println("Quelle commande voulez vous supprimer ? (entrez le champ \" id_categorie \") ");
+				
+				System.out.println(commande);
+				
+			System.out.println("Saisissez l'ID du produit : ");
+			while (!sc.hasNextInt())
+			{
+				System.out.println("Veuillez entrer l'ID du produit.");
+				sc.nextLine();
+			}
 					
+			selectionIDProduit = sc.nextInt(); 
+					
+					ligneDeCommandeBdD.delete(listeLigneDeCommande.get(listeLigneDeCommande.indexOf(new LigneDeCommande(selectionIDCommande, selectionIDProduit))));
+					System.out.println("ID de la commande supprimee : " + selectionIDCommande);
 
-					while (!sc.hasNextInt())
-					{
-						System.out.println("Veuillez entrer l'ID de la ligne de commande.");
-						sc.nextLine();
-					}
-					
-					selection = sc.nextInt(); 
-					//ligneDeCommandeBdD.delete(ligneDeCommandeBdD.get(ligneDeCommandeBdD.indexOf(new LigneDeCommande(selection))));
-					System.out.println("ID de la categorie supprim�e : " + selection);
 				}
 				break;
 
-			}	
+				
 			case 4: {
 				System.out.println("Vous avez choisi : ||Retour||");
-				commandeBdD.update(commande);
-				ligneDeCommandeBdD.update(ligneDeCommande);
 				Menu.MenuCommande();
 				break;
 
 			}
 			default:  
-				System.out.println ("La s�l�ction est incorrecte !");
+				System.out.println ("La selection est incorrecte !");
 				break;
 
 
 			}
-		}while (selection != 4);
+		}while (selectionChoix != 4);
 	}
 
 }

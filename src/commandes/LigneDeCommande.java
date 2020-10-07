@@ -56,7 +56,11 @@ public class LigneDeCommande {
 	}
 
 
-
+	public LigneDeCommande(int idCommande, int idProduit) {
+		super();
+		this.idCommande = idCommande;
+		this.idProduit = idProduit;
+	}
 
 
 	@Override

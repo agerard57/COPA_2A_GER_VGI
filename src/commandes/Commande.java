@@ -62,6 +62,14 @@ public class Commande {
 	
 	@Override
 	public String toString() {
-		return ("Le produit numero " + idCommande +" a ete commandé le  " + dateCommande + " par  "+ idClient );
+		String str = new String();
+		int c = 0;
+		
+		str = ("La commande numero " + idCommande + " effectuee le " + dateCommande + "contient : ");
+		while ( c < listeLigneDeCommande.size())
+		{
+			str += "\n" + listeLigneDeCommande.get(c).toString(); 
+		}
+		return str;
 	}
 }
