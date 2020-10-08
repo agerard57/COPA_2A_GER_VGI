@@ -53,6 +53,9 @@ We made the project (all be it with some errors that we will mention down there)
 This program is simple to use : you can go through the menus using the numeric keypad (1-4);
 Trying something different from what is proposed will result in an error message.
 
+### Repli.it
+
+[![Run on Repl.it](https://repl.it/badge/github/agerard57/GERARD_GIANGRECO_CPOA_TD1_2020)](https://repl.it/github/agerard57/GERARD_GIANGRECO_CPOA_TD1_2020)
 
 ### To Do
 
