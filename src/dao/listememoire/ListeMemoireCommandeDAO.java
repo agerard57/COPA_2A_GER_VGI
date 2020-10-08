@@ -9,27 +9,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 import MySql.Connexion;
+import categorie.Categorie;
 import commandes.Commande;
 import commandes.LigneDeCommande;
 import dao.CommandeDAO;
 
 public class ListeMemoireCommandeDAO implements CommandeDAO{
 
-	private static ListeMemoireClientDAO instance;
+	private static ListeMemoireCommandeDAO instance;
 
 	private List<Commande> donnees;
 
-	public static ListeMemoireClientDAO getInstance() {
+	public static ListeMemoireCommandeDAO getInstance() {
 
 		if (instance == null) {
-			instance = new ListeMemoireClientDAO();
+			instance = new ListeMemoireCommandeDAO();
 		}
 
 		return (instance);
 	}
 	
-	public ListeMemoireCommandeDAO() {
+	private ListeMemoireCommandeDAO() {
+		donnees = new ArrayList<Commande>();
+
 	}
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -159,7 +163,7 @@ public class ListeMemoireCommandeDAO implements CommandeDAO{
 
 
 	@Override
-	public ArrayList<Commande> getByNom(int id) {
+	public Commande getById(int id) {
 		// TODO Stub de la méthode généré automatiquement
 		return null;
 	}

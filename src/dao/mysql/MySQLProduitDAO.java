@@ -148,7 +148,7 @@ public boolean delete(Produit objet) {
 
 
 	@Override
-	public ArrayList<Produit> getByNom(int id) {
+	public Produit getById(int id) {
 		// TODO Stub de la méthode généré automatiquement
 		return null;
 	}

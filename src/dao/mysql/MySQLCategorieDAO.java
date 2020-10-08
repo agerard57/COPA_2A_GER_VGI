@@ -23,124 +23,124 @@ public class MySQLCategorieDAO implements CategorieDAO{
 		return instance;
 	}
 
-public MySQLCategorieDAO() {
-}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public MySQLCategorieDAO() {
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-public boolean create(Categorie c) {
-Connexion connect = new Connexion();
-int i = 0;
-try {
-Connection connect1 = connect.creeConnexion();
-PreparedStatement requete = connect1.prepareStatement("INSERT INTO Categorie(titre, visuel) VALUES ( ?, ?)", Statement.RETURN_GENERATED_KEYS);
-requete.setString(1,  c.getTitre());
-requete.setString(2,  c.getVisuel());
+	public boolean create(Categorie c) {
+		Connexion connect = new Connexion();
+		int i = 0;
+		try {
+			Connection connect1 = connect.creeConnexion();
+			PreparedStatement requete = connect1.prepareStatement("INSERT INTO Categorie(titre, visuel) VALUES ( ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			requete.setString(1,  c.getTitre());
+			requete.setString(2,  c.getVisuel());
 
 
-i = requete.executeUpdate();
-ResultSet res = requete.getGeneratedKeys();
+			i = requete.executeUpdate();
+			ResultSet res = requete.getGeneratedKeys();
 
-if ( res.next())
-c.setIdCategorie(res.getInt(1));
+			if ( res.next())
+				c.setIdCategorie(res.getInt(1));
 
-connect1.close();
-}
-catch(SQLException sqle)
-{
-System.out.println("Erreur !");
-}
-return (i == 1);
-
-
-
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-public boolean update(Categorie objet) {
-
-Connexion c = new Connexion();
-int i = 0;
-
-try {
-Connection c1 = c.creeConnexion();
-
-PreparedStatement requete = c1.prepareStatement("UPDATE Categorie SET titre = ?, visuel = ? WHERE id_categorie = ?");
-requete.setString(1, objet.getTitre());
-requete.setString(2, objet.getVisuel());
-requete.setInt(3, objet.getIdCategorie());
-i = requete.executeUpdate();
-
-c1.close();
-}
-catch (SQLException sqle) {
-System.out.println("Probleme update categorie");
-}
-
-return (i == 1);
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-public boolean delete(Categorie objet) {
-
-Connexion c = new Connexion();
-int i = 0;
-
-try {
-Connection c1 = c.creeConnexion();
-
-PreparedStatement requete = c1.prepareStatement("DELETE FROM Categorie WHERE id_categorie = ? ");
-requete.setInt(1, objet.getIdCategorie());
-i = requete.executeUpdate();
-
-c1.close();
-}
-catch (SQLException sqle) {
-System.out.println("Probleme delete categorie");
-}
-
-return (i == 1);
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			connect1.close();
+		}
+		catch(SQLException sqle)
+		{
+			System.out.println("Erreur !");
+		}
+		return (i == 1);
 
 
 
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public boolean update(Categorie objet) {
+
+		Connexion c = new Connexion();
+		int i = 0;
+
+		try {
+			Connection c1 = c.creeConnexion();
+
+			PreparedStatement requete = c1.prepareStatement("UPDATE Categorie SET titre = ?, visuel = ? WHERE id_categorie = ?");
+			requete.setString(1, objet.getTitre());
+			requete.setString(2, objet.getVisuel());
+			requete.setInt(3, objet.getIdCategorie());
+			i = requete.executeUpdate();
+
+			c1.close();
+		}
+		catch (SQLException sqle) {
+			System.out.println("Probleme update categorie");
+		}
+
+		return (i == 1);
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public boolean delete(Categorie objet) {
+
+		Connexion c = new Connexion();
+		int i = 0;
+
+		try {
+			Connection c1 = c.creeConnexion();
+
+			PreparedStatement requete = c1.prepareStatement("DELETE FROM Categorie WHERE id_categorie = ? ");
+			requete.setInt(1, objet.getIdCategorie());
+			i = requete.executeUpdate();
+
+			c1.close();
+		}
+		catch (SQLException sqle) {
+			System.out.println("Probleme delete categorie");
+		}
+
+		return (i == 1);
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-public ArrayList<Categorie> findAll() {
-Connexion c = new Connexion();
-ArrayList<Categorie> liste = new ArrayList<Categorie>();
 
-try {
-Connection c1 = c.creeConnexion();
 
-Statement requete = c1.createStatement();
-ResultSet res = requete.executeQuery("SELECT * FROM Categorie");
-while (res.next()) {
 
-liste.add(new Categorie(res.getInt(1), res.getString(2), res.getString(3)));
+	public ArrayList<Categorie> findAll() {
+		Connexion c = new Connexion();
+		ArrayList<Categorie> liste = new ArrayList<Categorie>();
 
-}
+		try {
+			Connection c1 = c.creeConnexion();
 
-c1.close();
-res.close();
-}
-catch (SQLException sqle) {
-System.out.println("Problemes select * Categorie");
-}
+			Statement requete = c1.createStatement();
+			ResultSet res = requete.executeQuery("SELECT * FROM Categorie");
+			while (res.next()) {
 
-return (liste);
-}
+				liste.add(new Categorie(res.getInt(1), res.getString(2), res.getString(3)));
 
-@Override
-public ArrayList<Categorie> getByNom(int id) {
-	// TODO Stub de la méthode généré automatiquement
-	return null;
-}
+			}
+
+			c1.close();
+			res.close();
+		}
+		catch (SQLException sqle) {
+			System.out.println("Problemes select * Categorie");
+		}
+
+		return (liste);
+	}
+
+	@Override
+	public Categorie getById(int id) {
+		// TODO Stub de la méthode généré automatiquement
+		return null;
+	}
 }

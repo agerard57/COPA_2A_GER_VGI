@@ -9,16 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import MySql.Connexion;
+import categorie.Categorie;
 import clients.Client;
 import dao.ClientDAO;
 
 public class ListeMemoireClientDAO implements ClientDAO {
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	private static ListeMemoireClientDAO instance;
 
-	private List<Client> donnees;
+	private ArrayList<Client> donnees;
 
 	public static ListeMemoireClientDAO getInstance() {
 
@@ -28,144 +29,95 @@ public class ListeMemoireClientDAO implements ClientDAO {
 
 		return (instance);
 	}
-	
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-public boolean create(Client c) {
-Connexion connect = new Connexion();
-int i = 0;
-try {
-Connection connect1 = connect.creeConnexion();
-PreparedStatement requete = connect1.prepareStatement("INSERT INTO Client(nom, prenom, identifiant, mot_de_passe, adr_numero, adr_voie, adr_code_postal, adr_ville, adr_pays) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-requete.setString(1,  c.getNom());
-requete.setString(2,  c.getPrenom());
-requete.setString(3,  c.getIdentifiant());
-requete.setString(4,  c.getMotDePasse());
-requete.setString(5,  c.getAdrNumero());
-requete.setString(6,  c.getAdrVoie());
-requete.setString(7,  c.getAdrCodePostal());
-requete.setString(8,  c.getAdrVille());
-requete.setString(9,  c.getAdrPays());
+	private ListeMemoireClientDAO() {
+		donnees = new ArrayList<Client>();
+	}
+	public boolean create(Client object) {
+		object.setIdClient(1);
+		while (donnees.indexOf(object) > -1)
+		{
+			object.setIdClient(object.getIdClient() + 1);
+		}
+		donnees.add(object);
+		
+		return (true);
+	}
 
-i = requete.executeUpdate();
-ResultSet res = requete.getGeneratedKeys();
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public boolean update(Client object) {
 
-if ( res.next())
-c.setIdClient(res.getInt(1));
+		if (donnees.indexOf(object) < 0)
+			return (false);
+		else
+			donnees.set(donnees.indexOf(object), object);
+		return (true);
+	}
 
-connect1.close();
-}
-catch(SQLException sqle)
-{
-System.out.println("Erreur !");
-}
-return (i == 1);
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	public boolean delete(Client object) {
 
+		if (donnees.indexOf(object) < 0)
+			return (false);
+		else
+			donnees.remove(donnees.indexOf(object));
+		return (true);
+	}
 
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-public boolean update(Client objet) {
-
-Connexion c = new Connexion();
-int i = 0;
-
-try {
-Connection c1 = c.creeConnexion();
-
-PreparedStatement requete = c1.prepareStatement("UPDATE Client SET nom = ?, prenom = ? WHERE id_client = ?");
-requete.setString(1, objet.getNom());
-requete.setString(2, objet.getPrenom());
-requete.setInt(3, objet.getIdClient());
-i = requete.executeUpdate();
-
-c1.close();
-}
-catch (SQLException sqle) {
-System.out.println("Probleme update client");
-}
-
-return (i == 1);
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-public boolean delete(Client objet) {
-
-Connexion c = new Connexion();
-int i = 0;
-
-try {
-Connection c1 = c.creeConnexion();
-
-PreparedStatement requete = c1.prepareStatement("DELETE FROM Client WHERE id_client = ? ");
-requete.setInt(1, objet.getIdClient());
-i = requete.executeUpdate();
-
-c1.close();
-}
-catch (SQLException sqle) {
-System.out.println("Probleme delete client");
-}
-
-return (i == 1);
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
 
-public ArrayList<Client> findAll() {
-Connexion c = new Connexion();
-ArrayList<Client> liste = new ArrayList<Client>();
+	public ArrayList<Client> findAll() {
+		return (donnees);
+	}
 
-try {
-Connection c1 = c.creeConnexion();
-
-Statement requete = c1.createStatement();
-ResultSet res = requete.executeQuery("SELECT * FROM Client");
-while (res.next()) {
-
-liste.add(new Client(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10)));
-}
-
-c1.close();
-res.close();
-}
-catch (SQLException sqle) {
-System.out.println("Problemes select * Client");
-}
-
-return (liste);
-}
-
-@Override
-public ArrayList<Client> getByNom(int id) {
-	// TODO Stub de la méthode généré automatiquement
-	return null;
-}
+	@Override
+	public Client getById(int id) {
+		if (donnees.indexOf(new Client(id)) < 0)
+			return (null);
+		else
+			return (donnees.get(donnees.indexOf(new Client(id))));
+	}
 
 
-@Override
-public ArrayList<Client> getByNom(String nom) {
-	// TODO Stub de la méthode généré automatiquement
-	return null;
-}
+	@Override
+	public ArrayList<Client> getByNom(String nom) {
+		ArrayList<Client> listeClient = new ArrayList<Client>();
+		int c = 0;
+		
+		while (c < donnees.size())
+		{
+			if (donnees.get(c).getNom().equalsIgnoreCase(nom))
+				listeClient.add(donnees.get(c));
+			c++;
+		}
+		return (listeClient);
+	}
 
 
-@Override
-public ArrayList<Client> getByPrenom(String nom, String prenom) {
-	// TODO Stub de la méthode généré automatiquement
-	return null;
-}
+	@Override
+	public ArrayList<Client> getByNomPrenom(String nom, String prenom) {
+		ArrayList<Client> listeClient = new ArrayList<Client>();
+		int c = 0;
+		
+		while (c < donnees.size())
+		{
+			if (donnees.get(c).getNom().equalsIgnoreCase(nom) && donnees.get(c).getPrenom().equalsIgnoreCase(prenom))
+				listeClient.add(donnees.get(c));
+			c++;
+		}
+		return (listeClient);
+	}
 
 
 

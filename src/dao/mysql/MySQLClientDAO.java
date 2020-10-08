@@ -145,7 +145,7 @@ public boolean update(Client objet) {
 	}
 
 	@Override
-	public ArrayList<Client> getByNom(int id) {
+	public Client getById(int id) {
 		// TODO Stub de la méthode généré automatiquement
 		return null;
 	}
@@ -157,7 +157,7 @@ public boolean update(Client objet) {
 	}
 
 	@Override
-	public ArrayList<Client> getByPrenom(String nom, String prenom) {
+	public ArrayList<Client> getByNomPrenom(String nom, String prenom) {
 		// TODO Stub de la méthode généré automatiquement
 		return null;
 	}

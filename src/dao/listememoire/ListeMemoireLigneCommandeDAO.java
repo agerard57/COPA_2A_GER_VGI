@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import MySql.Connexion;
+import categorie.Categorie;
 import clients.Client;
 import commandes.LigneDeCommande;
 
@@ -32,6 +33,8 @@ public class ListeMemoireLigneCommandeDAO implements LigneCommandeDAO{
 	}
 
 		public ListeMemoireLigneCommandeDAO() {
+			donnees = new ArrayList<LigneDeCommande>();
+
 		}
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

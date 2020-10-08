@@ -12,6 +12,6 @@ public interface DAO<T> {
 	
 	public abstract ArrayList<T> findAll();
 	
-	public abstract ArrayList<T> getByNom(int id);
+	public abstract T getById(int id);
 
 }

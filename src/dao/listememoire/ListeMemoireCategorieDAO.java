@@ -14,20 +14,21 @@ import dao.CategorieDAO;
 
 public class ListeMemoireCategorieDAO implements CategorieDAO{
 
-	private static ListeMemoireClientDAO instance;
+	private static ListeMemoireCategorieDAO instance;
 
-	private List<Categorie> donnees;
+	private ArrayList<Categorie> donnees;
 
-	public static ListeMemoireClientDAO getInstance() {
+	public static ListeMemoireCategorieDAO getInstance() {
 
 		if (instance == null) {
-			instance = new ListeMemoireClientDAO();
+			instance = new ListeMemoireCategorieDAO();
 		}
 
 		return (instance);
 	}
 	
 public ListeMemoireCategorieDAO() {
+	donnees = new ArrayList<Categorie>();
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -144,7 +145,7 @@ return (liste);
 
 
 @Override
-public ArrayList<Categorie> getByNom(int id) {
+public Categorie getById(int id) {
 	// TODO Stub de la méthode généré automatiquement
 	return null;
 }

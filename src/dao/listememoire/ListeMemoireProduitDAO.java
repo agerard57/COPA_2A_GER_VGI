@@ -157,7 +157,7 @@ public boolean delete(Produit objet) {
 
 
 @Override
-public ArrayList<Produit> getByNom(int id) {
+public Produit getById(int id) {
 	return null;
 }
 

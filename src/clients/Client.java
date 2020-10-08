@@ -130,6 +130,20 @@ public class Client {
 		this.adrVille = adrVille;
 		this.adrPays = adrPays;
 	}
+	public Client(String nom, String prenom, String identifiant, String motDePasse, String adrNumero,
+			String adrVoie, String adrCodePostal, String adrVille, String adrPays) {
+		super();
+		this.idClient = -1;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.identifiant = identifiant;
+		this.motDePasse = motDePasse;
+		this.adrNumero = adrNumero;
+		this.adrVoie = adrVoie;
+		this.adrCodePostal = adrCodePostal;
+		this.adrVille = adrVille;
+		this.adrPays = adrPays;
+	}
 	
 	
 	

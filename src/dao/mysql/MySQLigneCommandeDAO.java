@@ -26,7 +26,7 @@ public class MySQLigneCommandeDAO implements LigneCommandeDAO{
 	private static MySQLigneCommandeDAO instance;
 
 	public static MySQLigneCommandeDAO getInstance() {
-
+		
 		if (instance == null) {
 			instance = new MySQLigneCommandeDAO();
 		}

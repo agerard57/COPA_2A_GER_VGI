@@ -154,7 +154,7 @@ public class MySQLCommandeDAO implements CommandeDAO{
 	}
 
 	@Override
-	public ArrayList<Commande> getByNom(int id) {
+	public Commande getById(int id) {
 		// TODO Stub de la méthode généré automatiquement
 		return null;
 	}
