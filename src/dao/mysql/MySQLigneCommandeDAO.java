@@ -151,6 +151,15 @@ public class MySQLigneCommandeDAO implements LigneCommandeDAO{
 		return (liste);
 	}
 
+	@Override
+	public LigneDeCommande getById(int id) {
+	/*	if (donnees.indexOf(new LigneDeCommande(id)) < 0)
+			return (null);
+		else
+			return (donnees.get(donnees.indexOf(new LigneDeCommande(id))));*/
+		return null;
+	}
+
 
 
 

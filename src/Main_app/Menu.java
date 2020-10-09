@@ -440,7 +440,7 @@ public class Menu {
 		}
 		produit.setIdCategorie(sc.nextInt());
 
-		produitBdD.ajouterProduit(produit);
+		produitBdD.create(produit);
 		Menu.MenuProduits();
 	}
 

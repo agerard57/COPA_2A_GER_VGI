@@ -10,6 +10,7 @@ import java.util.List;
 
 import MySql.Connexion;
 import categorie.Categorie;
+import clients.Client;
 import dao.CategorieDAO;
 
 public class ListeMemoireCategorieDAO implements CategorieDAO{
@@ -26,127 +27,65 @@ public class ListeMemoireCategorieDAO implements CategorieDAO{
 
 		return (instance);
 	}
-	
-public ListeMemoireCategorieDAO() {
-	donnees = new ArrayList<Categorie>();
-}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public ListeMemoireCategorieDAO() {
+		donnees = new ArrayList<Categorie>();
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-public boolean create(Categorie c) {
-Connexion connect = new Connexion();
-int i = 0;
-try {
-Connection connect1 = connect.creeConnexion();
-PreparedStatement requete = connect1.prepareStatement("INSERT INTO Categorie(titre, visuel) VALUES ( ?, ?)", Statement.RETURN_GENERATED_KEYS);
-requete.setString(1,  c.getTitre());
-requete.setString(2,  c.getVisuel());
+	public boolean create(Categorie object) {
+		object.setIdCategorie(1);
+		while (donnees.indexOf(object) > -1)
+		{
+			object.setIdCategorie(object.getIdCategorie() + 1);
+		}
+		donnees.add(object);
+		
+		return (true);
+	}
 
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public boolean update(Categorie object) {
 
-i = requete.executeUpdate();
-ResultSet res = requete.getGeneratedKeys();
+		if (donnees.indexOf(object) < 0)
+			return (false);
+		else
+			donnees.set(donnees.indexOf(object), object);
+		return (true);
+	}
 
-if ( res.next())
-c.setIdCategorie(res.getInt(1));
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-connect1.close();
-}
-catch(SQLException sqle)
-{
-System.out.println("Erreur !");
-}
-return (i == 1);
+	public boolean delete(Categorie object) {
 
+		if (donnees.indexOf(object) < 0)
+			return (false);
+		else
+			donnees.remove(donnees.indexOf(object));
+		return (true);
+	}
 
-
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-public boolean update(Categorie objet) {
-
-Connexion c = new Connexion();
-int i = 0;
-
-try {
-Connection c1 = c.creeConnexion();
-
-PreparedStatement requete = c1.prepareStatement("UPDATE Categorie SET titre = ?, visuel = ? WHERE id_categorie = ?");
-requete.setString(1, objet.getTitre());
-requete.setString(2, objet.getVisuel());
-requete.setInt(3, objet.getIdCategorie());
-i = requete.executeUpdate();
-
-c1.close();
-}
-catch (SQLException sqle) {
-System.out.println("Probleme update categorie");
-}
-
-return (i == 1);
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-public boolean delete(Categorie objet) {
-
-Connexion c = new Connexion();
-int i = 0;
-
-try {
-Connection c1 = c.creeConnexion();
-
-PreparedStatement requete = c1.prepareStatement("DELETE FROM Categorie WHERE id_categorie = ? ");
-requete.setInt(1, objet.getIdCategorie());
-i = requete.executeUpdate();
-
-c1.close();
-}
-catch (SQLException sqle) {
-System.out.println("Probleme delete categorie");
-}
-
-return (i == 1);
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
 
-public ArrayList<Categorie> findAll() {
-Connexion c = new Connexion();
-ArrayList<Categorie> liste = new ArrayList<Categorie>();
-
-try {
-Connection c1 = c.creeConnexion();
-
-Statement requete = c1.createStatement();
-ResultSet res = requete.executeQuery("SELECT * FROM Categorie");
-while (res.next()) {
-
-liste.add(new Categorie(res.getInt(1), res.getString(2), res.getString(3)));
-
-}
-
-c1.close();
-res.close();
-}
-catch (SQLException sqle) {
-System.out.println("Problemes select * Categorie");
-}
-
-return (liste);
-}
+	public ArrayList<Categorie> findAll() {
+		return (donnees);
+	}
 
 
-@Override
-public Categorie getById(int id) {
-	// TODO Stub de la méthode généré automatiquement
-	return null;
-}
+	@Override
+	public Categorie getById(int id) {
+		if (donnees.indexOf(new Categorie(id)) < 0)
+			return (null);
+		else
+			return (donnees.get(donnees.indexOf(new Categorie(id))));
+	}
 }

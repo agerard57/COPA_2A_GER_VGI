@@ -27,12 +27,12 @@ public class ProduitSQL {
 	
 	
 
-	public boolean ajouterProduit(Produit p) {
+	public boolean create(Produit p) {
 		Connexion connect = new Connexion();
 		int i = 0;
 		try {
 			Connection connect1 = connect.creeConnexion();
-			PreparedStatement requete = connect1.prepareStatement("INSERT INTO Produit(nom, description, tarif, visuel, id_categorie) VALUES ( ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement requete = connect1.prepareStatement("INSERT INTO Produit(nom, description, tarif, createvisuel, id_categorie) VALUES ( ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			requete.setString(1,  p.getNom());
 			requete.setString(2,  p.getDescription());
 			requete.setFloat(3,  p.getTarif());

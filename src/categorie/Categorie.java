@@ -33,6 +33,12 @@ public class Categorie {
 		this.visuel = visuel;
 	}
 	
+	public Categorie( String titre, String visuel) {
+		super();
+		this.titre = titre;
+		this.visuel = visuel;
+	}
+	
 	public Categorie() {
 	}
 	

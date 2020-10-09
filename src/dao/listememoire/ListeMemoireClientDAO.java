@@ -36,6 +36,9 @@ public class ListeMemoireClientDAO implements ClientDAO {
 	private ListeMemoireClientDAO() {
 		donnees = new ArrayList<Client>();
 	}
+	
+	
+	
 	public boolean create(Client object) {
 		object.setIdClient(1);
 		while (donnees.indexOf(object) > -1)

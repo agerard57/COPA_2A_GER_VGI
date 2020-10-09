@@ -51,6 +51,12 @@ public class LigneDeCommande {
 		this.tarifUnitaire = tarifUnitaire;
 	}
 
+	public LigneDeCommande( int idProduit, int quantite, float tarifUnitaire) {
+		super();
+		this.idProduit = idProduit;
+		this.quantite = quantite;
+		this.tarifUnitaire = tarifUnitaire;
+	}
 
 	public LigneDeCommande() {
 	}
@@ -62,9 +68,13 @@ public class LigneDeCommande {
 		this.idProduit = idProduit;
 	}
 
+	public LigneDeCommande(int idCommande) {
+		super();
+		this.idCommande = idCommande;
+	}
 
 	@Override
 	public String toString() {
-		return ("Le produit numero " + idCommande +" concerne le produit numero " + idProduit + " ayant été acheté  "+ quantite  + " fois au pris unitaire de  " + tarifUnitaire );
+		return ("Le produit numero " + idCommande +" concerne le produit numero " + idProduit + " ayant ï¿½tï¿½ achetï¿½  "+ quantite  + " fois au pris unitaire de  " + tarifUnitaire );
 	}
 }

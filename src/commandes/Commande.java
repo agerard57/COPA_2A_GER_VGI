@@ -9,7 +9,9 @@ public class Commande {
 	protected int idClient;
 	protected ArrayList<LigneDeCommande> listeLigneDeCommande;
 	
-	
+	public Commande(int idCommande) {
+		this.idCommande = idCommande;
+	}
 	
 	public Commande(int idCommande,LocalDate dateCommande, int idClient, ArrayList<LigneDeCommande> listeLigneDeCommande) {
 		super();
@@ -19,6 +21,12 @@ public class Commande {
 		this.listeLigneDeCommande = listeLigneDeCommande;
 	}
 	
+	public Commande(LocalDate dateCommande, int idClient, ArrayList<LigneDeCommande> listeLigneDeCommande) {
+		super();
+		this.dateCommande = dateCommande;
+		this.idClient = idClient;
+		this.listeLigneDeCommande = listeLigneDeCommande;
+	}
 	
 	public Commande() {
 		idCommande = -1;
