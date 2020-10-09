@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import MySql.Connexion;
+import commandes.Commande;
 import commandes.LigneDeCommande;
 import dao.LigneCommandeDAO;
 
@@ -152,12 +153,27 @@ public class MySQLigneCommandeDAO implements LigneCommandeDAO{
 	}
 
 	@Override
-	public LigneDeCommande getById(int id) {
-	/*	if (donnees.indexOf(new LigneDeCommande(id)) < 0)
-			return (null);
-		else
-			return (donnees.get(donnees.indexOf(new LigneDeCommande(id))));*/
-		return null;
+	public LigneDeCommande getById(int idCommande, int idProduit) {
+		Connexion c = new Connexion();
+		LigneDeCommande ligneDeCommande = null;
+		try {
+			Connection c1 = c.creeConnexion();
+
+			Statement requete = c1.createStatement();
+			ResultSet res = requete.executeQuery("SELECT * FROM Ligne_commande WHERE id_commande = " + idCommande + " AND id_produit = " + idProduit);
+			while (res.next()) {
+
+				ligneDeCommande = new LigneDeCommande(res.getInt(1), res.getInt(2), res.getInt(3),  res.getInt(4));
+			}
+
+			c1.close();
+			res.close();
+		}
+		catch (SQLException sqle) {
+			System.out.println("Problemes select * Ligne de Commande");
+		}
+		return ligneDeCommande;
+	
 	}
 
 

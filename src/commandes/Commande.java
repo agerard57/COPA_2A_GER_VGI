@@ -3,6 +3,8 @@ package commandes;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import clients.Client;
+
 public class Commande {
 	protected int idCommande;
 	protected LocalDate dateCommande;
@@ -21,11 +23,10 @@ public class Commande {
 		this.listeLigneDeCommande = listeLigneDeCommande;
 	}
 	
-	public Commande(LocalDate dateCommande, int idClient, ArrayList<LigneDeCommande> listeLigneDeCommande) {
-		super();
+	public Commande(int idCommande, LocalDate dateCommande, int idClient) {
+		this.idCommande = idCommande;
 		this.dateCommande = dateCommande;
 		this.idClient = idClient;
-		this.listeLigneDeCommande = listeLigneDeCommande;
 	}
 	
 	public Commande() {
@@ -65,7 +66,14 @@ public class Commande {
 		this.listeLigneDeCommande = listeLigneDeCommande;
 	}
 	
-	
+	@Override
+	public boolean equals(Object o) { 
+		Commande c = (Commande) o ;
+		if ( o == null )
+			return (this == null);
+		else 
+			return this.idCommande == c.idCommande;
+	}
 	
 	
 	@Override

@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import MySql.Connexion;
+import categorie.Categorie;
 import clients.Client;
 import dao.ClientDAO;
 
@@ -34,8 +35,11 @@ public class MySQLClientDAO implements ClientDAO{
 		Connexion connect = new Connexion();
 		int i = 0;
 		try {
+			System.out.println("dans le try debut");
 			Connection connect1 = connect.creeConnexion();
+			System.out.println("apres le connect");
 			PreparedStatement requete = connect1.prepareStatement("INSERT INTO Client(nom, prenom, identifiant, mot_de_passe, adr_numero, adr_voie, adr_code_postal, adr_ville, adr_pays) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			System.out.println("apres prepared ");
 			requete.setString(1,  c.getNom());
 			requete.setString(2,  c.getPrenom());
 			requete.setString(3,  c.getIdentifiant());
@@ -46,12 +50,15 @@ public class MySQLClientDAO implements ClientDAO{
 			requete.setString(8,  c.getAdrVille());
 			requete.setString(9,  c.getAdrPays());
 
+			System.out.println("avant execute");
+			System.out.println(c);
 			i = requete.executeUpdate();
+			System.out.println("avant reuslset");
 			ResultSet res = requete.getGeneratedKeys();
 
 			if ( res.next())
 				c.setIdClient(res.getInt(1));
-
+			System.out.println(c);
 			connect1.close();
 		}
 		catch(SQLException sqle)
@@ -146,20 +153,75 @@ public boolean update(Client objet) {
 
 	@Override
 	public Client getById(int id) {
-		// TODO Stub de la méthode généré automatiquement
-		return null;
+		Connexion c = new Connexion();
+		Client client = null;
+		try {
+			Connection c1 = c.creeConnexion();
+
+			Statement requete = c1.createStatement();
+			ResultSet res = requete.executeQuery("SELECT * FROM Client WHERE id_client = " + id);
+			while (res.next()) {
+
+				client = new Client(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10));
+			}
+
+			c1.close();
+			res.close();
+		}
+		catch (SQLException sqle) {
+			System.out.println("Problemes select * Client");
+		}
+		return client;
 	}
 
 	@Override
 	public ArrayList<Client> getByNom(String nom) {
-		// TODO Stub de la méthode généré automatiquement
-		return null;
+		Connexion c = new Connexion();
+		ArrayList<Client> liste = new ArrayList<Client>();
+
+		try {
+			Connection c1 = c.creeConnexion();
+			
+			Statement requete = c1.createStatement();
+			ResultSet res = requete.executeQuery("SELECT * FROM Client WHERE nom = " + nom);
+			while (res.next()) {
+
+				liste.add(new Client(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10)));
+			}
+			
+			c1.close();
+			res.close();
+		}
+		catch (SQLException sqle) {
+			System.out.println("Problemes select * Client");
+		}
+		
+		return (liste);
 	}
 
 	@Override
 	public ArrayList<Client> getByNomPrenom(String nom, String prenom) {
-		// TODO Stub de la méthode généré automatiquement
-		return null;
+		Connexion c = new Connexion();
+		ArrayList<Client> liste = new ArrayList<Client>();
+
+		try {
+			Connection c1 = c.creeConnexion();
+			
+			Statement requete = c1.createStatement();
+			ResultSet res = requete.executeQuery("SELECT * FROM Client WHERE nom = " + nom + " AND prenom = " + prenom);
+			while (res.next()) {
+
+				liste.add(new Client(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10)));
+			}
+			
+			c1.close();
+			res.close();
+		}
+		catch (SQLException sqle) {
+			System.out.println("Problemes select * Client");
+		}
+		
+		return (liste);
 	}
 
 }

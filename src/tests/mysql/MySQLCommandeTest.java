@@ -24,21 +24,21 @@ public class MySQLCommandeTest {
 
 	@Test
 	void testCreateCommande() {
-		Commande commande = new Commande( ldate2 ,8,listeLigneDeCommande);
+		Commande commande = new Commande(56, ldate2 ,8);
 		MySQLCommandeDAO.getInstance().create(commande);
 		MySQLCommandeDAO.getInstance().delete(commande);
 		assertEquals(commande, MySQLCommandeDAO.getInstance().getById(commande.getIdCommande()));
 	}
 	@Test
 	void testDeleteCommande() {
-		Commande commande = new Commande(ldate1,8,listeLigneDeCommande);
+		Commande commande = new Commande(513, ldate1,8);
 		MySQLCommandeDAO.getInstance().create(commande);
 		MySQLCommandeDAO.getInstance().delete(commande);
 		assertNull(MySQLCommandeDAO.getInstance().getById(commande.getIdCommande()));
 		}
 	@Test
 	void testUpdateCommande() {
-		Commande commande = new Commande(ldate3,8,listeLigneDeCommande);
+		Commande commande = new Commande(5123, ldate3,8);
 		MySQLCommandeDAO.getInstance().create(commande);
 		commande.setIdClient(14);
 		MySQLCommandeDAO.getInstance().update(commande);
@@ -48,7 +48,7 @@ public class MySQLCommandeTest {
 	
 	@Test
 	void testFindAll() {
-		Commande commande = new Commande(ldate4,8,listeLigneDeCommande);
+		Commande commande = new Commande(56412, ldate4,8);
 		MySQLCommandeDAO.getInstance().create(commande);
 		MySQLCommandeDAO.getInstance().delete(commande);
 		assertNotNull(MySQLCommandeDAO.getInstance().findAll());

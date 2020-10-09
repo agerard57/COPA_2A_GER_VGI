@@ -16,7 +16,6 @@ import commandes.LigneDeCommande;
 import dao.listememoire.ListeMemoireCommandeDAO;
 
 public class ListeMemoireCommandeTest {
-	ArrayList<LigneDeCommande> listeLigneDeCommande = new ArrayList<LigneDeCommande>();
 	LocalDate ldate1 = LocalDate.of(2016,Month.MARCH,29);
 	LocalDate ldate2 = LocalDate.of(2017,Month.MARCH,29);
 	LocalDate ldate3 = LocalDate.of(2018,Month.MARCH,29);
@@ -24,20 +23,20 @@ public class ListeMemoireCommandeTest {
 
 	@Test
 	void testCreateCommande() {
-		Commande commande = new Commande( ldate2 ,8,listeLigneDeCommande);
+		Commande commande = new Commande(12, ldate2, 8);
 		ListeMemoireCommandeDAO.getInstance().create(commande);
 		assertEquals(commande, ListeMemoireCommandeDAO.getInstance().getById(commande.getIdCommande()));
 	}
 	@Test
 	void testDeleteCommande() {
-		Commande commande = new Commande(ldate1,8,listeLigneDeCommande);
+		Commande commande = new Commande(13, ldate1, 8);
 		ListeMemoireCommandeDAO.getInstance().create(commande);
 		ListeMemoireCommandeDAO.getInstance().delete(commande);
 		assertNull(ListeMemoireCommandeDAO.getInstance().getById(commande.getIdCommande()));
 		}
 	@Test
 	void testUpdateCommande() {
-		Commande commande = new Commande(ldate3,8,listeLigneDeCommande);
+		Commande commande = new Commande(14, ldate3, 8);
 		ListeMemoireCommandeDAO.getInstance().create(commande);
 		commande.setIdClient(14);
 		ListeMemoireCommandeDAO.getInstance().update(commande);
@@ -46,7 +45,7 @@ public class ListeMemoireCommandeTest {
 	
 	@Test
 	void testFindAll() {
-		Commande commande = new Commande(ldate4,8,listeLigneDeCommande);
+		Commande commande = new Commande(15, ldate4, 8);
 		ListeMemoireCommandeDAO.getInstance().create(commande);
 		assertNotNull(ListeMemoireCommandeDAO.getInstance().findAll());
 

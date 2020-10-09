@@ -15,31 +15,31 @@ public class ListeMemoireLigneCommandeTest {
 
 	@Test
 	void testCreateLigneCommande() {
-		LigneDeCommande ligneDeCommande = new LigneDeCommande(14,14,15);
+		LigneDeCommande ligneDeCommande = new LigneDeCommande(16,14,14,15);
 		ListeMemoireLigneCommandeDAO.getInstance().create(ligneDeCommande);
-		assertEquals(ligneDeCommande, ListeMemoireLigneCommandeDAO.getInstance().getById(ligneDeCommande.getIdCommande()));
+		assertEquals(ligneDeCommande, ListeMemoireLigneCommandeDAO.getInstance().getById(ligneDeCommande.getIdCommande(), ligneDeCommande.getIdProduit()));
 	}
 	@Test
 	void testDeleteLigneCommande() {
-		LigneDeCommande ligneDeCommande = new LigneDeCommande(14,14,15);
+		LigneDeCommande ligneDeCommande = new LigneDeCommande(17,14,14,15);
 		ListeMemoireLigneCommandeDAO.getInstance().create(ligneDeCommande);
 		ListeMemoireLigneCommandeDAO.getInstance().delete(ligneDeCommande);
-		assertNull(ListeMemoireLigneCommandeDAO.getInstance().getById(ligneDeCommande.getIdCommande()));
+		assertNull(ListeMemoireLigneCommandeDAO.getInstance().getById(ligneDeCommande.getIdCommande(), ligneDeCommande.getIdProduit()));
 		}
 	@Test
 	void testUpdateLigneCommande() {
-		LigneDeCommande ligneDeCommande = new LigneDeCommande(14,14,15);
+		LigneDeCommande ligneDeCommande = new LigneDeCommande(18,14,14,15);
 		ListeMemoireLigneCommandeDAO.getInstance().create(ligneDeCommande);
 		ligneDeCommande.setIdProduit(25);
 		ligneDeCommande.setQuantite(25);
 		ligneDeCommande.setTarifUnitaire(25);
 		ListeMemoireLigneCommandeDAO.getInstance().update(ligneDeCommande);
-		assertEquals(ligneDeCommande, ListeMemoireLigneCommandeDAO.getInstance().getById(ligneDeCommande.getIdCommande()));
+		assertEquals(ligneDeCommande, ListeMemoireLigneCommandeDAO.getInstance().getById(ligneDeCommande.getIdCommande(), ligneDeCommande.getIdProduit()));
 	}
 	
 	@Test
 	void testFindAll() {
-		LigneDeCommande ligneDeCommande = new LigneDeCommande(14,14,15);
+		LigneDeCommande ligneDeCommande = new LigneDeCommande(19,14,14,15);
 		ListeMemoireLigneCommandeDAO.getInstance().create(ligneDeCommande);
 		assertNotNull(ListeMemoireLigneCommandeDAO.getInstance().findAll());
 

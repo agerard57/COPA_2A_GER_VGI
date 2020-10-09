@@ -140,7 +140,24 @@ public class MySQLCategorieDAO implements CategorieDAO{
 
 	@Override
 	public Categorie getById(int id) {
-		// TODO Stub de la méthode généré automatiquement
-		return null;
+		Connexion c = new Connexion();
+		Categorie categorie = null;
+		try {
+			Connection c1 = c.creeConnexion();
+
+			Statement requete = c1.createStatement();
+			ResultSet res = requete.executeQuery("SELECT * FROM Categorie WHERE id_categorie = " + id);
+			while (res.next()) {
+
+				categorie = new Categorie(res.getInt(1), res.getString(2), res.getString(3));
+			}
+
+			c1.close();
+			res.close();
+		}
+		catch (SQLException sqle) {
+			System.out.println("Problemes select * Categorie");
+		}
+		return categorie;
 	}
 }

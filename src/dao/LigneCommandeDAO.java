@@ -12,6 +12,6 @@ public interface LigneCommandeDAO {
 	public abstract boolean delete(LigneDeCommande object);
 	
 	public abstract ArrayList<LigneDeCommande> findAll();
-	LigneDeCommande getById(int id);
+	public abstract LigneDeCommande getById(int idCommande, int idProduit);
 	
 }

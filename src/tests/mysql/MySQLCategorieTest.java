@@ -15,8 +15,8 @@ public class MySQLCategorieTest {
 	void testCreateCategorie() {
 		Categorie categorie = new Categorie("titre", "visuel");
 		MySQLCategorieDAO.getInstance().create(categorie);
-		MySQLCategorieDAO.getInstance().delete(categorie);
 		assertEquals(categorie, MySQLCategorieDAO.getInstance().getById(categorie.getIdCategorie()));
+		MySQLCategorieDAO.getInstance().delete(categorie);
 	}
 	@Test
 	void testDeleteCategorie() {
@@ -32,14 +32,15 @@ public class MySQLCategorieTest {
 		categorie.setVisuel("visuel");
 		MySQLCategorieDAO.getInstance().update(categorie);
 		assertEquals(categorie, MySQLCategorieDAO.getInstance().getById(categorie.getIdCategorie()));
+		MySQLCategorieDAO.getInstance().delete(categorie);
 	}
 	
 	@Test
 	void testFindAll() {
 		Categorie categorie = new Categorie("titre", "visuel");
 		MySQLCategorieDAO.getInstance().create(categorie);
-		MySQLCategorieDAO.getInstance().delete(categorie);
 		assertNotNull(MySQLCategorieDAO.getInstance().findAll());
+		MySQLCategorieDAO.getInstance().delete(categorie);
 
 	}
 }

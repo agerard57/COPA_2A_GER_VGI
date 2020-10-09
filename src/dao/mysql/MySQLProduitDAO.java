@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import MySql.Connexion;
+import clients.Client;
 import dao.ProduitDAO;
 import produits.Produit;
 
@@ -149,8 +150,25 @@ public boolean delete(Produit objet) {
 
 	@Override
 	public Produit getById(int id) {
-		// TODO Stub de la méthode généré automatiquement
-		return null;
+		Connexion c = new Connexion();
+		Produit produit = null;
+		try {
+			Connection c1 = c.creeConnexion();
+
+			Statement requete = c1.createStatement();
+			ResultSet res = requete.executeQuery("SELECT * FROM Produit WHERE id_produit = " + id);
+			while (res.next()) {
+
+				produit = new Produit(res.getInt(1), res.getString(2), res.getString(3), res.getFloat(4), res.getString(5), res.getInt(6));
+			}
+
+			c1.close();
+			res.close();
+		}
+		catch (SQLException sqle) {
+			System.out.println("Problemes select * Produit");
+		}
+		return produit;
 	}
 
 

@@ -41,11 +41,8 @@ public class ListeMemoireLigneCommandeDAO implements LigneCommandeDAO{
 
 
 		public boolean create(LigneDeCommande object) {
-			object.setIdCommande(1);
-			while (donnees.indexOf(object) > -1)
-			{
-				object.setIdCommande(object.getIdCommande() + 1);
-			}
+			if (donnees.indexOf(object) > -1)
+				return (false);
 			donnees.add(object);
 			
 			return (true);
@@ -79,11 +76,11 @@ public class ListeMemoireLigneCommandeDAO implements LigneCommandeDAO{
 
 
 		@Override
-		public LigneDeCommande getById(int id) {
-			if (donnees.indexOf(new LigneDeCommande(id)) < 0)
+		public LigneDeCommande getById(int idCommande, int idProduit) {
+			if (donnees.indexOf(new LigneDeCommande(idCommande, idProduit)) < 0)
 				return (null);
 			else
-				return (donnees.get(donnees.indexOf(new LigneDeCommande(id))));
+				return (donnees.get(donnees.indexOf(new LigneDeCommande(idCommande, idProduit))));
 		}
 
 

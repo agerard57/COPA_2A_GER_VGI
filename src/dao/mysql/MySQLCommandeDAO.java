@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import MySql.Connexion;
+import clients.Client;
 import commandes.Commande;
 import commandes.LigneDeCommande;
 import dao.CommandeDAO;
@@ -155,8 +156,25 @@ public class MySQLCommandeDAO implements CommandeDAO{
 
 	@Override
 	public Commande getById(int id) {
-		// TODO Stub de la méthode généré automatiquement
-		return null;
+		Connexion c = new Connexion();
+		Commande commande = null;
+		try {
+			Connection c1 = c.creeConnexion();
+
+			Statement requete = c1.createStatement();
+			ResultSet res = requete.executeQuery("SELECT * FROM Commande WHERE id_commande = " + id);
+			while (res.next()) {
+
+				commande = new Commande(res.getInt(1), res.getDate(2).toLocalDate(), res.getInt(3));
+			}
+
+			c1.close();
+			res.close();
+		}
+		catch (SQLException sqle) {
+			System.out.println("Problemes select * Commande");
+		}
+		return commande;
 	}
 
 }
