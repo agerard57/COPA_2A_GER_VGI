@@ -53,19 +53,20 @@ public class MySQLigneCommandeDAO implements LigneCommandeDAO{
 			requete.setInt(2,  ligneDeCommande.getQuantite());
 			requete.setFloat(3,  ligneDeCommande.getTarifUnitaire());
 
-			i = requete.executeUpdate();
+			requete.executeUpdate();
 			ResultSet res = requete.getGeneratedKeys();
 
 			if ( res.next())
 				ligneDeCommande.setIdCommande(res.getInt(1));
 
 			connect1.close();
+			return true;
 		}
 		catch(SQLException sqle)
 		{
 			System.out.println("Erreur ajouter ligne de commande ");
 		}
-		return (i == 1);
+		return (false);
 
 
 

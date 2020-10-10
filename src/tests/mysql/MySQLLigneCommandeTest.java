@@ -15,8 +15,8 @@ public class MySQLLigneCommandeTest {
 	void testCreateLigneCommande() {
 		LigneDeCommande ligneDeCommande = new LigneDeCommande(16,14,14,15);
 		MySQLigneCommandeDAO.getInstance().create(ligneDeCommande);
-		MySQLigneCommandeDAO.getInstance().delete(ligneDeCommande);
 		assertEquals(ligneDeCommande, MySQLigneCommandeDAO.getInstance().getById(ligneDeCommande.getIdCommande(), ligneDeCommande.getIdProduit()));
+		MySQLigneCommandeDAO.getInstance().delete(ligneDeCommande);
 	}
 	@Test
 	void testDeleteLigneCommande() {
@@ -33,8 +33,8 @@ public class MySQLLigneCommandeTest {
 		ligneDeCommande.setQuantite(25);
 		ligneDeCommande.setTarifUnitaire(25);
 		MySQLigneCommandeDAO.getInstance().update(ligneDeCommande);
-		MySQLigneCommandeDAO.getInstance().delete(ligneDeCommande);
 		assertEquals(ligneDeCommande, MySQLigneCommandeDAO.getInstance().getById(ligneDeCommande.getIdCommande(), ligneDeCommande.getIdProduit()));
+		MySQLigneCommandeDAO.getInstance().delete(ligneDeCommande);
 	}
 	
 	@Test

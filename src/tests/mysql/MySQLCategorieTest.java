@@ -39,8 +39,8 @@ public class MySQLCategorieTest {
 	void testFindAll() {
 		Categorie categorie = new Categorie("titre", "visuel");
 		MySQLCategorieDAO.getInstance().create(categorie);
-		assertNotNull(MySQLCategorieDAO.getInstance().findAll());
 		MySQLCategorieDAO.getInstance().delete(categorie);
+		assertNotNull(MySQLCategorieDAO.getInstance().findAll());
 
 	}
 }

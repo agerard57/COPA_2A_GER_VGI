@@ -39,19 +39,20 @@ public class MySQLCategorieDAO implements CategorieDAO{
 			requete.setString(2,  c.getVisuel());
 
 
-			i = requete.executeUpdate();
+			requete.executeUpdate();
 			ResultSet res = requete.getGeneratedKeys();
 
-			if ( res.next())
+			if (res.next())
 				c.setIdCategorie(res.getInt(1));
 
 			connect1.close();
+			return (true);
 		}
 		catch(SQLException sqle)
 		{
 			System.out.println("Erreur !");
 		}
-		return (i == 1);
+		return (false);
 
 
 

@@ -47,19 +47,20 @@ public class MySQLProduitDAO implements ProduitDAO{
 			requete.setInt(5,  p.getIdCategorie());
 
 
-			i = requete.executeUpdate();
+			requete.executeUpdate();
 			ResultSet res = requete.getGeneratedKeys();
 
 			if ( res.next())
 				p.setIdProduit(res.getInt(1));
 
 			connect1.close();
+			return (true);
 		}
 		catch(SQLException sqle)
 		{
 			System.out.println("Erreur !");
 		}
-		return (i == 1);
+		return (false);
 
 
 

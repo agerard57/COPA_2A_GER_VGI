@@ -17,8 +17,7 @@ public class MySQLClientTest {
 		Client client = new Client("nom", " prenom", " identifiant", " motDePasse", " adrNumero", " adrVoie", " adrCodePostal", " adrVille", " adrPays");
 		MySQLClientDAO.getInstance().create(client);
 		assertEquals(client, MySQLClientDAO.getInstance().getById(client.getIdClient()));
-
-		//	MySQLClientDAO.getInstance().delete(client);
+		MySQLClientDAO.getInstance().delete(client);
 	}
 		@Test
 		void testDeleteClient() {

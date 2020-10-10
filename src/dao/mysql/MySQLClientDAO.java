@@ -52,7 +52,8 @@ public class MySQLClientDAO implements ClientDAO{
 
 			System.out.println("avant execute");
 			System.out.println(c);
-			i = requete.executeUpdate();
+			
+			requete.executeUpdate();
 			System.out.println("avant reuslset");
 			ResultSet res = requete.getGeneratedKeys();
 
@@ -60,12 +61,13 @@ public class MySQLClientDAO implements ClientDAO{
 				c.setIdClient(res.getInt(1));
 			System.out.println(c);
 			connect1.close();
+			return true;
 		}
 		catch(SQLException sqle)
 		{
 			System.out.println("Erreur !");
 		}
-		return (i == 1);
+		return (false);
 
 
 

@@ -15,8 +15,8 @@ public class MySQLProduitTest {
 	void testCreateProduit() {
 		Produit produit = new Produit("nom", "description", 45, "visuel", 8);
 		MySQLProduitDAO.getInstance().create(produit);
-		MySQLProduitDAO.getInstance().delete(produit);
 		assertEquals(produit, MySQLProduitDAO.getInstance().getById(produit.getIdProduit()));
+		MySQLProduitDAO.getInstance().delete(produit);
 	}
 	@Test
 	void testDeleteProduit() {
@@ -32,8 +32,8 @@ public class MySQLProduitTest {
 		produit.setDescription("description");
 		produit.setNom("prenom");
 		MySQLProduitDAO.getInstance().update(produit);
-		MySQLProduitDAO.getInstance().delete(produit);
 		assertEquals(produit, MySQLProduitDAO.getInstance().getById(produit.getIdProduit()));
+		MySQLProduitDAO.getInstance().delete(produit);
 	}
 	
 	@Test

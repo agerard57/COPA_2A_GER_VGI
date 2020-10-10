@@ -26,8 +26,8 @@ public class MySQLCommandeTest {
 	void testCreateCommande() {
 		Commande commande = new Commande(56, ldate2 ,8);
 		MySQLCommandeDAO.getInstance().create(commande);
-		MySQLCommandeDAO.getInstance().delete(commande);
 		assertEquals(commande, MySQLCommandeDAO.getInstance().getById(commande.getIdCommande()));
+		MySQLCommandeDAO.getInstance().delete(commande);
 	}
 	@Test
 	void testDeleteCommande() {
@@ -42,8 +42,8 @@ public class MySQLCommandeTest {
 		MySQLCommandeDAO.getInstance().create(commande);
 		commande.setIdClient(14);
 		MySQLCommandeDAO.getInstance().update(commande);
-		MySQLCommandeDAO.getInstance().delete(commande);
 		assertEquals(commande, MySQLCommandeDAO.getInstance().getById(commande.getIdCommande()));
+		MySQLCommandeDAO.getInstance().delete(commande);
 	}
 	
 	@Test

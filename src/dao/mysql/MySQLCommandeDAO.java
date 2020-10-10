@@ -41,19 +41,20 @@ public class MySQLCommandeDAO implements CommandeDAO{
 			requete.setInt(2,  commande.getIdClient());
 
 
-			i = requete.executeUpdate();
+			requete.executeUpdate();
 			ResultSet res = requete.getGeneratedKeys();
 
 			if ( res.next())
 				commande.setIdCommande(res.getInt(1));
 
 			connect1.close();
+			return true;
 		}
 		catch(SQLException sqle)
 		{
 			System.out.println("Erreur ajouter commande ");
 		}
-		return (i == 1);
+		return (false);
 
 
 
