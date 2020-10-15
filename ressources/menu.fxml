@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controller">
+<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMenu">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -52,7 +52,7 @@
         <Menu fx:id="quitter_btn" mnemonicParsing="false" onAction="#quitterProgramme" text="Quitter" />
       </menus>
     </MenuBar>
-      <BorderPane prefHeight="605.0" prefWidth="659.0">
+      <BorderPane fx:id="bp_menu" prefHeight="605.0" prefWidth="659.0">
          <bottom>
             <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="60.0" prefWidth="544.0" style="&#10;" text="Bienvenue dans la boutiques des meilleurs pires pull !" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="false" BorderPane.alignment="CENTER">
                <font>
@@ -105,7 +105,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </AnchorPane>
-                  <AnchorPane layoutX="320.0" layoutY="-1.0" prefHeight="315.0" prefWidth="153.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="ap_commandes" layoutX="320.0" layoutY="-1.0" onMouseClicked="#pageGestionCommandes" prefHeight="315.0" prefWidth="153.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <ImageView fitHeight="104.0" fitWidth="122.0" layoutX="29.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="56.0">
                            <image>

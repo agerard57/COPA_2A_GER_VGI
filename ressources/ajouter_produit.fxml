@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vb_add_produit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controller">
+<VBox fx:id="vb_add_produit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerAjouterProduit">
    <children>
       <GridPane fx:id="gp_saisie_produit" prefHeight="309.0" prefWidth="640.0" style="-fx-background-color: #222222; -fx-border-color: white;" stylesheets="@../bin/Stylesheet.css">
         <columnConstraints>
@@ -107,12 +107,12 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btn_annuler" cancelButton="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Annuler" textFill="RED" GridPane.columnIndex="2">
+                  <Button fx:id="btn_annuler" cancelButton="true" mnemonicParsing="false" onAction="#annuler_ajout" prefHeight="25.0" prefWidth="110.0" text="Annuler" textFill="RED" GridPane.columnIndex="2">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btn_creer" defaultButton="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Créer" textFill="#00a113" GridPane.columnIndex="1">
+                  <Button fx:id="btn_creer" defaultButton="true" mnemonicParsing="false" onAction="#ajouter_ajout" prefHeight="25.0" prefWidth="115.0" text="Créer" textFill="#00a113" GridPane.columnIndex="1">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
