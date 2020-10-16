@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMenu">
+<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMenu">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -54,7 +54,7 @@
     </MenuBar>
       <BorderPane fx:id="bp_menu" prefHeight="605.0" prefWidth="659.0">
          <bottom>
-            <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="60.0" prefWidth="544.0" style="&#10;" text="Bienvenue dans la boutiques des meilleurs pires pull !" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="false" BorderPane.alignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="60.0" prefWidth="544.0" style="&#10;" text="Bienvenue dans la boutique des meilleurs pires pull !" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="false" BorderPane.alignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
@@ -72,7 +72,7 @@
          <center>
             <AnchorPane prefHeight="275.0" prefWidth="640.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane layoutY="1.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="ap_clients" layoutY="1.0" onMouseClicked="#pageGestionClients" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <ImageView fitHeight="104.0" fitWidth="122.0" layoutX="28.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0">
                            <image>
@@ -89,7 +89,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </AnchorPane>
-                  <AnchorPane layoutX="160.0" layoutY="-1.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="ap_produits" layoutX="160.0" layoutY="-1.0" onMouseClicked="#pageGestionProduits" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <ImageView fitHeight="104.0" fitWidth="122.0" layoutX="28.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0">
                            <image>
@@ -122,7 +122,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </AnchorPane>
-                  <AnchorPane layoutX="480.0" layoutY="73.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="ap_categories" layoutX="480.0" layoutY="73.0" onMouseClicked="#pageGestionCategories" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <ImageView fitHeight="93.0" fitWidth="93.0" layoutX="39.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="41.0">
                            <image>

@@ -1,4 +1,4 @@
-# TD2 CPOA GERARD - GIANGRECO
+# TD4 CPOA GERARD - GIANGRECO
 
 
 This TD is directly following the previous one.
@@ -7,51 +7,50 @@ This "project" is a ugly pullover shop and, thanks to a DataBase, you can add, d
   - Products
   - Orders
  
+Attention ! : We started to make the interface from the project, so don't mind the pages like menu.fxml or menu_produit.fxml
+
 # Description
+
 ----
-- Créer les objets métiers (POJO) pour les tables à gérer
-- Les lignes de commande doivent être gérées dans une HashMap<K, V>
-- Produire un DAO niveau 2 (MySQL, ListeMémoire). Implémenter d'abord l'architecture globale, puis la
-partie SQL, puis la partie ListeMemoire
-- Le menu du td1 doit être complété pour que toute action soit répercutée en base de données, grâce à
-un appel à la DAOFactory (pas d'appel direct à une classe DAO mySQL ou ListeMemoire !)
-- Ce menu a également une option permettant de passer de mySQL à ListeMemoire
-ListeMemoireDAO : simulation de données en mémoire, gérées sous forme d'ArrayList<T>, permettant de
-faire des tests sans connexion avec une base de données. Voir ListeMemoireCategorieDAO sur Arche
-comme exemple de ce qu'il faut faire.
-
-A rendre via github avant jour td+13 17h. Une version doit être enregistrée sur github avant la fin du TD
-de la semaine du 14/09.
-
-Votre github doit être associé à un Trello décrivant précisément les tâches effectuées par chaque
-membre du binôme. Gérer au moins trois listes : à faire, en cours, terminé. Ce trello doit être
-communiqué à votre enseignant de TD.
+Créer un nouveau projet JavaFX, et tester votre application
+- charger le fichier fxml
+- lier le composant racine (la Vbox) à la scène
+- lancer et corriger votre code jusqu'à ce que la fenêtre apparaisse
+- Votre programme doit :
+1) utiliser les champs de saisie pour créer une instance du modèle (Produit) lorsqu'on clique
+sur Créer
+2) utiliser la méthode toString() du modèle pour compléter le label du bas, ou utiliser ce label
+pour afficher (en rouge), les exceptions éventuellement lancées par les setters du modèle (titre
+ou description vide) ou les erreurs détectées au niveau du contrôleur (champ de tarif non
+numérique, pas de choix de catégorie).
+Pour réaliser cette partie, il faut :
+- déclarer en variable d'instance les 5 composants à qui vous avez donné un fx:id
+- écrire la méthode creerModele appelée au clic sur le bouton Créer
+Bonus : réaliser une insertion dans la base de données au clic sur le bouton de création.
 ---
+
 ## Trello
 We've made a Trello board. You can easily access it by clicking  __[HERE](https://trello.com/invite/b/DcAjprl2/13a303fce6c355e2e568927e7705c048/cpoa2020gerardgiangreco)__.
 
-## JAR Used
+## JAR Used / Scene builder
 
   We used an external JAR for this project :
 [MySql Connector /J 8.0.21](https://dev.mysql.com/downloads/connector/j/8.0.html)
 - This JAR makes the link between the MySql DataBase and the JAVA code. 
 
+Also, we now used Scene Builder to make the interface.
+
 # What's working
 
 We made the project (all be it with some errors that we will mention down there) with most functions working on this project :
 
-- There's a fully functionnal multi-layer menu using commands. (with return options)
-- You can edit/delete/add the client's list
-- You can edit/delete/add the products's list
-- You can edit/delete/add the orders's list
-- You can edit/delete/add the category's list
-- Also featuring "Commande" and "LigneDeCommande" (to be finished tho...)
+- The page now automatically retrieves from "liste memoire" the content of "Categorie", which displays it in a ComboBox
 
 
 ### How to use it
 
-This program is simple to use : you can go through the menus using the numeric keypad (1-4);
-Trying something different from what is proposed will result in an error message.
+For now, the available interface for this TD is only : -menu --> -menu_produit--> add_produit
+You can then fill out details of the new product. In the end, press "accept" and the system will display a message.
 
 ### Repli.it
 

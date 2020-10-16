@@ -63,7 +63,7 @@ public class Categorie {
 	
 	@Override
 	public String toString() {
-		return ("Categorie n�" + idCategorie + " - "+ titre + " | Visuel : " + visuel );
+		return ("Categorie : " + idCategorie + " - "+ titre + " | Visuel : " + visuel );
 	}
 }
 

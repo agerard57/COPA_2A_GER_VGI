@@ -5,7 +5,9 @@ import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
+import categorie.Categorie;
 import dao.factory.DAOFactory;
+import enumz.ModeDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,83 +20,96 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import produits.Produit;
 import javafx.collections.FXCollections;
 
 
-public class ControllerAjouterProduit {
+
+public class ControllerAjouterProduit implements Initializable{
 
     @FXML
-    private VBox vb_add_produit;
+    private VBox vbAddProduit;
 
     @FXML
-    private GridPane gp_saisie_produit;
+    private GridPane gpSaisieProduit;
 
     @FXML
-    private Label lbl_nom;
+    private Label lblNom;
 
     @FXML
-    private TextField tf_nom;
+    private TextField tfNom;
 
     @FXML
-    private Label lbl_desc;
+    private Label lblDesc;
 
     @FXML
-    private Label lbl_tarif;
+    private Label lblTarif;
 
     @FXML
-    private Label lbl_cat;
+    private Label lblCat;
 
     @FXML
-    private TextArea ta_desc;
+    private TextArea taDesc;
 
     @FXML
-    private TextField tf_tarif;
+    private TextField tfTarif;
 
     @FXML
-    private Label lbl_euros;
+    private Label lblEuros;
 
     @FXML
-    private ChoiceBox<?> cb_cat;
+    private ChoiceBox<Categorie> cbCat;
 
     @FXML
-    private FlowPane fp_creer;
+    private FlowPane fpCreer;
 
     @FXML
-    private GridPane gp_btn;
+    private GridPane gpBtn;
 
     @FXML
-    private Button btn_annuler;
+    private Button btnAnnuler;
 
     @FXML
-    private Button btn_creer;
+    private Button btnCreer;
 
     @FXML
-    private FlowPane fp_afficher;
+    private FlowPane fpAfficher;
 
     @FXML
     private Separator sep_afficher;
 
     @FXML
-    private Label lbl_afficher;
+    private Label lblAfficher;
 
-    @FXML
-    void ajouter_ajout(ActionEvent event) {
-    	
-JOptionPane.showMessageDialog(null, "Traitement réussi");
-    }
-
-
-    
-    @FXML
-    void annuler_ajout(ActionEvent event) {
-
-    }
-    
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-    	//TODO Faire fonctionner cette carabistouille, MAJ readme + git 
-    	
-        DAOFactory dao = DAOFactory.getDAOFactory(dao.factory.ListeMemoireDAOFactory);
-        this.cb_cat.setItems(FXCollections.observableArrayList(dao.getCategorieDAO().findAll()));
+            DAOFactory dao = DAOFactory.getDAOFactory(ModeDAO.LISTE_MEMOIRE);
+            this.cbCat.setItems(FXCollections.observableArrayList(dao.getCategorieDAO().findAll()));
+            
     }
+    
+    @FXML
+    void creerModele(ActionEvent event) {
+    	Produit produit = new Produit();
+    	String nom = this.tfNom.getText();
+    	String description = this.taDesc.getText();
+    	float tarif = Float.parseFloat(this.tfTarif.getText());
+    	Categorie categorie = this.cbCat.getValue();
+    	
+    	produit.setNom(nom);
+    	produit.setDescription(description);
+    	produit.setTarif(tarif);
+    	produit.setIdCategorie(categorie.getIdCategorie());
+    	
+    	this.lblAfficher.setText(produit.toString());
+    	
+    	JOptionPane.showMessageDialog(null, "Traitement rï¿½ussi");
+    }
+
+    @FXML
+    void fermerPage(ActionEvent event) {
+
+    }
+
 }

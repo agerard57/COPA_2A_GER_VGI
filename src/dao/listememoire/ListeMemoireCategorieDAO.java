@@ -24,7 +24,9 @@ public class ListeMemoireCategorieDAO implements CategorieDAO{
 		if (instance == null) {
 			instance = new ListeMemoireCategorieDAO();
 		}
-
+       
+		Categorie cat = new Categorie(1, "titre", "visuel");
+		instance.create(cat);
 		return (instance);
 	}
 

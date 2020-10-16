@@ -21,21 +21,58 @@ public class ControllerMenu {
     @FXML
     private Menu quitter_btn;
 
+
+    @FXML
+    private AnchorPane ap_clients;
+
+    @FXML
+    private AnchorPane ap_produits;
+
     @FXML
     private AnchorPane ap_commandes;
+
+    @FXML
+    private AnchorPane ap_categories;
 
     @FXML
     private BorderPane bp_menu;
     
     @FXML
-    void pageGestionCommandes(MouseEvent event) throws IOException {
-    	Parent part = FXMLLoader.load(getClass().getResource("/menu_produit.fxml"));
+    void pageGestionCategories	(MouseEvent event) throws IOException {
+    	Parent part = FXMLLoader.load(getClass().getResource("/menu_cat.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(part);
         stage.setScene(scene);
         stage.show();
     }
 
+    @FXML
+    void pageGestionProduits(MouseEvent event) throws IOException {
+    	Parent part = FXMLLoader.load(getClass().getResource("/menu_produit.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(part);
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    @FXML
+    void pageGestionCommandes(MouseEvent event) throws IOException {
+    	Parent part = FXMLLoader.load(getClass().getResource("/menu_commande.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(part);
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    @FXML
+    void pageGestionClients(MouseEvent event) throws IOException {
+    	Parent part = FXMLLoader.load(getClass().getResource("/menu_client.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(part);
+        stage.setScene(scene);
+        stage.show();
+    }
+    
     @FXML
     void quitterProgramme(ActionEvent event) {
 
