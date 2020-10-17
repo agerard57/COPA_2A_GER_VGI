@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import MySql.Connexion;
 import categorie.Categorie;
 import clients.Client;
 import dao.ClientDAO;
+import mysql.Connexion;
 
 public class MySQLClientDAO implements ClientDAO{
 	

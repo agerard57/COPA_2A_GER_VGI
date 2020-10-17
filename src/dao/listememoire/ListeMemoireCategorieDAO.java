@@ -8,10 +8,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import MySql.Connexion;
 import categorie.Categorie;
 import clients.Client;
 import dao.CategorieDAO;
+import mysql.Connexion;
 
 public class ListeMemoireCategorieDAO implements CategorieDAO{
 

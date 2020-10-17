@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import MySql.Connexion;
 import clients.Client;
 import commandes.Commande;
 import commandes.LigneDeCommande;
 import dao.CommandeDAO;
+import mysql.Connexion;
 
 public class MySQLCommandeDAO implements CommandeDAO{
 	private static MySQLCommandeDAO instance;

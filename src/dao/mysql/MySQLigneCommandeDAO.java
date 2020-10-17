@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import MySql.Connexion;
 import commandes.Commande;
 import commandes.LigneDeCommande;
 import dao.LigneCommandeDAO;
+import mysql.Connexion;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +16,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import MySql.Connexion;
 import clients.Client;
 
 

@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import MySql.Connexion;
 import clients.Client;
 import dao.ProduitDAO;
+import mysql.Connexion;
 import produits.Produit;
 import java.util.List;
 

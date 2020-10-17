@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import MySql.Connexion;
 import clients.Client;
+import mysql.Connexion;
 
 public class CategorieSQL {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

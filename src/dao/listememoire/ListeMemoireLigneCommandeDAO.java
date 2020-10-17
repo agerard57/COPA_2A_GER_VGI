@@ -1,6 +1,7 @@
 package dao.listememoire;
 
 import dao.LigneCommandeDAO;
+import mysql.Connexion;
 import produits.Produit;
 
 import java.sql.Connection;
@@ -11,7 +12,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import MySql.Connexion;
 import categorie.Categorie;
 import clients.Client;
 import commandes.LigneDeCommande;

@@ -35,8 +35,8 @@ We've made a Trello board. You can easily access it by clicking  __[HERE](https:
 ## JAR Used / Scene builder
 
   We used an external JAR for this project :
-[MySql Connector /J 8.0.21](https://dev.mysql.com/downloads/connector/j/8.0.html)
-- This JAR makes the link between the MySql DataBase and the JAVA code. 
+[mysql Connector /J 8.0.21](https://dev.mysql.com/downloads/connector/j/8.0.html)
+- This JAR makes the link between the mysql DataBase and the JAVA code. 
 
 Also, we now used Scene Builder to make the interface.
 

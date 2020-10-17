@@ -8,12 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import MySql.Connexion;
 import categorie.Categorie;
 import clients.Client;
 import commandes.Commande;
 import commandes.LigneDeCommande;
 import dao.CommandeDAO;
+import mysql.Connexion;
 
 public class ListeMemoireCommandeDAO implements CommandeDAO{
 

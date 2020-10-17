@@ -1,10 +1,9 @@
-package Main_app;
+package main.app;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import MySql.Connexion;
 import categorie.Categorie;
 import categorie.CategorieSQL;
 import clients.Client;
@@ -13,6 +12,7 @@ import commandes.Commande;
 import commandes.CommandeSQL;
 import commandes.LigneDeCommande;
 import commandes.LigneDeCommandeSQL;
+import mysql.Connexion;
 import produits.Produit;
 import produits.ProduitSQL;
 

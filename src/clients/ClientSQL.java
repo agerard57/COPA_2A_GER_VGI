@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 import com.mysql.cj.xdevapi.PreparableStatement;
 
-import MySql.Connexion;
+import mysql.Connexion;
 
 public class ClientSQL {
 

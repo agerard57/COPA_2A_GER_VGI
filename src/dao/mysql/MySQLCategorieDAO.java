@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import MySql.Connexion;
 import categorie.Categorie;
 import dao.CategorieDAO;
+import mysql.Connexion;
 
 public class MySQLCategorieDAO implements CategorieDAO{
 	private static MySQLCategorieDAO instance;
