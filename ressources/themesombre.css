@@ -1,0 +1,58 @@
+/* --- Thème sombre --- */
+/* ------------------- */
+/* --- BACKGROUND --- */
+
+.background {
+    -fx-background-color: #25221e;
+}
+
+
+/* ------------------ */
+/* --- BARRE MENU --- */
+
+.barre-menu{
+    -fx-background-color: #121212;
+}
+
+.img-close{
+    -fx-image:url("../medias/black/close.png");
+}
+
+.img-settings{
+    -fx-image:url("../medias/black/settings.png");
+}
+
+
+/* --------------- */
+/* --- CONTENU --- */
+
+.titre-cat {
+    -fx-font-size: 18px;
+    -fx-font-family: "Calibri";
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.lignes {
+-fx-stroke: black;
+}
+
+
+/* -------------- */
+/* --- IMAGES --- */
+
+.img-cli{
+    -fx-image:url("../medias/black/client.png");
+}
+
+.img-pro{
+    -fx-image:url("../medias/black/pullover.png");
+}
+
+.img-com{
+    -fx-image:url("../medias/black/order.png");
+}
+
+.img-cat{
+    -fx-image:url("../medias/black/cat.png");
+}
