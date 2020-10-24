@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -23,6 +24,9 @@ public class Main extends Application{
 	 @Override
 	    public void start(final Stage primaryStage) throws IOException {
 	        primaryStage.initStyle(StageStyle.UNDECORATED);
+	        primaryStage.setTitle("Pull Moches");
+	        primaryStage.getIcons().add(new Image("file:medias/pullover.png"));
+
 			Parent root = FXMLLoader.load(this.getClass().getResource("/menu.fxml"));
 
 
@@ -41,7 +45,7 @@ public class Main extends Application{
 	            }
 	        });
 
-	        Scene scene = new Scene(root, 640, 400);
+	        Scene scene = new Scene(root, 658, 405);
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
 	    }

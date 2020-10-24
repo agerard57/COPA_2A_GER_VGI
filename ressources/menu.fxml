@@ -12,39 +12,51 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vbMenu" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMenu">
+<VBox fx:id="vbMenu" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" stylesheets="@themesombre.css" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMenu">
   <children>
-      <AnchorPane fx:id="apMenu" prefHeight="19.0" prefWidth="640.0" style="-fx-background-color: #121212;">
+      <AnchorPane fx:id="apMenu" prefHeight="19.0" prefWidth="640.0" styleClass="barre-menu">
          <children>
             <Separator layoutY="27.0" prefHeight="0.0" prefWidth="658.0" />
             <ImageView fx:id="btnQuit" fitHeight="21.0" fitWidth="25.0" layoutX="629.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../medias/quit.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </ImageView>
-            <ImageView fx:id="btnClose" fitHeight="30.0" fitWidth="25.0" layoutX="602.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btnClose" fitHeight="30.0" fitWidth="25.0" layoutX="602.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" styleClass="img-close">
                <image>
                   <Image url="@../medias/close.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </ImageView>
-            <ImageView fx:id="btnSettings" fitHeight="21.0" fitWidth="25.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btnSettings" fitHeight="21.0" fitWidth="25.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: OPEN_HAND;" styleClass="img-settings">
                <image>
                   <Image url="@../medias/settings.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </ImageView>
          </children>
+         <cursor>
+            <Cursor fx:constant="MOVE" />
+         </cursor>
       </AnchorPane>
       <BorderPane fx:id="bpMenu" prefHeight="0.0" prefWidth="658.0">
          <bottom>
-            <Label fx:id="lblMenu" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="60.0" prefWidth="544.0" text="Bienvenue dans la boutique des meilleurs pires pull !" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="false" BorderPane.alignment="CENTER">
+            <Label fx:id="lblMenu" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="60.0" prefWidth="544.0" styleClass="lbl-bas" text="Bienvenue dans la boutique des meilleurs pires pull !" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="false" BorderPane.alignment="CENTER">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Calibri" size="24.0" />
                </font>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <graphic>
-                  <Line endX="79.58578491210938" scaleX="7.0" strokeType="OUTSIDE" translateY="-30.0" />
+                  <Line endX="79.58578491210938" scaleX="7.0" strokeType="OUTSIDE" styleClass="lignes" translateY="-30.0" />
                </graphic>
                <BorderPane.margin>
                   <Insets />
@@ -56,16 +68,16 @@
                <children>
                   <AnchorPane fx:id="apClients" layoutY="27.0" onMouseClicked="#pageGestionClients" prefHeight="290.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ImageView fx:id="imgCli" fitHeight="104.0" fitWidth="122.0" layoutX="28.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0">
+                        <ImageView fx:id="imgCli" fitHeight="104.0" fitWidth="122.0" layoutX="28.0" layoutY="53.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" styleClass="img-com" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0">
                            <image>
                               <Image url="@../medias/client.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="lblCli" layoutX="41.0" layoutY="232.0" text="Gestion&#10;des clients" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="lblCli" layoutX="41.0" layoutY="232.0" styleClass="titre-cat" text="Gestion&#10;des clients" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Calibri Bold" size="18.0" />
                            </font></Label>
-                        <Line endX="-8.0" endY="259.0" layoutX="166.0" layoutY="34.0" startX="-8.0" startY="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="30.0" />
+                        <Line endX="-8.0" endY="259.0" layoutX="166.0" layoutY="34.0" startX="-8.0" startY="10.0" styleClass="lignes" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="30.0" />
                      </children>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -73,12 +85,12 @@
                   </AnchorPane>
                   <AnchorPane fx:id="apProduits" layoutX="160.0" layoutY="30.0" onMouseClicked="#pageGestionProduits" prefHeight="285.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ImageView fx:id="imgProd" fitHeight="104.0" fitWidth="122.0" layoutX="28.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0">
+                        <ImageView fx:id="imgProd" fitHeight="104.0" fitWidth="122.0" layoutX="28.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" styleClass="img-pro" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0">
                            <image>
                               <Image url="@../medias/pullover.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="lblProd" layoutX="34.0" layoutY="232.0" text="Gestion &#10;des produits" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="lblProd" layoutX="34.0" layoutY="232.0" styleClass="titre-cat" text="Gestion &#10;des produits" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Calibri Bold" size="18.0" />
                            </font></Label>
@@ -89,16 +101,16 @@
                   </AnchorPane>
                   <AnchorPane fx:id="apCommandes" layoutX="320.0" layoutY="12.0" onMouseClicked="#pageGestionCommandes" prefHeight="315.0" prefWidth="189.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ImageView fx:id="imgCom" fitHeight="104.0" fitWidth="122.0" layoutX="29.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="56.0">
+                        <ImageView fx:id="imgCom" fitHeight="104.0" fitWidth="122.0" layoutX="29.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" styleClass="img-com" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="56.0">
                            <image>
                               <Image url="@../medias/order.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="lblCom" layoutX="21.0" layoutY="232.0" text="Gestion &#10;des commandes" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="lblCom" layoutX="21.0" layoutY="232.0" styleClass="titre-cat" text="Gestion &#10;des commandes" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Calibri Bold" size="18.0" />
                            </font></Label>
-                        <Line endX="-8.0" endY="259.0" layoutX="6.0" layoutY="20.5" startX="-8.0" startY="10.0" AnchorPane.bottomAnchor="35.0" AnchorPane.topAnchor="30.0" />
+                        <Line endX="-8.0" endY="259.0" layoutX="6.0" layoutY="20.5" startX="-8.0" startY="10.0" styleClass="lignes" AnchorPane.bottomAnchor="35.0" AnchorPane.topAnchor="30.0" />
                      </children>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -106,16 +118,16 @@
                   </AnchorPane>
                   <AnchorPane fx:id="apCategories" layoutX="480.0" layoutY="73.0" onMouseClicked="#pageGestionCategories" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ImageView fx:id="imgCat" fitHeight="93.0" fitWidth="93.0" layoutX="44.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="36.0">
+                        <ImageView fx:id="imgCat" fitHeight="93.0" fitWidth="93.0" layoutX="44.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" styleClass="img-cat" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="36.0">
                            <image>
                               <Image url="@../medias/cat.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="lblCat" layoutX="33.0" layoutY="227.0" prefHeight="60.0" prefWidth="108.0" text="Gestion &#10;des catégories" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="lblCat" layoutX="33.0" layoutY="227.0" prefHeight="60.0" prefWidth="108.0" styleClass="titre-cat" text="Gestion &#10;des catégories" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Calibri Bold" size="18.0" />
                            </font></Label>
-                        <Line endX="-8.0" endY="259.0" layoutX="12.0" layoutY="20.5" startX="-8.0" startY="10.0" AnchorPane.bottomAnchor="35.0" AnchorPane.topAnchor="30.0" />
+                        <Line endX="-8.0" endY="259.0" layoutX="12.0" layoutY="20.5" startX="-8.0" startY="10.0" styleClass="lignes" AnchorPane.bottomAnchor="35.0" AnchorPane.topAnchor="30.0" />
                      </children>
                      <cursor>
                         <Cursor fx:constant="HAND" />
