@@ -68,7 +68,7 @@
                <children>
                   <AnchorPane fx:id="apClients" layoutY="27.0" onMouseClicked="#pageGestionClients" prefHeight="290.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ImageView fx:id="imgCli" fitHeight="104.0" fitWidth="122.0" layoutX="28.0" layoutY="53.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" styleClass="img-com" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0">
+                        <ImageView fx:id="imgCli" fitHeight="104.0" fitWidth="122.0" layoutX="28.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" styleClass="img-com" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0">
                            <image>
                               <Image url="@../medias/client.png" />
                            </image>
