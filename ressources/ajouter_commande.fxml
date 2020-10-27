@@ -5,9 +5,9 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
@@ -16,59 +16,45 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vbAddProduit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerAjouterProduit">
+<VBox fx:id="vbAddCommande" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerAjouterProduit">
    <children>
-      <GridPane fx:id="gpSaisieProduit" prefHeight="309.0" prefWidth="640.0" styleClass="gridpane" stylesheets="@../bin/Stylesheet.css">
+      <GridPane fx:id="gpSaisieCommande" prefHeight="309.0" prefWidth="640.0" styleClass="gridpane" stylesheets="@../bin/Stylesheet.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="26.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="78.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="399.0" minWidth="10.0" prefWidth="389.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="82.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="399.0" minWidth="10.0" prefWidth="127.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="322.0" minWidth="10.0" prefWidth="99.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="322.0" minWidth="10.0" prefWidth="266.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="77.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="161.0" minHeight="1.0" prefHeight="11.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="161.0" minHeight="6.0" prefHeight="62.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="157.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="185.0" minHeight="0.0" prefHeight="66.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="185.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="113.0" minHeight="0.0" prefHeight="58.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </VBox.margin>
          <children>
-            <Label fx:id="lblNom" styleClass="lbl-desc" text="Nom :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="lblDate" prefHeight="17.0" prefWidth="39.0" styleClass="lbl-desc" text="Date :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="35.0" />
+                  <Insets left="34.0" />
                </GridPane.margin>
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="tfNom" prefHeight="25.0" prefWidth="166.0" promptText="Entrez ici le nom du produit" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <GridPane.margin>
-                  <Insets right="100.0" />
-               </GridPane.margin>
-            </TextField>
-            <Label fx:id="lblDesc" styleClass="lbl-desc" text="Description :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="lblHeure" styleClass="lbl-desc" text="Heure :" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
-            </Label>
-            <Label fx:id="lblTarif" styleClass="lbl-desc" text="Tarif :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
                <GridPane.margin>
-                  <Insets left="37.0" />
+                  <Insets left="45.0" />
                </GridPane.margin>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
             </Label>
-            <Label fx:id="lblCat" styleClass="lbl-desc" text="Catégorie :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label fx:id="lblCat" styleClass="lbl-desc" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -79,36 +65,66 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <TextArea fx:id="taDesc" prefHeight="200.0" prefWidth="200.0" promptText="Entrez ici la description du produit" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ChoiceBox fx:id="cbProduit" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <DatePicker fx:id="dpDate" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="tfHeure" prefHeight="25.0" prefWidth="47.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets top="30.0" />
-               </GridPane.margin>
-            </TextArea>
-            <TextField fx:id="tfTarif" prefHeight="25.0" prefWidth="80.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets right="320.0" />
+                  <Insets right="220.0" />
                </GridPane.margin>
             </TextField>
-            <Label fx:id="lblEuros" styleClass="lbl-sous-desc" text="euros à l'unité" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="75.0" />
-               </GridPane.margin>
-            </Label>
-            <ChoiceBox fx:id="cbCat" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Label fx:id="lblNom1" styleClass="lbl-desc" text="ID :" textFill="WHITE" GridPane.columnIndex="1">
+            <Label fx:id="lblProduit" styleClass="lbl-desc" text="Produit :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
                <GridPane.margin>
-                  <Insets left="50.0" />
+                  <Insets left="20.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="tfNom1" prefHeight="25.0" prefWidth="166.0" GridPane.columnIndex="2">
+            <Label fx:id="lblClient" styleClass="lbl-desc" text="Client :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
                <GridPane.margin>
-                  <Insets right="350.0" />
+                  <Insets left="28.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="lblIdCommande" styleClass="lbl-desc" text="ID :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="47.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="lblQte" styleClass="lbl-desc" text="Quantité :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="15.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="tfIdCommande" prefHeight="25.0" prefWidth="47.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="80.0" />
+               </GridPane.margin>
+            </TextField>
+            <ChoiceBox fx:id="cbClient" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <TextField fx:id="tfQte" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets right="80.0" />
                </GridPane.margin>
             </TextField>
          </children>
@@ -130,7 +146,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnOk" defaultButton="true" mnemonicParsing="false" onAction="#creerModele" prefHeight="25.0" prefWidth="115.0" styleClass="btn-ok" text="Ok" textFill="#00a113" GridPane.columnIndex="1">
+                  <Button fx:id="btnCreer" defaultButton="true" mnemonicParsing="false" onAction="#creerModele" prefHeight="25.0" prefWidth="115.0" styleClass="btn-ok" text="Ok" textFill="#00a113" GridPane.columnIndex="1">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

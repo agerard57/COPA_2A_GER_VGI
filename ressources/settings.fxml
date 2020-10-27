@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+
+
+<VBox fx:id="vbSettings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="405.0" styleClass="background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <stylesheets>
+      <URL value="@themeclair.css" />
+      <URL value="@themesombre.css" />
+   </stylesheets>
+   <children>
+      <TabPane fx:id="tabSettings" prefHeight="350.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tabMode" text="Mode de données">
+            <content>
+              <AnchorPane fx:id="apMode" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <RadioButton fx:id="rbLM" layoutX="14.0" layoutY="52.0" mnemonicParsing="false" selected="true" styleClass="radiobutton" text="Liste Mémoire" />
+                        <RadioButton fx:id="rbBDD" layoutX="14.0" layoutY="131.0" mnemonicParsing="false" styleClass="radiobutton" text="Base de données" />
+                        <Line endX="100.0" layoutX="116.0" layoutY="100.0" startX="-100.0" styleClass="lignes" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="tabTheme" text="Thème">
+              <content>
+                <AnchorPane fx:id="apTheme" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <RadioButton fx:id="rbNoir" layoutX="14.0" layoutY="52.0" mnemonicParsing="false" selected="true" styleClass="radiobutton" text="Thème sombre (recommandé)" />
+                        <RadioButton fx:id="rbBlanc" layoutX="14.0" layoutY="131.0" mnemonicParsing="false" selected="true" styleClass="radiobutton" text="Thème clair" />
+                        <Line endX="100.0" layoutX="116.0" layoutY="100.0" startX="-100.0" styleClass="lignes" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+          <Tab fx:id="tabAbout" text="A propos">
+            <content>
+              <AnchorPane fx:id="apAbout" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="405.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <AnchorPane fx:id="apBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="405.0" styleClass="background2">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <children>
+            <Separator layoutX="65.0" layoutY="-1.0" prefWidth="200.0" styleClass="separateur-menu" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <ButtonBar layoutX="8.0" layoutY="8.0" prefHeight="40.0" prefWidth="331.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0">
+              <buttons>
+                <Button fx:id="btnAppliquer" defaultButton="true" minWidth="45.0" mnemonicParsing="false" prefHeight="25.0" styleClass="btn-ok" text="Appliquer" />
+                  <Button fx:id="btnRetour" cancelButton="true" minWidth="50.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" styleClass="btn-annuler" text="Fermer" />
+              </buttons>
+            </ButtonBar>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

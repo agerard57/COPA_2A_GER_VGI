@@ -1,0 +1,80 @@
+/* --- Thème sombre --- */
+
+
+/* ------------------- */
+
+
+/* --- BACKGROUND --- */
+
+.background {
+    -fx-background-color: white;
+}
+
+
+/* ------------------ */
+
+
+/* --- BARRE MENU --- */
+
+.barre-menu {
+    -fx-background-color: rgb(150, 150, 150);
+}
+
+.img-close {
+    -fx-image: url("../medias/black/close.png");
+}
+
+.img-settings {
+    -fx-image: url("../medias/black/settings.png");
+}
+
+.separateur-menu {
+    -fx-background-color: black;
+}
+
+
+/* --------------- */
+
+
+/* --- CONTENU --- */
+
+.titre-cat {
+    -fx-font-size: 18px;
+    -fx-font-family: "Calibri";
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
+.lignes {
+    -fx-stroke: black;
+}
+
+.lbl-bas {
+    -fx-font-size: 24px;
+    -fx-font-family: "Calibri";
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
+
+/* -------------- */
+
+
+/* --- IMAGES --- */
+
+.img-cli {
+    -fx-image: url("../medias/black/client.png");
+}
+
+.img-pro {
+    -fx-image: url("../medias/black/pullover.png");
+}
+
+.img-com {
+    -fx-image: url("../medias/black/order.png");
+}
+
+.img-cat {
+    -fx-image: url("../medias/black/cat.png");
+}

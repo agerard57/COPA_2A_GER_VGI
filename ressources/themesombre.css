@@ -1,58 +1,136 @@
-/* --- Thème sombre --- */
-/* ------------------- */
-/* --- BACKGROUND --- */
-
-.background {
-    -fx-background-color: #25221e;
-}
-
-
-/* ------------------ */
-/* --- BARRE MENU --- */
-
-.barre-menu{
-    -fx-background-color: #121212;
-}
-
-.img-close{
-    -fx-image:url("../medias/black/close.png");
-}
-
-.img-settings{
-    -fx-image:url("../medias/black/settings.png");
-}
-
-
-/* --------------- */
-/* --- CONTENU --- */
-
-.titre-cat {
-    -fx-font-size: 18px;
-    -fx-font-family: "Calibri";
-    -fx-font-weight: bold;
-    -fx-text-fill: white;
-}
-
-.lignes {
--fx-stroke: black;
-}
-
-
-/* -------------- */
-/* --- IMAGES --- */
-
-.img-cli{
-    -fx-image:url("../medias/black/client.png");
-}
-
-.img-pro{
-    -fx-image:url("../medias/black/pullover.png");
-}
-
-.img-com{
-    -fx-image:url("../medias/black/order.png");
-}
-
-.img-cat{
-    -fx-image:url("../medias/black/cat.png");
-}
+    /* --- Thème sombre --- */
+    /* ------------------- */
+    /* --- BACKGROUND --- */
+    
+    .background {
+        -fx-background-color: #25221e;
+    }
+    
+    .background2 {
+        -fx-background-color: #222222;
+        -fx-font-size: 16px;
+        -fx-font-family: "Calibri";
+        -fx-text-fill: white;
+        -fx-font-style: italic;
+        -fx-font-weight: bold;
+    }
+    /* ------------------ */
+    /* --- CONTOURS --- */
+    
+    .gridpane {
+        -fx-background-color: #222222;
+        -fx-border-color: white;
+    }
+    
+    .img-visu {
+        -fx-border-color: white;
+    }
+    /* ------------------ */
+    /* --- BARRE MENU --- */
+    
+    .barre-menu {
+        -fx-background-color: #121212;
+    }
+    
+    .img-close {
+        -fx-image: url("../medias/white/close.png");
+    }
+    
+    .img-settings {
+        -fx-image: url("../medias/white/settings.png");
+    }
+    
+    .separateur-menu {
+        -fx-background-color: white;
+    }
+    /* --------------- */
+    /* --- CONTENU --- */
+    
+    .titre-cat {
+        -fx-font-size: 18px;
+        -fx-font-family: "Calibri";
+        -fx-font-weight: bold;
+        -fx-text-fill: white;
+    }
+    
+    .lv {
+        -fx-background-color: #222222;
+        -fx-border-color: black;
+        -fx-border-width: 3px;
+        -fx-control-inner-background: #222222;
+    }
+    
+    .lignes {
+        -fx-stroke: white;
+    }
+    
+    .lbl-bas {
+        -fx-font-size: 24px;
+        -fx-font-family: "Calibri";
+        -fx-font-style: italic;
+        -fx-font-weight: bold;
+        -fx-text-fill: white;
+    }
+    
+    .lbl-desc {
+        -fx-font-size: 12px;
+        -fx-font-family: "System";
+        -fx-font-weight: bold;
+        -fx-text-fill: white;
+    }
+    
+    .lbl-sous-desc {
+        -fx-font-size: 12px;
+        -fx-font-family: "System";
+        -fx-text-fill: white;
+    }
+    /* -------------- */
+    /* --- IMAGES --- */
+    
+    .img-cli {
+        -fx-image: url("../medias/white/client.png");
+    }
+    
+    .img-pro {
+        -fx-image: url("../medias/white/pullover.png");
+    }
+    
+    .img-com {
+        -fx-image: url("../medias/white/order.png");
+    }
+    
+    .img-cat {
+        -fx-image: url("../medias/white/cat.png");
+    }
+    /* ------------------- */
+    /* --- BOUTONS --- */
+    
+    .btn-ok {
+        -fx-font-size: 12px;
+        -fx-font-family: "System";
+        -fx-font-weight: bold;
+        -fx-text-fill: #00a113;
+    }
+    
+    .btn-annuler {
+        -fx-font-size: 12px;
+        -fx-font-family: "System";
+        -fx-text-fill: #e40000;
+    }
+    
+    .btn-import {
+        -fx-font-size: 15px;
+        -fx-font-family: "Calibri";
+        -fx-text-fill: black;
+    }
+    
+    .radiobutton {
+        -fx-font-size: 12px;
+        -fx-font-family: "System";
+        -fx-font-weight: bold;
+        -fx-text-fill: White;
+    }
+    
+    .tab-header-background {
+        -fx-background-color: #222222;
+    }

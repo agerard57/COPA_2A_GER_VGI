@@ -4,11 +4,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,9 +17,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vbAddProduit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerAjouterProduit">
+<VBox fx:id="vbAddCategorie" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerAjouterProduit">
    <children>
-      <GridPane fx:id="gpSaisieProduit" prefHeight="309.0" prefWidth="640.0" styleClass="gridpane" stylesheets="@../bin/Stylesheet.css">
+      <GridPane fx:id="gpSaisieCategorie" prefHeight="309.0" prefWidth="640.0" styleClass="gridpane" stylesheets="@../bin/Stylesheet.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="26.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="78.0" />
@@ -26,89 +27,82 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="77.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="107.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="107.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </VBox.margin>
          <children>
-            <Label fx:id="lblNom" styleClass="lbl-desc" text="Nom :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="lblTitre" styleClass="lbl-desc" text="Titre :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="35.0" />
+                  <Insets left="34.0" />
                </GridPane.margin>
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="tfNom" prefHeight="25.0" prefWidth="166.0" promptText="Entrez ici le nom du produit" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <TextField fx:id="tfTitre" prefHeight="25.0" prefWidth="333.0" promptText="Entrez ici le titre de la catégorie" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <GridPane.margin>
-                  <Insets right="100.0" />
+                  <Insets />
                </GridPane.margin>
             </TextField>
-            <Label fx:id="lblDesc" styleClass="lbl-desc" text="Description :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="lblVisuel" styleClass="lbl-desc" text="Visuel :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
+               <GridPane.margin>
+                  <Insets left="25.0" />
+               </GridPane.margin>
             </Label>
-            <Label fx:id="lblTarif" styleClass="lbl-desc" text="Tarif :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="lblPrevisuel" styleClass="lbl-sous-desc" text="Prévisuel :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="12.0" />
+               </GridPane.margin>
+            </Label>
+            <AnchorPane prefHeight="43.0" prefWidth="210.0" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.rowSpan="2">
+               <children>
+                  <ImageView fx:id="ivPrevisuel" fitHeight="84.0" fitWidth="100.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" styleClass="img-visu">
+                     <image>
+                        <Image url="@../medias/white/upload.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <GridPane GridPane.columnIndex="2" GridPane.rowIndex="3">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="172.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="218.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btnImportVisu" defaultButton="true" mnemonicParsing="false" styleClass="btn-import" text="Importer un visuel" />
+                  <TextField fx:id="tfURLVisu" prefHeight="25.0" prefWidth="188.0" promptText="URL du visuel" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <Label fx:id="lblIdCat" styleClass="lbl-desc" text="ID :" textFill="WHITE" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="48.0" top="20.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="tfIdCat" prefHeight="25.0" prefWidth="333.0" GridPane.columnIndex="2">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <GridPane.margin>
-                  <Insets left="37.0" />
-               </GridPane.margin>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblCat" styleClass="lbl-desc" text="Catégorie :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <GridPane.margin>
-                  <Insets left="9.0" />
-               </GridPane.margin>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <TextArea fx:id="taDesc" prefHeight="200.0" prefWidth="200.0" promptText="Entrez ici la description du produit" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets top="30.0" />
-               </GridPane.margin>
-            </TextArea>
-            <TextField fx:id="tfTarif" prefHeight="25.0" prefWidth="80.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets right="320.0" />
-               </GridPane.margin>
-            </TextField>
-            <Label fx:id="lblEuros" styleClass="lbl-sous-desc" text="euros à l'unité" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="75.0" />
-               </GridPane.margin>
-            </Label>
-            <ChoiceBox fx:id="cbCat" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Label fx:id="lblNom1" styleClass="lbl-desc" text="ID :" textFill="WHITE" GridPane.columnIndex="1">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </Label>
-            <TextField fx:id="tfNom1" prefHeight="25.0" prefWidth="166.0" GridPane.columnIndex="2">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <GridPane.margin>
-                  <Insets right="350.0" />
+                  <Insets right="345.0" top="20.0" />
                </GridPane.margin>
             </TextField>
          </children>
@@ -130,7 +124,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnOk" defaultButton="true" mnemonicParsing="false" onAction="#creerModele" prefHeight="25.0" prefWidth="115.0" styleClass="btn-ok" text="Ok" textFill="#00a113" GridPane.columnIndex="1">
+                  <Button fx:id="btnCreer" mnemonicParsing="false" onAction="#creerModele" prefHeight="25.0" prefWidth="115.0" styleClass="btn-ok" text="Ok" textFill="#00a113" GridPane.columnIndex="1">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

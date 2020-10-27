@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -13,11 +14,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMenuProduit">
+<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMenuProduit">
   <children>
       <BorderPane prefHeight="605.0" prefWidth="659.0">
          <bottom>
-            <Label fx:id="lbl_gestion_produit" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="60.0" prefWidth="544.0" style="&#10;" text="-- Gestion des produits --" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="false" BorderPane.alignment="CENTER">
+            <Label fx:id="lblGestionProduit" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="60.0" prefWidth="544.0" style="&#10;" styleClass="lbl-bas" text="-- Gestion des produits --" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="false" BorderPane.alignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
@@ -25,7 +26,7 @@
                   <Insets />
                </opaqueInsets>
                <graphic>
-                  <Line endX="79.58578491210938" scaleX="7.0" strokeType="OUTSIDE" translateY="-30.0" />
+                  <Line endX="79.58578491210938" scaleX="7.0" strokeType="OUTSIDE" styleClass="barre-menu" translateY="-30.0" />
                </graphic>
                <BorderPane.margin>
                   <Insets />
@@ -33,7 +34,7 @@
             </Label>
          </bottom>
          <center>
-            <ListView prefHeight="272.0" prefWidth="640.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-control-inner-background: #25221e;" BorderPane.alignment="CENTER">
+            <ListView fx:id="lvPro" prefHeight="272.0" prefWidth="640.0" styleClass="lv" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
                </BorderPane.margin>
@@ -80,4 +81,8 @@
          </top>
       </BorderPane>
   </children>
+   <stylesheets>
+      <URL value="@themeclair.css" />
+      <URL value="@themesombre.css" />
+   </stylesheets>
 </VBox>
