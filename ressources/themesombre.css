@@ -102,6 +102,10 @@
     .img-cat {
         -fx-image: url("../medias/white/cat.png");
     }
+    
+    .img-home {
+        -fx-image: url("../medias/white/maison.png");
+    }
     /* ------------------- */
     /* --- BOUTONS --- */
     

@@ -27,7 +27,7 @@ public class Main extends Application{
 	        primaryStage.setTitle("Pull Moches");
 	        primaryStage.getIcons().add(new Image("file:medias/pullover.png"));
 
-			Parent root = FXMLLoader.load(this.getClass().getResource("/menu.fxml"));
+			Parent root = FXMLLoader.load(this.getClass().getResource("/gabarit.fxml"));
 
 
 	        root.setOnMousePressed(new EventHandler<MouseEvent>() {

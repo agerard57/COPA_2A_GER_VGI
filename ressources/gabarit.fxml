@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
@@ -8,13 +8,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerGabarit">
+<VBox fx:id="vbMenu" prefHeight="405.0" prefWidth="658.0" styleClass="background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerGabarit">
    <children>
-      <AnchorPane fx:id="apMenu" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="640.0" style="-fx-background-color: #121212;">
+      <AnchorPane fx:id="apMenu" prefHeight="19.0" prefWidth="640.0" styleClass="barre-menu">
          <children>
-            <Separator layoutY="27.0" prefHeight="0.0" prefWidth="640.0" />
-            <ImageView fx:id="btnQuit" fitHeight="21.0" fitWidth="25.0" layoutX="610.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+            <Separator layoutY="27.0" prefHeight="0.0" prefWidth="658.0" styleClass="separateur-menu" />
+            <ImageView fx:id="btnQuit" fitHeight="21.0" fitWidth="25.0" layoutX="629.0" layoutY="4.0" onMouseClicked="#pageFermer" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../medias/quit.png" />
                </image>
@@ -22,31 +21,30 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="btnClose" fitHeight="30.0" fitWidth="25.0" layoutX="580.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../medias/close.png" />
-               </image>
+            <ImageView fx:id="btnClose" fitHeight="30.0" fitWidth="25.0" layoutX="602.0" layoutY="4.0" onMouseClicked="#pageReduire" pickOnBounds="true" preserveRatio="true" styleClass="img-close">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="btnSettings" fitHeight="21.0" fitWidth="25.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../medias/settings.png" />
-               </image>
+            <ImageView fx:id="btnSettings" fitHeight="21.0" fitWidth="25.0" layoutX="33.0" layoutY="4.0" onMouseClicked="#pageSettings" pickOnBounds="true" preserveRatio="true" styleClass="img-settings">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="btnHome" fitHeight="21.0" fitWidth="41.0" layoutX="3.0" layoutY="3.0" onMouseClicked="#pageHome" pickOnBounds="true" preserveRatio="true" styleClass="img-home">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
          </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
+         <cursor>
+            <Cursor fx:constant="MOVE" />
+         </cursor>
       </AnchorPane>
-      <AnchorPane fx:id="apContenu" prefHeight="370.0" prefWidth="640.0">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </AnchorPane>
+      <AnchorPane fx:id="apMenuPrincipal" prefHeight="409.0" prefWidth="658.0" />
    </children>
+   <stylesheets>
+      <URL value="@themeclair.css" />
+      <URL value="@themesombre.css" />
+   </stylesheets>
 </VBox>
