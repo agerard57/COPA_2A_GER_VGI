@@ -11,6 +11,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -37,15 +40,7 @@
          <top>
             <AnchorPane fx:id="barreGestion" prefHeight="19.0" prefWidth="640.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="btnAjout" fitHeight="25.0" fitWidth="26.0" layoutX="522.0" layoutY="6.0" onMouseMoved="#txtAjouter" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../medias/add.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-                  <ImageView fx:id="btnSuppr" fitHeight="38.0" fitWidth="30.0" layoutX="550.0" layoutY="4.0" onMouseMoved="#txtSuppr" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnSuppr" disable="true" fitHeight="38.0" fitWidth="30.0" layoutX="550.0" layoutY="4.0" onMouseClicked="#pageSupprClient" onMouseMoved="#txtSuppr" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../medias/minus.png" />
                      </image>
@@ -53,7 +48,15 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="btnEdit" disable="true" fitHeight="34.0" fitWidth="30.0" layoutX="596.0" layoutY="4.0" onMouseMoved="#txtMod" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnAjout" fitHeight="25.0" fitWidth="26.0" layoutX="522.0" layoutY="6.0" onMouseClicked="#pageAjoutClient" onMouseMoved="#txtAjouter" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../medias/add.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="btnEdit" disable="true" fitHeight="34.0" fitWidth="30.0" layoutX="602.0" layoutY="4.0" onMouseClicked="#pageModifClient" onMouseMoved="#txtMod" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../medias/pencil.png" />
                      </image>
@@ -62,7 +65,7 @@
                      </cursor>
                   </ImageView>
                   <TextField layoutX="48.0" layoutY="7.0" prefHeight="25.0" prefWidth="470.0" />
-                  <ImageView fx:id="btnRech" fitHeight="25.0" fitWidth="34.0" layoutX="12.0" layoutY="6.0" onMouseMoved="#txtRecher" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnRech" fitHeight="25.0" fitWidth="34.0" layoutX="12.0" layoutY="6.0" onMouseClicked="#rechercher" onMouseMoved="#txtRecher" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../medias/search.png" />
                      </image>
@@ -74,23 +77,53 @@
             </AnchorPane>
          </top>
          <center>
-            <TableView fx:id="tvCli" prefHeight="200.0" prefWidth="200.0" styleClass="tv" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+            <TableView fx:id="tvCli" onMouseClicked="#seleCli" prefHeight="261.0" prefWidth="332.0" styleClass="tv" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="tcID" editable="false" prefWidth="51.0" text="ID" />
-                <TableColumn fx:id="tcIdtt" editable="false" prefWidth="216" text="Identitée">
-            		<columns>
-                		<TableColumn fx:id="tcNom" editable="false" prefWidth="101.0" text="Nom" />
-                  		<TableColumn fx:id="tcPrenom" editable="false" prefWidth="115.0" text="Prenom" />
-                    </columns>
-        		</TableColumn>
-                <TableColumn fx:id="tcEmail" editable="false" prefWidth="126.0" sortable="false" text="E-mail" />
-                <TableColumn fx:id="tcVille" editable="false" prefWidth="209.0" text="Ville" />
+          		<TableColumn fx:id="tcNom" editable="false" prefWidth="86.0" text="Nom" />
+            		<TableColumn fx:id="tcPrenom" editable="false" prefWidth="92.0" text="Prenom" />
+                <TableColumn fx:id="tcAdrVille" editable="false" minWidth="0.0" prefWidth="97.0" text="Ville" />
               </columns>
                <BorderPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </BorderPane.margin>
             </TableView>
          </center>
+         <right>
+            <GridPane prefHeight="281.0" prefWidth="331.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="5.0" prefWidth="7.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="157.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="6.0" prefWidth="8.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" prefWidth="160.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="61.0" minHeight="0.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="55.0" minHeight="7.0" prefHeight="15.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="55.0" minHeight="3.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="64.0" minHeight="8.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="73.0" minHeight="0.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="90.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="62.0" minHeight="7.0" prefHeight="37.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label styleClass="lbl-desc" text="Nom :" GridPane.columnIndex="1" />
+                  <Label styleClass="lbl-desc" text="Prénom :" GridPane.columnIndex="3" />
+                  <Label styleClass="lbl-desc" text="E-Mail :" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <Label styleClass="lbl-desc" text="ID :" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label styleClass="lbl-desc" text="Adresse :" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label fx:id="lblNom" opacity="0.0" styleClass="lbl-sous-desc" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="lblPrenom" opacity="0.0" styleClass="lbl-sous-desc" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Label fx:id="lblEmail" opacity="0.0" styleClass="lbl-sous-desc" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <Label fx:id="lblID" opacity="0.0" styleClass="lbl-sous-desc" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="lblAdr1" opacity="0.0" styleClass="lbl-sous-desc" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Label fx:id="lblAdr2" opacity="0.0" styleClass="lbl-sous-desc" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <Label fx:id="lblAdr3" opacity="0.0" styleClass="lbl-sous-desc" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+               </children>
+            </GridPane>
+         </right>
       </BorderPane>
   </children>
    <stylesheets>

@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 
+import dao.factory.DAOFactory;
+import enumz.ModeDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -11,7 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-public class ControllerMenu {
+public class ControllerMenu{
 
     @FXML
     private VBox vbMenu;
@@ -64,6 +66,14 @@ public class ControllerMenu {
     @FXML
     private Label lblCat;
 
+    @FXML
+    public void initialize() throws IOException{
+		if(ControllerSettings.getDaof() == null) 
+		{
+			ControllerSettings.setDaof(DAOFactory.getDAOFactory(ModeDAO.LISTE_MEMOIRE));
+		}
+    }
+    
     @FXML
     void pageGestionCategories	(MouseEvent event) throws IOException {
     	VBox pane = FXMLLoader.load(getClass().getResource("/menu_categorie.fxml"));

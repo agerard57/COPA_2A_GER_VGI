@@ -1,5 +1,6 @@
 package enumz;
 
 public enum ModeDAO {
-MYSQL, LISTE_MEMOIRE;
+	MYSQL, 
+	LISTE_MEMOIRE;
 }

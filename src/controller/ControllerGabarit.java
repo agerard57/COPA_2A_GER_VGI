@@ -66,17 +66,17 @@ public class ControllerGabarit  {
     	stage.setIconified(true);
     }
 
-@FXML 
+    @FXML 
 	void pageFermer(MouseEvent event) throws IOException {
 		Stage stage = (Stage) btnClose.getScene().getWindow();
 		stage.close();
 		System.exit(1);
 }
 
-@FXML
-public void initialize() throws IOException{
-	VBox pane = FXMLLoader.load(getClass().getResource("/menu.fxml"));
-	apMenuPrincipal.getChildren().setAll(pane);	
+	@FXML
+	public void initialize() throws IOException{
+		VBox pane = FXMLLoader.load(getClass().getResource("/menu.fxml"));
+		apMenuPrincipal.getChildren().setAll(pane);	
 }
 
 }

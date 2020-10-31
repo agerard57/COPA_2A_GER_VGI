@@ -18,10 +18,6 @@
 <?import javafx.scene.shape.Line?>
 
 <VBox fx:id="vbSettings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="405.0" styleClass="background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerSettings">
-   <stylesheets>
-      <URL value="@themeclair.css" />
-      <URL value="@themesombre.css" />
-   </stylesheets>
    <children>
       <TabPane fx:id="tabSettings" prefHeight="350.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -29,11 +25,11 @@
             <content>
               <AnchorPane fx:id="apMode" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <RadioButton fx:id="rbLM" layoutX="14.0" layoutY="113.0" mnemonicParsing="false" selected="true" styleClass="radiobutton" text="Liste Mémoire">
+                        <RadioButton fx:id="rbLM" layoutX="14.0" layoutY="61.0" mnemonicParsing="false" onAction="#modeListeMemoire" selected="true" text="Liste Mémoire">
                            <toggleGroup>
                               <ToggleGroup fx:id="tgMode" />
                            </toggleGroup></RadioButton>
-                        <RadioButton fx:id="rbBDD" layoutX="14.0" layoutY="192.0" mnemonicParsing="false" styleClass="radiobutton" text="Base de données" toggleGroup="$tgMode" />
+                        <RadioButton fx:id="rbBDD" layoutX="13.0" layoutY="231.0" mnemonicParsing="false" onAction="#modeBaseDeDonnees" styleClass="radiobutton" text="Base de données" toggleGroup="$tgMode" />
                         <Line endX="100.0" layoutX="116.0" layoutY="161.0" startX="-100.0" styleClass="lignes" />
                         <Separator prefHeight="3.0" prefWidth="421.0" styleClass="separateur-menu" />
                      </children>
@@ -44,11 +40,11 @@
               <content>
                 <AnchorPane fx:id="apTheme" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <RadioButton fx:id="rbNoir" layoutX="14.0" layoutY="113.0" mnemonicParsing="false" selected="true" styleClass="radiobutton" text="Thème sombre (recommandé)">
+                        <RadioButton fx:id="rbNoir" layoutX="14.0" layoutY="61.0" mnemonicParsing="false" selected="true" styleClass="radiobutton" text="Thème sombre (recommandé)">
                            <toggleGroup>
                               <ToggleGroup fx:id="tgTheme" />
                            </toggleGroup></RadioButton>
-                        <RadioButton fx:id="rbBlanc" layoutX="14.0" layoutY="192.0" mnemonicParsing="false" styleClass="radiobutton" text="Thème clair" toggleGroup="$tgTheme" />
+                        <RadioButton fx:id="rbBlanc" layoutX="13.0" layoutY="231.0" mnemonicParsing="false" styleClass="radiobutton" text="Thème clair" toggleGroup="$tgTheme" />
                         <Line endX="100.0" layoutX="116.0" layoutY="161.0" startX="-100.0" styleClass="lignes" />
                         <Separator layoutX="-4.0" prefHeight="3.0" prefWidth="421.0" styleClass="separateur-menu" />
                      </children>
@@ -78,7 +74,7 @@
                         <Label fx:id="lblGit" layoutX="74.0" layoutY="215.0" styleClass="lbl-desc" text="Lien GitHub" />
                         <Label fx:id="lblTrello" layoutX="264.0" layoutY="215.0" styleClass="lbl-desc" text="Lien Trello" />
                         <Line endX="100.0" layoutX="203.0" layoutY="200.0" startX="-100.0" styleClass="lignes" />
-                        <Label fx:id="lblAbout" layoutX="63.0" layoutY="120.0" styleClass="lbl-about-contenu" text="Version 5.62&#10;Date: 2020-10-02&#10;Version de Java: 11.0.1, Oracle Corporation" textAlignment="CENTER" textFill="WHITE" />
+                        <Label fx:id="lblAbout" layoutX="63.0" layoutY="120.0" styleClass="lbl-about-contenu" text="Version 5.64&#10;Date: 2020-10-02&#10;Version de Java: 11.0.1, Oracle Corporation" textAlignment="CENTER" textFill="WHITE" />
                         <Separator prefHeight="3.0" prefWidth="405.0" styleClass="separateur-menu" />
                         <Label layoutX="66.0" layoutY="35.0" styleClass="lbl-about-contenu" text="GERARD Alexandre - GIANGRECO Vincent" />
                         <Label layoutX="69.0" layoutY="14.0" styleClass="lbl-about-titres" text="--- Logiciel de pulls moches fait par ---" />
@@ -102,4 +98,8 @@
          </children>
       </AnchorPane>
    </children>
+   <stylesheets>
+      <URL value="@themeclair.css" />
+      <URL value="@themesombre.css" />
+   </stylesheets>
 </VBox>

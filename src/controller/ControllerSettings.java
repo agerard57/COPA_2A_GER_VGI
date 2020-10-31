@@ -5,9 +5,12 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
+import dao.factory.DAOFactory;
+import enumz.ModeDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -20,6 +23,8 @@ import javafx.stage.Stage;
 
 public class ControllerSettings {
 
+	private static DAOFactory daof;
+	
     @FXML
     private VBox vbSettings;
 
@@ -69,10 +74,20 @@ public class ControllerSettings {
     private ImageView btnTrello;
 
     @FXML
+    private Label lblGit;
+
+    @FXML
+    private Label lblTrello;
+
+    @FXML
+    private Label lblAbout;
+
+    @FXML
     private AnchorPane apBtn;
 
     @FXML
     private Button btnFermer;
+
     
     @FXML
     void fermerPage(ActionEvent event) {
@@ -80,6 +95,22 @@ public class ControllerSettings {
 		stage.close();
     }
     
+
+ //--------------------------MODE-------------------------------
+    
+    @FXML
+    void modeBaseDeDonnees(ActionEvent event) {
+    	setDaof(DAOFactory.getDAOFactory(ModeDAO.MYSQL));
+    }
+
+    @FXML
+    void modeListeMemoire(ActionEvent event) {
+    	setDaof(DAOFactory.getDAOFactory(ModeDAO.LISTE_MEMOIRE)); 
+    }
+    
+    //--------------------------THEME------------------------------
+    
+    //--------------------------ABOUT------------------------------   
     @FXML
     void pageGit(MouseEvent event) {
     	try {
@@ -103,6 +134,16 @@ public class ControllerSettings {
     	}
 
     }
+
+
+	public static DAOFactory getDaof() {
+		return daof;
+	}
+
+
+	public static void setDaof(DAOFactory daof) {
+		ControllerSettings.daof = daof;
+	}
 
 }
 

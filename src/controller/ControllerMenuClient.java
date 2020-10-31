@@ -1,30 +1,31 @@
 package controller;
 
 import java.io.IOException;
-
-import com.sun.javafx.scene.control.LabeledText;
+import java.util.Optional;
 
 import clients.Client;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
+import dao.factory.DAOFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
+import vue.VueAjouterClient;
 
 public class ControllerMenuClient {
+
+	private DAOFactory daof;
 
     @FXML
     private Label lblGestionClients;
@@ -44,19 +45,29 @@ public class ControllerMenuClient {
     @FXML
     private ImageView btnRech;
 
-    private ObservableList<Client> getClients(){
-        ObservableList<Client> clients = FXCollections.observableArrayList();
-        clients.add(new Client(1,"GERARD","Alexandre","se57@hm.fr",null, null, null, null, "Metz", null));
-        clients.add(new Client(2,"RYAN","Andrew","bio75@mi.com",null, null, null, null, "Rapture", null));
-        clients.add(new Client(3,"REZNOV","Victor","lib12@fre.ru", null, null, null, null, "Tentling", null));
-        return clients;
-        }
+    @FXML
+    private Label lblNom;
 
+    @FXML
+    private Label lblPrenom;
+
+    @FXML
+    private Label lblEmail;
+
+    @FXML
+    private Label lblID;
+
+    @FXML
+    private Label lblAdr1;
+
+    @FXML
+    private Label lblAdr2;
+    
+    @FXML
+    private Label lblAdr3;
+    
     @FXML
     private TableView<Client> tvCli;
-
-    @FXML
-    private TableColumn<Client, Integer> tcID;
 
     @FXML
     private TableColumn<Client, ?> tcIdtt;
@@ -71,7 +82,7 @@ public class ControllerMenuClient {
     private TableColumn<Client, String> tcEmail;
 
     @FXML
-    private TableColumn<Client, String> tcVille;
+    private TableColumn<Client, String> tcAdrVille;
 
     @FXML
     void txtAjouter(MouseEvent event) {
@@ -96,22 +107,106 @@ public class ControllerMenuClient {
     }
     
     @FXML
-    public void initialize() throws IOException{
-    	loadTV();
+    void pageAjoutClient(MouseEvent event) throws IOException {
+    	
+    	VueAjouterClient vac = new VueAjouterClient();
+    	
     }
 
-	@SuppressWarnings("unchecked")
-	private void loadTV() {
-	        tcID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+    @FXML
+    void pageModifClient(MouseEvent event) throws IOException {
+    	if (tvCli.getSelectionModel().getSelectedIndex() != -1) {
+    	VueAjouterClient vac = new VueAjouterClient();
+    	vac.getController().modifierClient((Client) tvCli.getSelectionModel().getSelectedItem());
+}
+    	}
 
-	        tcNom.setCellValueFactory(new PropertyValueFactory<>("Nom"));
+    @FXML
+    void seleCli(MouseEvent event) {
+    	if (tvCli.getSelectionModel().getSelectedIndex() != -1) {
+    		lblNom.setOpacity(1);
+    		lblPrenom.setOpacity(1);
+    		lblID.setOpacity(1);
+    		lblEmail.setOpacity(1);
+    		lblAdr1.setOpacity(1);
+    		lblAdr2.setOpacity(1);
+    		lblAdr3.setOpacity(1);
 
-	        tcPrenom.setCellValueFactory(new PropertyValueFactory<>("Prenom"));
+        	btnSuppr.setDisable(false);
+        	btnEdit.setDisable(false);
+        	btnSuppr.setOpacity(1);
+        	btnEdit.setOpacity(1);
+    		
+    		Client c = tvCli.getSelectionModel().getSelectedItem();
+    		
+    		lblNom.setText(c.getNom());
+    		lblPrenom.setText(c.getPrenom());
+    		lblID.setText(" " + Integer.toString(c.getIdClient()));
+    		lblEmail.setText(c.getIdentifiant());
+    		lblAdr1.setText(c.getAdrNumero() + " " + c.getAdrVoie());
+    		lblAdr2.setText(c.getAdrCodePostal() + " " + c.getAdrVille());
+    		lblAdr3.setText(c.getAdrPays());
 
-	        tcVille.setCellValueFactory(new PropertyValueFactory<>("Ville"));
+    	}
+    }
 
-	        tvCli.setItems(getClients());
-	        tvCli.getColumns().addAll(tcID,tcNom,tcPrenom,tcVille);
+    @FXML
+    void pageSupprClient(MouseEvent event) {
+    	if (tvCli.getSelectionModel().getSelectedIndex() != -1);
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle("Supprimer un client");
+    	alert.setHeaderText("Voulez-vous vraiment supprimer ce client ?");
+    	alert.setContentText("Ce choix est définitif.");
+    	
+    	Optional<ButtonType> resultat = alert.showAndWait();
+    	if (resultat.isPresent() && resultat.get() == ButtonType.OK) {
+    		daof.getClientDAO().delete(tvCli.getSelectionModel().getSelectedItem());
+    		refresh();
+    		
+    	}
+    }
+    
+	public void reset() {
+		lblNom.setText("");
+		lblPrenom.setText("");
+		lblID.setText("");
+		lblEmail.setText("");
+		lblAdr1.setText("");
+		lblAdr2.setText("");
+		lblAdr3.setText("");
 	}
- }
+	
+    public void refresh() {
+    	reset();
+    	tvCli.getItems().clear();
+    	tvCli.getItems().setAll(daof.getClientDAO().findAll());
+    }
+    @FXML
+    void rechercher(MouseEvent event) {
+
+    }
+    
+    @SuppressWarnings("unchecked")
+	@FXML
+    public void initialize() throws IOException {
+    	
+    	daof = ControllerSettings.getDaof();
+    	
+        this.tcNom.setCellValueFactory(new PropertyValueFactory<Client, String>("Nom"));
+
+        this.tcPrenom.setCellValueFactory(new PropertyValueFactory<Client, String>("Prenom"));
+
+        this.tcAdrVille.setCellValueFactory(new PropertyValueFactory<Client, String>("AdrVille"));
+       
+
+        this.tvCli.getColumns().setAll(tcNom,tcPrenom,tcAdrVille);
+        this.tvCli.getItems().setAll(daof.getClientDAO().findAll());
+        
+            }
+}
+
+    
+
+
+
     
