@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -53,6 +54,8 @@ public class ControllerGabarit  {
     	Parent part = FXMLLoader.load(getClass().getResource("/settings.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(part);
+        stage.setTitle("Parametres");
+        stage.getIcons().add(new Image("file:medias/black/settings.png"));
         stage.setScene(scene);
         stage.show();
     }
@@ -67,6 +70,7 @@ public class ControllerGabarit  {
 	void pageFermer(MouseEvent event) throws IOException {
 		Stage stage = (Stage) btnClose.getScene().getWindow();
 		stage.close();
+		System.exit(1);
 }
 
 @FXML

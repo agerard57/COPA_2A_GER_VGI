@@ -25,7 +25,7 @@ public class Main extends Application{
 	    public void start(final Stage primaryStage) throws IOException {
 	        primaryStage.initStyle(StageStyle.UNDECORATED);
 	        primaryStage.setTitle("Pull Moches");
-	        primaryStage.getIcons().add(new Image("file:medias/pullover.png"));
+	        primaryStage.getIcons().add(new Image("file:medias/white/pullover.png"));
 
 			Parent root = FXMLLoader.load(this.getClass().getResource("/gabarit.fxml"));
 
@@ -48,6 +48,7 @@ public class Main extends Application{
 	        Scene scene = new Scene(root, 658, 405);
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
+	        
 	    }
 		
 
@@ -58,4 +59,6 @@ public class Main extends Application{
 
 
 	}
+	
+
 }

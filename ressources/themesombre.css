@@ -53,11 +53,55 @@
         -fx-text-fill: white;
     }
     
-    .lv {
-        -fx-background-color: #222222;
-        -fx-border-color: black;
-        -fx-border-width: 3px;
-        -fx-control-inner-background: #222222;
+    .tv {
+        -fx-border-color: white;
+        -fx-background-color: transparent;
+    }
+    
+    .table-view:focused {
+        -fx-background-color: transparent;
+    }
+    
+    .table-view .column-header-background {
+        -fx-background-color: linear-gradient(#131313 0%, #424141 100%);
+    }
+    
+    .table-view .column-header-background .label {
+        -fx-background-color: transparent;
+        -fx-text-fill: white;
+    }
+    
+    .table-view .column-header-background .filler {
+        -fx-background-color: linear-gradient(#131313 0%, #424141 100%);
+    }
+    
+    .table-view .column-header {
+        -fx-background-color: transparent;
+    }
+    
+    .table-view .table-cell {
+        -fx-text-fill: white;
+    }
+    
+    .table-row-cell {
+        -fx-background-color: -fx-table-cell-border-color, #353535;
+    }
+    
+    .table-row-cell:odd {
+        -fx-background-color: -fx-table-cell-border-color, #222222;
+    }
+    
+    .table-row-cell:selected {
+        -fx-background-color: #0b74be;
+    }
+    
+    .table-view>.virtual-flow>.scroll-bar:vertical,
+    .table-view>.virtual-flow>.scroll-bar:vertical>.track,
+    .table-view>.virtual-flow>.scroll-bar:vertical>.track-background,
+    .table-view>.virtual-flow>.scroll-bar:horizontal,
+    .table-view>.virtual-flow>.scroll-bar:horizontal>.track,
+    .table-view>.virtual-flow>.scroll-bar:horizontal>.track-background {
+        -fx-background-color: transparent;
     }
     
     .lignes {
@@ -81,6 +125,19 @@
     
     .lbl-sous-desc {
         -fx-font-size: 12px;
+        -fx-font-family: "System";
+        -fx-text-fill: white;
+    }
+    
+    .lbl-about-titres {
+        -fx-font-size: 15px;
+        -fx-font-family: "System";
+        -fx-font-weight: bold;
+        -fx-text-fill: white;
+    }
+    
+    .lbl-about-contenu {
+        -fx-font-size: 15px;
         -fx-font-family: "System";
         -fx-text-fill: white;
     }

@@ -41,7 +41,7 @@
             <Cursor fx:constant="MOVE" />
          </cursor>
       </AnchorPane>
-      <AnchorPane fx:id="apMenuPrincipal" prefHeight="409.0" prefWidth="658.0" />
+      <AnchorPane fx:id="apMenuPrincipal" minHeight="400.0" prefHeight="400.0" prefWidth="658.0" />
    </children>
    <stylesheets>
       <URL value="@themeclair.css" />
