@@ -104,7 +104,7 @@ public class ControllerAjouterProduit implements Initializable{
     	
     	this.lblAfficher.setText(produit.toString());
     	
-    	JOptionPane.showMessageDialog(null, "Traitement rï¿½ussi");
+    	JOptionPane.showMessageDialog(null, "Traitement réussi");
     }
 
     @FXML

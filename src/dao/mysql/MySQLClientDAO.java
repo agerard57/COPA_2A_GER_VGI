@@ -33,6 +33,7 @@ public class MySQLClientDAO implements ClientDAO{
 	
 	public boolean create(Client c) {
 		Connexion connect = new Connexion();
+		@SuppressWarnings("unused")
 		int i = 0;
 		try {
 			System.out.println("dans le try debut");
@@ -83,10 +84,17 @@ public boolean update(Client objet) {
 		try {
 			Connection c1 = c.creeConnexion();
 			
-			PreparedStatement requete = c1.prepareStatement("UPDATE Client SET nom = ?, prenom = ? WHERE id_client = ?");
+			PreparedStatement requete = c1.prepareStatement("UPDATE Client SET nom = ?, prenom = ?, identifiant = ?, mot_de_passe = ?, adr_numero = ?, adr_voie = ?, adr_code_postal = ?, adr_ville = ?, adr_pays = ? WHERE id_client = ?");
 			requete.setString(1, objet.getNom());
 			requete.setString(2, objet.getPrenom());
-			requete.setInt(3, objet.getIdClient());
+			requete.setString(3, objet.getIdentifiant());
+			requete.setString(4, objet.getMotDePasse());
+			requete.setString(5, objet.getAdrNumero());
+			requete.setString(6, objet.getAdrVoie());
+			requete.setString(7, objet.getAdrCodePostal());
+			requete.setString(8, objet.getAdrVille());
+			requete.setString(9, objet.getAdrPays());
+			requete.setInt(10, objet.getIdClient());
 			i = requete.executeUpdate();
 			
 			c1.close();

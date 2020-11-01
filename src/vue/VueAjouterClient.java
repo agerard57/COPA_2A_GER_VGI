@@ -26,7 +26,7 @@ public class VueAjouterClient extends Stage{
 			this.setScene(scene);
 			
 			this.initModality(Modality.APPLICATION_MODAL);
-			this.setTitle("Ajout d'un client");
+			this.setTitle("Page client");
 			this.getIcons().add(new Image("file:medias/black/client.png"));
 			
 			controler = fxmlLoader.getController();

@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import clients.Client;
@@ -15,6 +16,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -43,9 +45,6 @@ public class ControllerMenuClient {
     private ImageView btnEdit;
 
     @FXML
-    private ImageView btnRech;
-
-    @FXML
     private Label lblNom;
 
     @FXML
@@ -65,6 +64,9 @@ public class ControllerMenuClient {
     
     @FXML
     private Label lblAdr3;
+    
+    @FXML
+	private TextField tfRech;
     
     @FXML
     private TableView<Client> tvCli;
@@ -95,7 +97,14 @@ public class ControllerMenuClient {
     void txtMod(MouseEvent event) {
     	lblGestionClients.setText("Modifier le client");
     }
-
+    @FXML
+    void txtRefr(MouseEvent event) {
+    	lblGestionClients.setText("Rafraichir la table");
+    }    
+    @FXML
+    void txtBarRech(MouseEvent event) {
+    	lblGestionClients.setText("Rechercher par nom / nom , prenom");
+    }
     @FXML
     void txtRecher(MouseEvent event) {
     	lblGestionClients.setText("Rechercher");
@@ -106,6 +115,10 @@ public class ControllerMenuClient {
     	lblGestionClients.setText("Supprimer un client");
     }
     
+    @FXML
+    void txtCli(MouseEvent event) {
+    	lblGestionClients.setText("-- Gestion des clients --");
+    } 
     @FXML
     void pageAjoutClient(MouseEvent event) throws IOException {
     	
@@ -167,6 +180,8 @@ public class ControllerMenuClient {
     }
     
 	public void reset() {
+		
+		tfRech.setText("");
 		lblNom.setText("");
 		lblPrenom.setText("");
 		lblID.setText("");
@@ -174,6 +189,19 @@ public class ControllerMenuClient {
 		lblAdr1.setText("");
 		lblAdr2.setText("");
 		lblAdr3.setText("");
+		lblNom.setOpacity(0);
+		lblPrenom.setOpacity(0);
+		lblID.setOpacity(0);
+		lblEmail.setOpacity(0);
+		lblAdr1.setOpacity(0);
+		lblAdr2.setOpacity(0);
+		lblAdr3.setOpacity(0);
+
+		
+    	btnSuppr.setDisable(true);
+    	btnEdit.setDisable(true);
+    	btnSuppr.setOpacity(0.2);
+    	btnEdit.setOpacity(0.2);
 	}
 	
     public void refresh() {
@@ -181,9 +209,62 @@ public class ControllerMenuClient {
     	tvCli.getItems().clear();
     	tvCli.getItems().setAll(daof.getClientDAO().findAll());
     }
+
     @FXML
     void rechercher(MouseEvent event) {
-
+    	ArrayList<Client> listeClient = new ArrayList<Client>();
+    	String[] res;
+    	boolean	type = tfRech.getText().contains(",");
+    	
+    	for (Client client : daof.getClientDAO().findAll()) {
+    		
+    		if (!type) // Recherche Nom
+    		{
+    			if (client.getNom().toLowerCase().contains(tfRech.getText().toLowerCase().trim()))
+				{
+					listeClient.add(client);
+				}
+    		}
+    		else
+    		{
+    			res = tfRech.getText().split(",");
+    			if (client.getNom().toLowerCase().contains(res[0].toLowerCase().trim()) && client.getPrenom().toLowerCase().contains(res[1].toLowerCase().trim()))
+				{
+					listeClient.add(client);
+				}
+    		}  		
+    	}
+    		/*		int i;
+		String filtre = txtFieldFiltre.getText();
+		
+		i = cbxFiltre.getSelectionModel().getSelectedIndex();
+		if (i != 0) {
+			if (i == 1 && !filtre.trim().equals("")) {
+				reset();
+				tabClient.getItems().clear();
+				tabClient.getItems().addAll(daof.getClientDAO().getByNom(filtre));
+			}
+			if (i == 2 && !filtre.trim().equals("")) {
+				String[] nomPrenom = filtre.split(",");
+				String nom = nomPrenom[0].trim();
+				String prenom = nomPrenom[1].trim();
+				
+				if (!nom.trim().equals("") && !prenom.trim().equals("")) {
+					reset();
+					
+					tabClient.getItems().clear();
+					tabClient.getItems().setAll(daof.getClientDAO().getByNomPrenom(nom, prenom));
+				}
+				else
+					lblError.setText("Veuillez saisir nom, prenom");
+			}
+		}
+		else
+			actualiser();*/
+    	
+    	tvCli.getItems().clear();
+    	tvCli.getItems().setAll(listeClient);
+    
     }
     
     @SuppressWarnings("unchecked")

@@ -40,7 +40,7 @@
          <top>
             <AnchorPane fx:id="barreGestion" prefHeight="19.0" prefWidth="640.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="btnSuppr" disable="true" fitHeight="38.0" fitWidth="30.0" layoutX="550.0" layoutY="4.0" onMouseClicked="#pageSupprClient" onMouseMoved="#txtSuppr" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnSuppr" disable="true" fitHeight="38.0" fitWidth="30.0" layoutX="524.0" layoutY="4.0" onMouseClicked="#pageSupprClient" onMouseExited="#txtCli" onMouseMoved="#txtSuppr" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../medias/minus.png" />
                      </image>
@@ -48,7 +48,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="btnAjout" fitHeight="25.0" fitWidth="26.0" layoutX="522.0" layoutY="6.0" onMouseClicked="#pageAjoutClient" onMouseMoved="#txtAjouter" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnAjout" fitHeight="25.0" fitWidth="26.0" layoutX="497.0" layoutY="6.0" onMouseClicked="#pageAjoutClient" onMouseExited="#txtCli" onMouseMoved="#txtAjouter" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../medias/add.png" />
                      </image>
@@ -56,7 +56,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="btnEdit" disable="true" fitHeight="34.0" fitWidth="30.0" layoutX="602.0" layoutY="4.0" onMouseClicked="#pageModifClient" onMouseMoved="#txtMod" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnEdit" disable="true" fitHeight="34.0" fitWidth="30.0" layoutX="574.0" layoutY="4.0" onMouseClicked="#pageModifClient" onMouseExited="#txtCli" onMouseMoved="#txtMod" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../medias/pencil.png" />
                      </image>
@@ -64,14 +64,19 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <TextField layoutX="48.0" layoutY="7.0" prefHeight="25.0" prefWidth="470.0" />
-                  <ImageView fx:id="btnRech" fitHeight="25.0" fitWidth="34.0" layoutX="12.0" layoutY="6.0" onMouseClicked="#rechercher" onMouseMoved="#txtRecher" pickOnBounds="true" preserveRatio="true">
+                  <TextField fx:id="tfRech" layoutX="48.0" layoutY="7.0" onMouseExited="#txtCli" onMouseMoved="#txtBarRech" prefHeight="25.0" prefWidth="441.0" />
+                  <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="12.0" layoutY="6.0" onMouseClicked="#rechercher" onMouseExited="#txtCli" onMouseMoved="#txtRecher" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../medias/search.png" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="603.0" layoutY="5.0" onMouseClicked="#refresh" onMouseExited="#txtCli" onMouseMoved="#txtRefr" pickOnBounds="true">
+                     <image>
+                        <Image url="@../medias/refresh.png" />
+                     </image>
                   </ImageView>
                </children>
             </AnchorPane>

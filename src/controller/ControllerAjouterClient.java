@@ -28,98 +28,87 @@ public class ControllerAjouterClient {
 	
 	boolean ajout;
 	
+	@SuppressWarnings("unused")
 	private Stage vue;
 	
 	private DAOFactory daof;
 	
 	private int id;
 
-    @FXML
-    private VBox vbAddClient;
-
-    @FXML
-    private GridPane gpSaisieClient;
-
-    @FXML
-    private Label lblNom;
-
-    @FXML
-    private TextField tfNom;
-
-    @FXML
-    private Label lblEmail;
-
-    @FXML
-    private TextField tfEmail;
-
-    @FXML
-    private Label lblPrenom;
-
-    @FXML
-    private TextField tfPrenom;
-
-    @FXML
-    private Label lblMdp;
-
-    @FXML
-    private Label lblMdp2;
-
-    @FXML
-    private PasswordField pfMdp;
-
-    @FXML
-    private PasswordField pfMdp2;
-
-    @FXML
-    private Label lblRue;
-
-    @FXML
-    private TextField tfRue;
-
-    @FXML
-    private Label lblAdr;
-
-    @FXML
-    private TextField tfAdr;
-
-    @FXML
-    private Label lblCode;
+		
     
-    @FXML
-    private Label lblVille;
+	   @FXML
+	    private Label lblNom;
 
-    @FXML
-    private TextField tfVille;
+	    @FXML
+	    private TextField tfNom;
 
-    @FXML
-    private Label lblPays;
+	    @FXML
+	    private Label lblEmail;
 
-    @FXML
-    private TextField tfCode;
+	    @FXML
+	    private TextField tfPrenom;
 
-    @FXML
-    private TextField tfPays;
+	    @FXML
+	    private Label lblPrenom;
 
-    @FXML
-    private FlowPane fpCreer;
+	    @FXML
+	    private TextField tfEmail;
 
-    @FXML
-    private GridPane gpBtn;
+	    @FXML
+	    private Label lblMdp;
 
-    @FXML
-    private Button btnAnnuler;
+	    @FXML
+	    private Label lblMdp2;
 
-    @FXML
-    private Button btnOk;
+	    @FXML
+	    private PasswordField pfMdp;
 
-    @FXML
-    private FlowPane fpAfficher;
+	    @FXML
+	    private PasswordField pfMdp2;
 
-    @FXML
-    private Separator sep_afficher;
+	    @FXML
+	    private Label lblRue;
 
-    @FXML
-    private Label lblAfficher;
+	    @FXML
+	    private TextField tfRue;
+
+	    @FXML
+	    private Label lblAdr;
+
+	    @FXML
+	    private TextField tfAdr;
+
+	    @FXML
+	    private Label lblCode;
+
+	    @FXML
+	    private Label lblPays;
+
+	    @FXML
+	    private TextField tfCode;
+
+	    @FXML
+	    private Label lblVille;
+
+	    @FXML
+	    private TextField tfVille;
+
+	    @FXML
+	    private TextField tfPays;
+
+	    @FXML
+	    private FlowPane fpCreer;
+
+	    @FXML
+	    private Button btnAnnuler;
+
+	    @FXML
+	    private Button btnOk;
+
+	    @FXML
+	    private Label lblAfficher;
+
 
     public void modifierClient(Client cli){
     	ajout = false;
@@ -129,6 +118,7 @@ public class ControllerAjouterClient {
 		tfPrenom.setText(cli.getPrenom());
 		tfEmail.setText(cli.getIdentifiant());
 		pfMdp.setText(cli.getMotDePasse());
+		pfMdp2.setText(cli.getMotDePasse());
 		tfRue.setText(cli.getAdrNumero());
 		tfAdr.setText(cli.getAdrVoie());
 		tfCode.setText(cli.getAdrCodePostal());
@@ -161,68 +151,69 @@ public class ControllerAjouterClient {
 		if (nom.trim().equals("")) {
 			correct = false;
 			errorMessage = "- Nom non saisi. - ";
-			showError(lblNom);
+			showError(tfNom);
 		}
 		
 		if (prenom.trim().equals("")) {
 			correct = false;
 			errorMessage = errorMessage + "- Prénom non saisi. -";
-			showError(lblPrenom);
+			showError(tfPrenom);
 		}
 		
 		if (email.trim().equals("")) {
 			correct = false;
 			errorMessage = errorMessage + "- Email non saisi. -";
-			showError(lblEmail);
+			showError(tfEmail);
 		}
 		
 		if (mdp.trim().equals("")) {
 			correct = false;
 			errorMessage = errorMessage + "- Mot de passe non saisi. -";
-			showError(lblMdp);
+			showError(pfMdp);
 		}
 		
 		if (!mdp.equals(mdp2)) {
 			correct = false;
 			errorMessage = errorMessage + "- Les mot de passe sont différents ! -";
-			showError(lblMdp);
-			showError(lblMdp2);
+			showError(pfMdp);
+			showError(pfMdp2);
 		}
 		
 		if (rue.trim().equals("")) {
 			correct = false;
 			errorMessage = errorMessage + "- N° de rue non saisie. -";
-			showError(lblRue);
+			showError(tfRue);
 		}
 		
 		if (adr.trim().equals("")) {
 			correct = false;
 			errorMessage = errorMessage + "- Nom de voie non saisie. -";
-			showError(lblAdr);
+			showError(tfAdr);
 		}
 		
 		if (code.trim().equals("")) {
 			correct = false;
 			errorMessage = errorMessage + "- Code postal non saisi. -";
-			showError(lblCode);
+			showError(tfCode);
 		}
 		
 		if (ville.trim().equals("")) {
 			correct = false;
 			errorMessage = errorMessage + "- Ville non saisie. -";
-			showError(lblVille);
+			showError(tfVille);
 		}
 		
 		if (pays.trim().equals("")) {
 			correct = false;
 			errorMessage = errorMessage + "- Pays non saisi. -";
-			showError(lblPays);
+			showError(tfPays);
 		}
 		
 		if (correct) {
 			Client c = new Client(nom, prenom, email, mdp, rue, adr, code, ville, pays);
 			if (ajout == true) {
 				daof.getClientDAO().create(c);
+				
 		    	Alert alert = new Alert(AlertType.INFORMATION);
 		    	alert.setTitle("Creation du client");
 		    	alert.setHeaderText("Le client à bien été crée !");
@@ -234,6 +225,7 @@ public class ControllerAjouterClient {
 			else {
 				c.setIdClient(id);
 				daof.getClientDAO().update(c);
+				
 		    	Alert alert = new Alert(AlertType.INFORMATION);
 		    	alert.setTitle("Modification du client");
 		    	alert.setHeaderText("Le client à bien été modifié !");
@@ -251,21 +243,23 @@ public class ControllerAjouterClient {
 
     private void resetColors() {
 		this.lblAfficher.setTextFill(Color.BLACK);
-		this.lblNom.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
-		this.lblPrenom.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
-		this.lblEmail.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
-		this.lblMdp.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
-		this.lblMdp2.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
-		this.lblPays.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
-		this.lblVille.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
-		this.lblRue.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));		
-		this.lblAdr.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));		
-		this.lblCode.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));		
+		this.tfNom.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
+		this.tfPrenom.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
+		this.tfEmail.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
+		this.pfMdp.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
+		this.pfMdp2.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
+		this.tfPays.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
+		this.tfVille.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
+		this.tfRue.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));		
+		this.tfAdr.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));		
+		this.tfCode.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));		
 	}
 
 	public void showError(Control o) {
 		o.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, null, null)));
 	}
+	
+	
     @FXML
     void fermerPage(ActionEvent event) {
 		Stage stage = (Stage) btnAnnuler.getScene().getWindow();
