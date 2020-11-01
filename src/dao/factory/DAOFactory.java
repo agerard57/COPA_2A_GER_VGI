@@ -7,9 +7,10 @@ import dao.LigneCommandeDAO;
 import dao.ProduitDAO;
 import enumz.ModeDAO;
 
-public abstract class DAOFactory {
-
-	public static DAOFactory getDAOFactory(ModeDAO mode) {
+public abstract class DAOFactory 
+{
+	public static DAOFactory getDAOFactory(ModeDAO mode) 
+	{
 		DAOFactory daof = null;
 
 		switch (mode) {
@@ -21,7 +22,6 @@ public abstract class DAOFactory {
 			break;
 		}
 		return (daof);
-
 	}
 
 	public abstract ClientDAO getClientDAO();

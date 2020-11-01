@@ -31,6 +31,7 @@ public class MySQLCategorieDAO implements CategorieDAO{
 
 	public boolean create(Categorie c) {
 		Connexion connect = new Connexion();
+		@SuppressWarnings("unused")
 		int i = 0;
 		try {
 			Connection connect1 = connect.creeConnexion();

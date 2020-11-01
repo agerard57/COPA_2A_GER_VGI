@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="vbMenu" prefHeight="405.0" prefWidth="658.0" styleClass="background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerGabarit">
+<VBox prefHeight="405.0" prefWidth="658.0" styleClass="background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerGabarit">
    <children>
-      <AnchorPane fx:id="apMenu" prefHeight="19.0" prefWidth="640.0" styleClass="barre-menu">
+      <AnchorPane prefHeight="19.0" prefWidth="640.0" styleClass="barre-menu">
          <children>
             <Separator layoutY="27.0" prefHeight="0.0" prefWidth="658.0" styleClass="separateur-menu" />
-            <ImageView fx:id="btnQuit" fitHeight="21.0" fitWidth="25.0" layoutX="629.0" layoutY="4.0" onMouseClicked="#pageFermer" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="21.0" fitWidth="25.0" layoutX="629.0" layoutY="4.0" onMouseClicked="#pageFermer" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../medias/quit.png" />
                </image>
@@ -26,12 +26,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="btnSettings" fitHeight="21.0" fitWidth="25.0" layoutX="33.0" layoutY="4.0" onMouseClicked="#pageSettings" pickOnBounds="true" preserveRatio="true" styleClass="img-settings">
+            <ImageView fitHeight="21.0" fitWidth="25.0" layoutX="33.0" layoutY="4.0" onMouseClicked="#pageSettings" pickOnBounds="true" preserveRatio="true" styleClass="img-settings">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="btnHome" fitHeight="21.0" fitWidth="41.0" layoutX="3.0" layoutY="3.0" onMouseClicked="#pageHome" pickOnBounds="true" preserveRatio="true" styleClass="img-home">
+            <ImageView fitHeight="21.0" fitWidth="41.0" layoutX="3.0" layoutY="3.0" onMouseClicked="#pageHome" pickOnBounds="true" preserveRatio="true" styleClass="img-home">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

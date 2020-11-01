@@ -11,126 +11,97 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import vue.VueAjouterClient;
 
-public class ControllerAjouterClient {
+public class ControllerAjouterClient
+{
+
 	
-	boolean ajout;
+	
+ //-----------------------DECLARATIONS--------------------------
+
+
 	
 	@SuppressWarnings("unused")
 	private Stage vue;
 	
+	boolean ajout;
+	
 	private DAOFactory daof;
 	
 	private int id;
+ 
+	
 
-		
-    
-	   @FXML
-	    private Label lblNom;
-
-	    @FXML
-	    private TextField tfNom;
-
-	    @FXML
-	    private Label lblEmail;
-
-	    @FXML
-	    private TextField tfPrenom;
-
-	    @FXML
-	    private Label lblPrenom;
-
-	    @FXML
-	    private TextField tfEmail;
-
-	    @FXML
-	    private Label lblMdp;
-
-	    @FXML
-	    private Label lblMdp2;
-
-	    @FXML
-	    private PasswordField pfMdp;
-
-	    @FXML
-	    private PasswordField pfMdp2;
-
-	    @FXML
-	    private Label lblRue;
-
-	    @FXML
-	    private TextField tfRue;
-
-	    @FXML
-	    private Label lblAdr;
-
-	    @FXML
-	    private TextField tfAdr;
-
-	    @FXML
-	    private Label lblCode;
-
-	    @FXML
-	    private Label lblPays;
-
-	    @FXML
-	    private TextField tfCode;
-
-	    @FXML
-	    private Label lblVille;
-
-	    @FXML
-	    private TextField tfVille;
-
-	    @FXML
-	    private TextField tfPays;
-
-	    @FXML
-	    private FlowPane fpCreer;
-
-	    @FXML
-	    private Button btnAnnuler;
-
-	    @FXML
-	    private Button btnOk;
-
-	    @FXML
-	    private Label lblAfficher;
+ //--------------------------ITEMS------------------------------
 
 
-    public void modifierClient(Client cli){
-    	ajout = false;
-    	
-    	id = cli.getIdClient();
-		tfNom.setText(cli.getNom());
-		tfPrenom.setText(cli.getPrenom());
-		tfEmail.setText(cli.getIdentifiant());
-		pfMdp.setText(cli.getMotDePasse());
-		pfMdp2.setText(cli.getMotDePasse());
-		tfRue.setText(cli.getAdrNumero());
-		tfAdr.setText(cli.getAdrVoie());
-		tfCode.setText(cli.getAdrCodePostal());
-		tfVille.setText(cli.getAdrVille());
-		tfPays.setText(cli.getAdrPays());
-		
-		lblAfficher.setText("-- Modification de " + cli.getNom() + " " + cli.getPrenom() + " ---");
+	
+	@FXML
+	private Button btnAnnuler;
+	@FXML
+	private Button btnOk;
+
+	
+	@FXML
+	private PasswordField pfMdp;
+	@FXML
+	private PasswordField pfMdp2;
+
+	
+	@FXML
+	private TextField tfNom;
+	@FXML
+	private TextField tfPrenom;
+	@FXML
+	private TextField tfEmail;
+	@FXML
+	private TextField tfRue;
+	@FXML
+	private TextField tfAdr;
+	@FXML
+	private TextField tfCode;
+	@FXML
+	private TextField tfVille;
+	@FXML
+	private TextField tfPays;
+	
+	
+	@FXML
+	private Label lblAfficher;
+
+	
+
+ //--------------------------ACTIONS-----------------------------
+
+	
+	@FXML
+	public void initialize() throws IOException
+	{
+		ajout = true;
+		daof = ControllerSettings.getDaof();
+	}
+	
+	
+	
+    @FXML
+    void fermerPage(ActionEvent event)
+    {
+		Stage stage = (Stage) btnAnnuler.getScene().getWindow();
+		stage.close();
     }
+	
+    
     
     @FXML
-    void creerModele(ActionEvent event) {
-    	
+    void creerModele(ActionEvent event) 
+    {
     	resetColors();
     	
     	String nom = tfNom.getText();
@@ -148,70 +119,83 @@ public class ControllerAjouterClient {
     	
 		boolean correct = true;
 
-		if (nom.trim().equals("")) {
+		if (nom.trim().equals("")) 
+		{
 			correct = false;
 			errorMessage = "- Nom non saisi. - ";
 			showError(tfNom);
 		}
 		
-		if (prenom.trim().equals("")) {
+		if (prenom.trim().equals("")) 
+		{
 			correct = false;
 			errorMessage = errorMessage + "- Prénom non saisi. -";
 			showError(tfPrenom);
 		}
 		
-		if (email.trim().equals("")) {
+		if (email.trim().equals("")) 
+		{
 			correct = false;
 			errorMessage = errorMessage + "- Email non saisi. -";
 			showError(tfEmail);
 		}
 		
-		if (mdp.trim().equals("")) {
+		if (mdp.trim().equals("")) 
+		{
 			correct = false;
 			errorMessage = errorMessage + "- Mot de passe non saisi. -";
 			showError(pfMdp);
 		}
 		
-		if (!mdp.equals(mdp2)) {
+		if (!mdp.equals(mdp2)) 
+		{
 			correct = false;
 			errorMessage = errorMessage + "- Les mot de passe sont différents ! -";
 			showError(pfMdp);
 			showError(pfMdp2);
 		}
 		
-		if (rue.trim().equals("")) {
+		if (rue.trim().equals("")) 
+		{
 			correct = false;
 			errorMessage = errorMessage + "- N° de rue non saisie. -";
 			showError(tfRue);
 		}
 		
-		if (adr.trim().equals("")) {
+		if (adr.trim().equals("")) 
+		{
 			correct = false;
 			errorMessage = errorMessage + "- Nom de voie non saisie. -";
 			showError(tfAdr);
 		}
 		
-		if (code.trim().equals("")) {
+		if (code.trim().equals("")) 
+		{
 			correct = false;
 			errorMessage = errorMessage + "- Code postal non saisi. -";
 			showError(tfCode);
 		}
 		
-		if (ville.trim().equals("")) {
+		if (ville.trim().equals("")) 
+		{
 			correct = false;
 			errorMessage = errorMessage + "- Ville non saisie. -";
 			showError(tfVille);
 		}
 		
-		if (pays.trim().equals("")) {
+		if (pays.trim().equals("")) 
+		{
 			correct = false;
 			errorMessage = errorMessage + "- Pays non saisi. -";
 			showError(tfPays);
 		}
 		
-		if (correct) {
+		if (correct) 
+		{
 			Client c = new Client(nom, prenom, email, mdp, rue, adr, code, ville, pays);
-			if (ajout == true) {
+			
+			if (ajout == true) 
+			{
 				daof.getClientDAO().create(c);
 				
 		    	Alert alert = new Alert(AlertType.INFORMATION);
@@ -222,7 +206,8 @@ public class ControllerAjouterClient {
 				Stage stage = (Stage) btnOk.getScene().getWindow();
 				stage.close();
 			}
-			else {
+			else 
+			{
 				c.setIdClient(id);
 				daof.getClientDAO().update(c);
 				
@@ -235,14 +220,41 @@ public class ControllerAjouterClient {
 				stage.close();
 			}
 		}
-		else {
+		else 
+		{
 			this.lblAfficher.setText(errorMessage);
 			this.lblAfficher.setTextFill(Color.RED);
 		}
+		
 	}
 
-    private void resetColors() {
+
+
+    public void modifierClient(Client cli)
+    {
+    	ajout = false;
+    	
+    	id = cli.getIdClient();
+		tfNom.setText(cli.getNom());
+		tfPrenom.setText(cli.getPrenom());
+		tfEmail.setText(cli.getIdentifiant());
+		pfMdp.setText(cli.getMotDePasse());
+		pfMdp2.setText(cli.getMotDePasse());
+		tfRue.setText(cli.getAdrNumero());
+		tfAdr.setText(cli.getAdrVoie());
+		tfCode.setText(cli.getAdrCodePostal());
+		tfVille.setText(cli.getAdrVille());
+		tfPays.setText(cli.getAdrPays());
+		
+		lblAfficher.setText("-- Modification de " + cli.getNom() + " " + cli.getPrenom() + " ---");
+    }
+    
+ 
+    
+    private void resetColors() 
+    {
 		this.lblAfficher.setTextFill(Color.BLACK);
+		
 		this.tfNom.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
 		this.tfPrenom.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
 		this.tfEmail.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
@@ -255,25 +267,20 @@ public class ControllerAjouterClient {
 		this.tfCode.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));		
 	}
 
-	public void showError(Control o) {
+    
+    
+	public void showError(Control o) 
+	{
 		o.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, null, null)));
 	}
 	
 	
-    @FXML
-    void fermerPage(ActionEvent event) {
-		Stage stage = (Stage) btnAnnuler.getScene().getWindow();
-		stage.close();
-    }
 	
-
-
-	public void setVue(Stage vueAjouterClient) {
+	public void setVue(Stage vueAjouterClient) 
+	{
 		this.vue = vueAjouterClient;
 	}
-    
-	public void initialize() throws IOException{
-    	ajout = true;
-    	daof = ControllerSettings.getDaof();
-    }
+ 
+	
+
 }

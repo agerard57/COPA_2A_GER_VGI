@@ -17,45 +17,45 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<VBox fx:id="vbSettings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="405.0" styleClass="background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerSettings">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="405.0" styleClass="background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerSettings">
    <children>
-      <TabPane fx:id="tabSettings" prefHeight="350.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="350.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="tabMode" text="Mode de données">
+          <Tab text="Mode de données">
             <content>
-              <AnchorPane fx:id="apMode" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <RadioButton fx:id="rbLM" layoutX="14.0" layoutY="61.0" mnemonicParsing="false" onAction="#modeListeMemoire" selected="true" text="Liste Mémoire">
+                        <RadioButton layoutX="14.0" layoutY="61.0" mnemonicParsing="false" onAction="#modeListeMemoire" selected="true" text="Liste Mémoire">
                            <toggleGroup>
                               <ToggleGroup fx:id="tgMode" />
                            </toggleGroup></RadioButton>
-                        <RadioButton fx:id="rbBDD" layoutX="13.0" layoutY="231.0" mnemonicParsing="false" onAction="#modeBaseDeDonnees" styleClass="radiobutton" text="Base de données" toggleGroup="$tgMode" />
+                        <RadioButton layoutX="13.0" layoutY="231.0" mnemonicParsing="false" onAction="#modeBaseDeDonnees" styleClass="radiobutton" text="Base de données" toggleGroup="$tgMode" />
                         <Line endX="100.0" layoutX="116.0" layoutY="161.0" startX="-100.0" styleClass="lignes" />
                         <Separator prefHeight="3.0" prefWidth="421.0" styleClass="separateur-menu" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab fx:id="tabTheme" text="Thème">
+            <Tab text="Thème">
               <content>
-                <AnchorPane fx:id="apTheme" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <RadioButton fx:id="rbNoir" layoutX="14.0" layoutY="61.0" mnemonicParsing="false" selected="true" styleClass="radiobutton" text="Thème sombre (recommandé)">
+                        <RadioButton layoutX="14.0" layoutY="61.0" mnemonicParsing="false" selected="true" styleClass="radiobutton" text="Thème sombre (recommandé)">
                            <toggleGroup>
                               <ToggleGroup fx:id="tgTheme" />
                            </toggleGroup></RadioButton>
-                        <RadioButton fx:id="rbBlanc" layoutX="13.0" layoutY="231.0" mnemonicParsing="false" styleClass="radiobutton" text="Thème clair" toggleGroup="$tgTheme" />
+                        <RadioButton layoutX="13.0" layoutY="231.0" mnemonicParsing="false" styleClass="radiobutton" text="Thème clair" toggleGroup="$tgTheme" />
                         <Line endX="100.0" layoutX="116.0" layoutY="161.0" startX="-100.0" styleClass="lignes" />
                         <Separator layoutX="-4.0" prefHeight="3.0" prefWidth="421.0" styleClass="separateur-menu" />
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
-          <Tab fx:id="tabAbout" text="A propos">
+          <Tab text="A propos">
             <content>
-              <AnchorPane fx:id="apAbout" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="405.0">
+              <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="405.0">
                      <children>
-                        <ImageView fx:id="btnGit" fitHeight="61.0" fitWidth="58.0" layoutX="79.0" layoutY="249.0" onMouseClicked="#pageGit" preserveRatio="true">
+                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="79.0" layoutY="249.0" onMouseClicked="#pageGit" preserveRatio="true">
                            <image>
                               <Image url="@../medias/github.png" />
                            </image>
@@ -63,7 +63,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <ImageView fx:id="btnTrello" fitHeight="73.0" fitWidth="67.0" layoutX="260.0" layoutY="245.0" onMouseClicked="#pageTrello" preserveRatio="true">
+                        <ImageView fitHeight="73.0" fitWidth="67.0" layoutX="260.0" layoutY="245.0" onMouseClicked="#pageTrello" preserveRatio="true">
                            <image>
                               <Image url="@../medias/trello.png" />
                            </image>
@@ -71,10 +71,10 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <Label fx:id="lblGit" layoutX="74.0" layoutY="215.0" styleClass="lbl-desc" text="Lien GitHub" />
-                        <Label fx:id="lblTrello" layoutX="264.0" layoutY="215.0" styleClass="lbl-desc" text="Lien Trello" />
+                        <Label layoutX="74.0" layoutY="215.0" styleClass="lbl-desc" text="Lien GitHub" />
+                        <Label layoutX="264.0" layoutY="215.0" styleClass="lbl-desc" text="Lien Trello" />
                         <Line endX="100.0" layoutX="203.0" layoutY="200.0" startX="-100.0" styleClass="lignes" />
-                        <Label fx:id="lblAbout" layoutX="63.0" layoutY="120.0" styleClass="lbl-about-contenu" text="Version 5.65&#10;Date: 2020-10-02&#10;Version de Java: 11.0.1, Oracle Corporation" textAlignment="CENTER" textFill="WHITE" />
+                        <Label layoutX="63.0" layoutY="120.0" styleClass="lbl-about-contenu" text="Version 5.65&#10;Date: 2020-10-02&#10;Version de Java: 11.0.1, Oracle Corporation" textAlignment="CENTER" textFill="WHITE" />
                         <Separator prefHeight="3.0" prefWidth="405.0" styleClass="separateur-menu" />
                         <Label layoutX="66.0" layoutY="35.0" styleClass="lbl-about-contenu" text="GERARD Alexandre - GIANGRECO Vincent" />
                         <Label layoutX="69.0" layoutY="14.0" styleClass="lbl-about-titres" text="--- Logiciel de pulls moches fait par ---" />
@@ -84,7 +84,7 @@
           </Tab>
         </tabs>
       </TabPane>
-      <AnchorPane fx:id="apBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="405.0" styleClass="background2">
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="405.0" styleClass="background2">
          <VBox.margin>
             <Insets />
          </VBox.margin>

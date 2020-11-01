@@ -21,129 +21,132 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class ControllerSettings {
-
+public class ControllerSettings 
+{
+	
+	
+	
+ //-----------------------DECLARATION--------------------------
+	
+	
+	
 	private static DAOFactory daof;
 	
-    @FXML
-    private VBox vbSettings;
-
-    @FXML
-    private TabPane tabSettings;
-
-    @FXML
-    private Tab tabMode;
-
-    @FXML
-    private AnchorPane apMode;
-
-    @FXML
-    private RadioButton rbLM;
+	
+	
+ //--------------------------ITEMS------------------------------
+	
+	
 
     @FXML
     private ToggleGroup tgMode;
-
-    @FXML
-    private RadioButton rbBDD;
-
-    @FXML
-    private Tab tabTheme;
-
-    @FXML
-    private AnchorPane apTheme;
-
-    @FXML
-    private RadioButton rbNoir;
-
     @FXML
     private ToggleGroup tgTheme;
 
-    @FXML
-    private RadioButton rbBlanc;
-
-    @FXML
-    private Tab tabAbout;
-
-    @FXML
-    private AnchorPane apAbout;
-
-    @FXML
-    private ImageView btnGit;
-
-    @FXML
-    private ImageView btnTrello;
-
-    @FXML
-    private Label lblGit;
-
-    @FXML
-    private Label lblTrello;
-
-    @FXML
-    private Label lblAbout;
-
-    @FXML
-    private AnchorPane apBtn;
-
+    
     @FXML
     private Button btnFermer;
 
     
+    
+ //--------------------------ACTIONS-----------------------------
+    
+    
+    
     @FXML
-    void fermerPage(ActionEvent event) {
+    void fermerPage(ActionEvent event) 
+    {
 		Stage stage = (Stage) btnFermer.getScene().getWindow();
 		stage.close();
     }
     
 
+    
  //--------------------------MODE-------------------------------
     
+    
+    
     @FXML
-    void modeBaseDeDonnees(ActionEvent event) {
+    void modeBaseDeDonnees(ActionEvent event) 
+    {
     	setDaof(DAOFactory.getDAOFactory(ModeDAO.MYSQL));
     }
 
+    
+    
     @FXML
-    void modeListeMemoire(ActionEvent event) {
+    void modeListeMemoire(ActionEvent event) 
+    {
     	setDaof(DAOFactory.getDAOFactory(ModeDAO.LISTE_MEMOIRE)); 
     }
+   
     
-    //--------------------------THEME------------------------------
     
-    //--------------------------ABOUT------------------------------   
     @FXML
-    void pageGit(MouseEvent event) {
-    	try {
-    	    Desktop.getDesktop().browse(new URL("https://github.com/agerard57/GERARD_GIANGRECO_CPOA_TD1_2020").toURI());
-    	} catch (IOException e) {
-    	    e.printStackTrace();
-    	} catch (URISyntaxException e) {
-    	    e.printStackTrace();
-    	}
-
-    }
-
-    @FXML
-    void pageTrello(MouseEvent event) {
-    	try {
+    void pageTrello(MouseEvent event) 
+    {
+    	try 
+    	{
     	    Desktop.getDesktop().browse(new URL("https://trello.com/b/DcAjprl2/cpoa2020gerardgiangreco").toURI());
-    	} catch (IOException e) {
+    	}
+    	catch (IOException e) 
+    	{
     	    e.printStackTrace();
-    	} catch (URISyntaxException e) {
+    	}
+    	catch (URISyntaxException e) 
+    	{
     	    e.printStackTrace();
     	}
 
     }
 
 
-	public static DAOFactory getDaof() {
+    
+	public static DAOFactory getDaof() 
+	{
 		return daof;
 	}
 
 
-	public static void setDaof(DAOFactory daof) {
+	public static void setDaof(DAOFactory daof) 
+	{
 		ControllerSettings.daof = daof;
 	}
+	
+	
+	
+ //--------------------------THEME------------------------------
+    
+    
+    
+    //TODO
+    
+    
+    
+    
+ //--------------------------ABOUT------------------------------ 
+    
+    
+    
+    @FXML
+    void pageGit(MouseEvent event) 
+    {
+    	try 
+    	{
+    	    Desktop.getDesktop().browse(new URL("https://github.com/agerard57/GERARD_GIANGRECO_CPOA_TD1_2020").toURI());
+    	}
+    	catch (IOException e) 
+    	{
+    	    e.printStackTrace();
+    	}
+    	catch (URISyntaxException e) 
+    	{
+    	    e.printStackTrace();
+    	}
 
+    }
+
+
+    
 }
 

@@ -12,12 +12,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class VueAjouterClient extends Stage{
-
+public class VueAjouterClient extends Stage
+{
 	private ControllerAjouterClient controler;
 	
-	public VueAjouterClient() {
-		try {
+	public VueAjouterClient() 
+	{
+		try 
+		{
 			final URL fxmlURL=getClass().getResource("/ajouter_client.fxml");
 	        
 			final FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
@@ -34,13 +36,15 @@ public class VueAjouterClient extends Stage{
 			
 			this.show();
 		}
-		catch (Exception e) {
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 	}
 	
-	public ControllerAjouterClient getController() {
+	public ControllerAjouterClient getController()
+	{
 		  return (controler);
-		}
+	}
 }
 	

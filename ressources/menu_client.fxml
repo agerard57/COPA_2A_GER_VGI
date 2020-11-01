@@ -38,7 +38,7 @@
             </Label>
          </bottom>
          <top>
-            <AnchorPane fx:id="barreGestion" prefHeight="19.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="19.0" prefWidth="640.0" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fx:id="btnSuppr" disable="true" fitHeight="38.0" fitWidth="30.0" layoutX="524.0" layoutY="4.0" onMouseClicked="#pageSupprClient" onMouseExited="#txtCli" onMouseMoved="#txtSuppr" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -48,7 +48,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="btnAjout" fitHeight="25.0" fitWidth="26.0" layoutX="497.0" layoutY="6.0" onMouseClicked="#pageAjoutClient" onMouseExited="#txtCli" onMouseMoved="#txtAjouter" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="497.0" layoutY="6.0" onMouseClicked="#pageAjoutClient" onMouseExited="#txtCli" onMouseMoved="#txtAjouter" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../medias/add.png" />
                      </image>

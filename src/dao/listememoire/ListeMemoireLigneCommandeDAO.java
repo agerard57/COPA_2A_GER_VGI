@@ -1,20 +1,9 @@
 package dao.listememoire;
 
-import dao.LigneCommandeDAO;
-import mysql.Connexion;
-import produits.Produit;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
-import categorie.Categorie;
-import clients.Client;
 import commandes.LigneDeCommande;
+import dao.LigneCommandeDAO;
 
 public class ListeMemoireLigneCommandeDAO implements LigneCommandeDAO{
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

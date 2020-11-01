@@ -3,8 +3,6 @@ package commandes;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import clients.Client;
-
 public class Commande {
 	protected int idCommande;
 	protected LocalDate dateCommande;
