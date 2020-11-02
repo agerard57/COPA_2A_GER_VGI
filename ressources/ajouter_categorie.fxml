@@ -81,7 +81,7 @@
             </TextField>
             <ImageView fx:id="imgPrevisu" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="5">
                <GridPane.margin>
-                  <Insets left="40.0" />
+                  <Insets left="85.0" />
                </GridPane.margin>
             </ImageView>
             <Button fx:id="btnImport" defaultButton="true" mnemonicParsing="false" onMouseClicked="#importImage" prefHeight="25.0" prefWidth="76.0" styleClass="btn-import" text="IMPORT" GridPane.columnIndex="2" GridPane.rowIndex="7">

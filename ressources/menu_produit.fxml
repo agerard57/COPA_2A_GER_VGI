@@ -140,7 +140,7 @@
                         <Insets top="26.0" />
                      </GridPane.margin>
                   </ImageView>
-                  <TextArea fx:id="taDesc" editable="false" opacity="0.0" prefHeight="38.0" prefWidth="135.0" GridPane.columnIndex="3" GridPane.rowIndex="7" GridPane.rowSpan="3">
+                  <TextArea fx:id="taDesc" editable="false" opacity="0.0" prefHeight="38.0" prefWidth="135.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="7" GridPane.rowSpan="3">
                      <GridPane.margin>
                         <Insets bottom="20.0" right="20.0" />
                      </GridPane.margin>

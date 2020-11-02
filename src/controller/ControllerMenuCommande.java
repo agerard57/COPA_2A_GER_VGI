@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import commandes.Commande;
@@ -262,32 +264,27 @@ public class ControllerMenuCommande
     @FXML
     void rechercher(MouseEvent event) 
     {
-//TODO ArrayList<Commande> listeCommande = new ArrayList<Commande>();
-//    	
-//    	String[] res;
-//    	
-//    	boolean	vide = tfRech.getText().contains("");
-//    	
-//    	for (Commande commande : daof.getCommandeDAO().findAll()) 
-//    	{
-//    		if (commande.getIdClient().toLowerCase().contains(tfRech.getText().toLowerCase().trim()))
-//				{
-//					listeCommande.add(commande);
-//				}
-//    		}
-//    		else  // Recherche Nom , Prenom 
-//    		{
-//    			res = tfRech.getText().split(",");
-//    			if (client.getNom().toLowerCase().contains(res[0].toLowerCase().trim()) && client.getPrenom().toLowerCase().contains(res[1].toLowerCase().trim()))
-//				{
-//					listeClient.add(client);
-//				}
-//    		}  		
-//    	}
-//    	
-//    	tvCli.getItems().clear();
-//    	tvCli.getItems().setAll(listeClient);
-//    
+    	ArrayList<Commande> listeCommande = new ArrayList<Commande>();
+        
+    	DateTimeFormatter formatage = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        try {
+        	for (Commande commande : daof.getCommandeDAO().findAll()) 
+        	{
+        		if (commande.getDateCommande().equals(LocalDate.parse(tfRech.getText(), formatage)))
+					listeCommande.add(commande);
+			}
+    		
+        }
+        catch(Exception e) 
+        {
+        	Alert alert = new Alert(AlertType.WARNING);
+        	alert.setTitle("Recherche impossible !");
+        	alert.setHeaderText("La date entrée n'est pas au bon format !");
+        	alert.setContentText("Utilisez JJ/MM/AAAA");
+        }
+    	tvCom.getItems().clear();
+    	tvCom.getItems().setAll(listeCommande);
+    
     }
     
     

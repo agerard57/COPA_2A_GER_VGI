@@ -210,7 +210,7 @@ public class ControllerMenuProduit
     		lblNom.setText(p.getNom());
     		lblIdCat.setText(" " + Integer.toString(p.getIdCategorie()));
     		lblTarif.setText(" " + Float.toString(p.getTarif()) + " €");
-    		//TODO lblFoisCommande.setText(p.getIdentifiant());
+//TODO 		lblFoisCommande.setText(p.getIdentifiant());
     		lblVisu.setText(p.getVisuel());
     		taDesc.setText(p.getDescription());
     		
