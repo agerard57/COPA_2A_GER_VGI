@@ -2,7 +2,6 @@ package dao.listememoire;
 
 import java.util.ArrayList;
 
-import clients.Client;
 import dao.ProduitDAO;
 import produits.Produit;
 
@@ -30,7 +29,8 @@ public class ListeMemoireProduitDAO implements ProduitDAO{
 		donnees.add(new Produit(1,"Sonic","Pull Sonic de noel",(float) 20.0,"/visuels/produit/pull1.png", 1));
 		donnees.add(new Produit(2,"Star Wars","Pull \"je suis ton pere\"",(float) 30.0,"/visuels/produit/pull2.png", 1));
 	   	donnees.add(new Produit(3,"Classique","Le grand classique", (float) 15.0,"/visuels/produit/pull3.png", 1));
-//		this.donnees.add(new Abonnement(2, 3, LocalDate.of(2019, 12, 12), LocalDate.of(2020, 12, 11)));
+	   	donnees.add(new Produit(4,"Les chaussettes nez ","Chaussettes avec des rennes et leur nez",(float) 14.0,"/visuels/produit/socks1.png", 2));
+	   	donnees.add(new Produit(5,"Le bonnet festif ","Bonnet du papi Noël endiablant les fêtes de fin d'année ! ",(float) 8.0,"/visuels/produit/bonnet1.png", 3));
 	}
 	
 

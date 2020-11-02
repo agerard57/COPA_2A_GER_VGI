@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import clients.Client;
 import commandes.Commande;
 import commandes.LigneDeCommande;
 import dao.CommandeDAO;
@@ -33,6 +32,7 @@ public class MySQLCommandeDAO implements CommandeDAO{
 
 	public boolean create(Commande commande) {
 		Connexion connect = new Connexion();
+		@SuppressWarnings("unused")
 		int i = 0;
 		try {
 			Connection connect1 = connect.creeConnexion();

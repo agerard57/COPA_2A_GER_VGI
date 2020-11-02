@@ -1,7 +1,5 @@
 package categorie;
 
-import produits.Produit;
-
 public class Categorie {
 	protected int idCategorie;
 	protected String titre;

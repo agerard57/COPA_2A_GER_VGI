@@ -190,7 +190,7 @@ public class ControllerMenuProduit
     		lblNom.setOpacity(1);
     		lblIdCat.setOpacity(1);
     		lblTarif.setOpacity(1);
-    		lblFoisCommande.setOpacity(1);
+//TODO		lblFoisCommande.setOpacity(1);
     		lblVisu.setOpacity(1);
     		
     		taDesc.setOpacity(1);

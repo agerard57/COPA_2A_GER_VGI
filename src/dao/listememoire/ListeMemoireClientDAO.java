@@ -27,10 +27,12 @@ public class ListeMemoireClientDAO implements ClientDAO {
 
 	private ListeMemoireClientDAO() {
 		donnees = new ArrayList<Client>();
-        donnees.add(new Client(1,"GERARD","Alexandre","se57@hm.fr","aaa", "aaa", "aaa", "aaa", "Metz", "aaa"));
-        donnees.add(new Client(2,"RYAN","Andrew","bio75@mi.com","cds", "aaa", "aaa", "aaa", "Rapture", "aaa"));
-        donnees.add(new Client(3,"REZNOV","Victor","lib12@fre.ru", "cc", "aaa", "aaa", "aaa", "Tentling", "aaa"));
-	}
+		donnees.add(new Client(4,"BILAR","Stéphane","sef63212xx@gmail.com","mot2pass", "14", "Rue de la République", "52120", "Sevran", "France"));
+		donnees.add(new Client(5,"Quori","Nina","NininiNeko@gmail.com","gemléchats", "320", "Rue George Haubert", "12650", "Colline-sur-pied", "France"));
+		donnees.add(new Client(1,"GERARD","Alexandre","se57@hm.fr","gégédu57ptitfrr", "20", "rue de la poésie", "36520", "Metz", "France"));
+		donnees.add(new Client(2,"RYAN","Andrew","bio75@mi.com","AndrouLeFilou", "40", "Rue du cimetière ", "78560", "Rapture", "Allemagne"));
+		donnees.add(new Client(3,"REZNOV","Victor","lib12@fre.ru", "VicLeVicautyeu12x", "14", "de la rue ", "93000", "Tentling", "France"));
+		}
 	
 	
 	

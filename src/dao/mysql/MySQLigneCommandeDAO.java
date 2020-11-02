@@ -2,21 +2,14 @@ package dao.mysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
-import commandes.Commande;
-import commandes.LigneDeCommande;
-import dao.LigneCommandeDAO;
-import mysql.Connexion;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import clients.Client;
+import commandes.LigneDeCommande;
+import dao.LigneCommandeDAO;
+import mysql.Connexion;
 
 
 
@@ -44,6 +37,7 @@ public class MySQLigneCommandeDAO implements LigneCommandeDAO{
 
 	public boolean create(LigneDeCommande ligneDeCommande) {
 		Connexion connect = new Connexion();
+		@SuppressWarnings("unused")
 		int i = 0;
 		try {
 			Connection connect1 = connect.creeConnexion();

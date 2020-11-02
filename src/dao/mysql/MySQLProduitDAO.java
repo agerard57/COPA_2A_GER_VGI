@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import clients.Client;
 import dao.ProduitDAO;
 import mysql.Connexion;
 import produits.Produit;
@@ -36,6 +35,7 @@ public class MySQLProduitDAO implements ProduitDAO{
 
 	public boolean create(Produit p) {
 		Connexion connect = new Connexion();
+		@SuppressWarnings("unused")
 		int i = 0;
 		try {
 			Connection connect1 = connect.creeConnexion();
