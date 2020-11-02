@@ -42,8 +42,6 @@ public class ControllerMenuCategorie
     @FXML
     private Label lblId;
     @FXML
-    private Label lbl;
-    @FXML
     private Label lblVisu;
 	@FXML
 	private Label lblGestionCategories;

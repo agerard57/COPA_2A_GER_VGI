@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -19,11 +18,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="640.0" style="-fx-background-color: #25221e;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMenuProduit">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="640.0" style="-fx-background-color: #25221e;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMenuCategorie">
   <children>
       <BorderPane prefHeight="605.0" prefWidth="659.0" styleClass="background">
          <bottom>
-            <Label fx:id="lblGestionProduits" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="60.0" prefWidth="544.0" style="&#10;" styleClass="lbl-bas" text="-- Gestion des produits --" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="false" BorderPane.alignment="CENTER">
+            <Label fx:id="lblGestionCategories" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="60.0" prefWidth="544.0" style="&#10;" styleClass="lbl-bas" text="-- Gestion des categories --" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="false" BorderPane.alignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
@@ -41,7 +40,7 @@
          <top>
             <AnchorPane prefHeight="19.0" prefWidth="640.0" styleClass="background2" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="btnSuppr" disable="true" fitHeight="38.0" fitWidth="30.0" layoutX="524.0" layoutY="4.0" onMouseClicked="#pageSupprProduit" onMouseExited="#txtPro" onMouseMoved="#txtSuppr" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnSuppr" disable="true" fitHeight="38.0" fitWidth="30.0" layoutX="524.0" layoutY="4.0" onMouseClicked="#pageSupprCategorie" onMouseExited="#txtCat" onMouseMoved="#txtSuppr" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../medias/minus.png" />
                      </image>
@@ -49,7 +48,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="497.0" layoutY="6.0" onMouseClicked="#pageAjoutProduit" onMouseExited="#txtPro" onMouseMoved="#txtAjouter" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="497.0" layoutY="6.0" onMouseClicked="#pageAjoutCategorie" onMouseExited="#txtCat" onMouseMoved="#txtAjouter" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../medias/add.png" />
                      </image>
@@ -57,7 +56,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="btnEdit" disable="true" fitHeight="34.0" fitWidth="30.0" layoutX="574.0" layoutY="4.0" onMouseClicked="#pageModifProduit" onMouseExited="#txtPro" onMouseMoved="#txtMod" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnEdit" disable="true" fitHeight="34.0" fitWidth="30.0" layoutX="574.0" layoutY="4.0" onMouseClicked="#pageModifCategorie" onMouseExited="#txtCat" onMouseMoved="#txtMod" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../medias/pencil.png" />
                      </image>
@@ -65,8 +64,8 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <TextField fx:id="tfRech" layoutX="48.0" layoutY="7.0" onMouseExited="#txtPro" onMouseMoved="#txtBarRech" prefHeight="25.0" prefWidth="430.0" AnchorPane.bottomAnchor="2.0" />
-                  <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="12.0" layoutY="6.0" onMouseClicked="#rechercher" onMouseExited="#txtPro" onMouseMoved="#txtRecher" pickOnBounds="true" preserveRatio="true">
+                  <TextField fx:id="tfRech" layoutX="48.0" layoutY="7.0" onMouseExited="#txtCat" onMouseMoved="#txtBarRech" prefHeight="25.0" prefWidth="430.0" AnchorPane.bottomAnchor="2.0" />
+                  <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="12.0" layoutY="6.0" onMouseClicked="#rechercher" onMouseExited="#txtCat" onMouseMoved="#txtRecher" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../medias/search.png" />
                      </image>
@@ -74,7 +73,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="603.0" layoutY="5.0" onMouseClicked="#refresh" onMouseExited="#txtPro" onMouseMoved="#txtRefr" pickOnBounds="true">
+                  <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="603.0" layoutY="5.0" onMouseClicked="#refresh" onMouseExited="#txtCat" onMouseMoved="#txtRefr" pickOnBounds="true">
                      <image>
                         <Image url="@../medias/refresh.png" />
                      </image>
@@ -86,11 +85,9 @@
             </AnchorPane>
          </top>
          <center>
-            <TableView fx:id="tvPro" onMouseClicked="#selePro" prefHeight="261.0" prefWidth="332.0" styleClass="tv" BorderPane.alignment="CENTER">
+            <TableView fx:id="tvCat" onMouseClicked="#seleCat" prefHeight="261.0" prefWidth="332.0" styleClass="tv" BorderPane.alignment="CENTER">
               <columns>
-            		<TableColumn fx:id="tcIdCategorie" editable="false" prefWidth="92.0" text="Catégorie" />
-          		<TableColumn fx:id="tcNom" editable="false" prefWidth="86.0" text="Nom" />
-                <TableColumn fx:id="tcTarif" editable="false" minWidth="0.0" prefWidth="97.0" text="Tarif" />
+          		<TableColumn fx:id="tcTitre" editable="false" prefWidth="284.0" text="Titre" />
               </columns>
                <BorderPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -119,39 +116,29 @@
               </rowConstraints>
                <children>
                   <Label styleClass="lbl-desc" text="Nom :" GridPane.columnIndex="1" />
-                  <Label styleClass="lbl-desc" text="Catégorie :" GridPane.columnIndex="3" />
-                  <Label styleClass="lbl-desc" text="Tarif :" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                  <Label styleClass="lbl-desc" text="Commandé :" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label styleClass="lbl-desc" text="Visuel :" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <Label fx:id="lblNom" opacity="0.0" styleClass="lbl-sous-desc" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="lblIdCat" opacity="0.0" styleClass="lbl-sous-desc" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <Label fx:id="lblTarif" opacity="0.0" styleClass="lbl-sous-desc" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                  <Label fx:id="lblFoisCommande" opacity="0.0" styleClass="lbl-sous-desc" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label fx:id="lblVisu" opacity="0.0" styleClass="lbl-sous-desc" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                  <Label styleClass="lbl-desc" text="ID Catégorie :" GridPane.columnIndex="3" />
+                  <Label styleClass="lbl-desc" text="Visuel :" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="lblTitre" opacity="0.0" styleClass="lbl-sous-desc" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="lblId" opacity="0.0" styleClass="lbl-sous-desc" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Label fx:id="lblVisu" opacity="0.0" styleClass="lbl-sous-desc" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                      <GridPane.margin>
-                        <Insets left="70.0" />
+                        <Insets />
                      </GridPane.margin></Label>
-                  <Label styleClass="lbl-desc" text="Description :" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-                  <ImageView fx:id="imgVisu" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <ImageView fx:id="imgVisu" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin>
                   </ImageView>
-                  <TextArea fx:id="taDesc" editable="false" opacity="0.0" prefHeight="38.0" prefWidth="135.0" GridPane.columnIndex="3" GridPane.rowIndex="7" GridPane.rowSpan="3">
-                     <GridPane.margin>
-                        <Insets bottom="20.0" right="20.0" />
-                     </GridPane.margin>
-                  </TextArea>
                </children>
             </GridPane>
          </right>
       </BorderPane>
   </children>
    <stylesheets>
-      <URL value="@themesombre.css" />
       <URL value="@themeclair.css" />
+      <URL value="@themesombre.css" />
    </stylesheets>
 </VBox>
