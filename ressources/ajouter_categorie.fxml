@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="640.0" styleClass="background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerAjouterCategorie">
+   <children>
+      <GridPane prefHeight="309.0" prefWidth="640.0" styleClass="gridpane">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="2.0" prefWidth="7.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="79.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="399.0" minWidth="10.0" prefWidth="191.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.0" minWidth="2.0" prefWidth="18.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.0" minWidth="10.0" prefWidth="72.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="233.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="94.0" minHeight="0.0" prefHeight="19.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="93.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="94.0" minHeight="0.0" prefHeight="51.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="123.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="129.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="81.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+         <children>
+            <Label styleClass="lbl-desc" text="Titre :" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2">
+               <GridPane.margin>
+                  <Insets left="45.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfTitre" prefHeight="25.0" prefWidth="163.0" promptText="Entrez le titre de la catégorie" styleClass="textfield" GridPane.columnIndex="2" GridPane.columnSpan="3">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="16.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="tfId" prefHeight="25.0" prefWidth="111.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="16.0" right="120.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label styleClass="lbl-desc" text="ID Catégorie :" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Label>
+            <Label prefHeight="17.0" prefWidth="59.0" styleClass="lbl-desc" text="Visuel :" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="33.0" top="36.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="tfVisu" prefHeight="25.0" prefWidth="205.0" promptText="Importer le visuel" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="5" GridPane.rowSpan="2">
+               <GridPane.margin>
+                  <Insets left="16.0" />
+               </GridPane.margin>
+            </TextField>
+            <ImageView fx:id="imgPrevisu" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="40.0" />
+               </GridPane.margin>
+            </ImageView>
+            <Button fx:id="btnImport" defaultButton="true" mnemonicParsing="false" onMouseClicked="#importImage" prefHeight="25.0" prefWidth="76.0" styleClass="btn-import" text="IMPORT" GridPane.columnIndex="2" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets bottom="50.0" left="16.0" />
+               </GridPane.margin></Button>
+         </children>
+      </GridPane>
+      <FlowPane prefHeight="37.0" prefWidth="474.0">
+         <children>
+            <GridPane prefHeight="0.0" prefWidth="639.0">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="424.0" minWidth="10.0" prefWidth="203.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="369.0" minWidth="0.0" prefWidth="117.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="322.0" minWidth="10.0" prefWidth="319.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btnAnnuler" cancelButton="true" mnemonicParsing="false" onAction="#fermerPage" prefHeight="25.0" prefWidth="110.0" styleClass="btn-annuler" text="Annuler" textFill="#e40000" GridPane.columnIndex="2">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btnOk" defaultButton="true" mnemonicParsing="false" onAction="#creerModele" prefHeight="25.0" prefWidth="115.0" styleClass="btn-ok" text=" Ok" textFill="#00a113" GridPane.columnIndex="1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Button>
+               </children>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
+      </FlowPane>
+      <FlowPane prefHeight="10.0" prefWidth="640.0" styleClass="background2">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <children>
+            <Separator prefHeight="10.0" prefWidth="640.0" styleClass="background" />
+         </children>
+      </FlowPane>
+      <Label fx:id="lblAfficher" alignment="BOTTOM_CENTER" prefHeight="0.0" prefWidth="640.0" styleClass="background2" text="-- Catégorie --" textAlignment="CENTER">
+         <font>
+            <Font name="Calibri Bold Italic" size="96.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </Label>
+   </children>
+   <stylesheets>
+      <URL value="@themeclair.css" />
+      <URL value="@themesombre.css" />
+   </stylesheets>
+</VBox>

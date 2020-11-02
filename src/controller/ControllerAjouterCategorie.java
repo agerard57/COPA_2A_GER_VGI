@@ -55,20 +55,15 @@ public class ControllerAjouterCategorie
     @FXML
     private Button btnImport;
     
+    
     @FXML
     private TextField tfTitre;
     @FXML
-    private TextField tfVisu;
-    @FXML
-    private TextField tfTarif;
-    @FXML
     private TextField tfId;
-
-
     @FXML
-    private TextArea taDesc;
-    
+    private TextField tfVisu;
 
+    
     @FXML
     private ImageView imgPrevisu;
 
