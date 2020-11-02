@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #25221e;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerAjouterClient">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="640.0" styleClass="background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerAjouterClient">
    <children>
       <GridPane prefHeight="309.0" prefWidth="640.0" styleClass="gridpane">
         <columnConstraints>
@@ -233,7 +233,7 @@
             <Insets />
          </VBox.margin>
          <children>
-            <Separator prefHeight="10.0" prefWidth="640.0" />
+            <Separator prefHeight="10.0" prefWidth="640.0" styleClass="background" />
          </children>
       </FlowPane>
       <Label fx:id="lblAfficher" alignment="BOTTOM_CENTER" prefHeight="0.0" prefWidth="640.0" styleClass="background2" text="-- Client --" textAlignment="CENTER">
@@ -246,7 +246,7 @@
       </Label>
    </children>
    <stylesheets>
-      <URL value="@themesombre.css" />
       <URL value="@themeclair.css" />
+      <URL value="@themesombre.css" />
    </stylesheets>
 </VBox>

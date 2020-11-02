@@ -79,26 +79,6 @@ public class ControllerSettings
     {
     	setDaof(DAOFactory.getDAOFactory(ModeDAO.LISTE_MEMOIRE)); 
     }
-   
-    
-    
-    @FXML
-    void pageTrello(MouseEvent event) 
-    {
-    	try 
-    	{
-    	    Desktop.getDesktop().browse(new URL("https://trello.com/b/DcAjprl2/cpoa2020gerardgiangreco").toURI());
-    	}
-    	catch (IOException e) 
-    	{
-    	    e.printStackTrace();
-    	}
-    	catch (URISyntaxException e) 
-    	{
-    	    e.printStackTrace();
-    	}
-
-    }
 
 
     
@@ -108,6 +88,7 @@ public class ControllerSettings
 	}
 
 
+	
 	public static void setDaof(DAOFactory daof) 
 	{
 		ControllerSettings.daof = daof;
@@ -146,7 +127,27 @@ public class ControllerSettings
 
     }
 
+   
 
+    @FXML
+    void pageTrello(MouseEvent event) 
+    {
+    	try 
+    	{
+    	    Desktop.getDesktop().browse(new URL("https://trello.com/b/DcAjprl2/cpoa2020gerardgiangreco").toURI());
+    	}
+    	catch (IOException e) 
+    	{
+    	    e.printStackTrace();
+    	}
+    	catch (URISyntaxException e) 
+    	{
+    	    e.printStackTrace();
+    	}
+
+    }
+    
+    
     
 }
 

@@ -43,39 +43,26 @@ public class ControllerAjouterClient
 
 
 	
-	@FXML
-	private Button btnAnnuler;
-	@FXML
-	private Button btnOk;
+	 @FXML
+	    private TextField tfIdClient;
 
-	
-	@FXML
-	private PasswordField pfMdp;
-	@FXML
-	private PasswordField pfMdp2;
+	    @FXML
+	    private TextField tfPrix;
 
-	
-	@FXML
-	private TextField tfNom;
-	@FXML
-	private TextField tfPrenom;
-	@FXML
-	private TextField tfEmail;
-	@FXML
-	private TextField tfRue;
-	@FXML
-	private TextField tfAdr;
-	@FXML
-	private TextField tfCode;
-	@FXML
-	private TextField tfVille;
-	@FXML
-	private TextField tfPays;
-	
-	
-	@FXML
-	private Label lblAfficher;
+	    @FXML
+	    private TextField tfQte;
 
+	    @FXML
+	    private TextField tfDate;
+
+	    @FXML
+	    private Button btnAnnuler;
+
+	    @FXML
+	    private Button btnOk;
+
+	    @FXML
+	    private Label lblAfficher;
 	
 
  //--------------------------ACTIONS-----------------------------
@@ -104,95 +91,48 @@ public class ControllerAjouterClient
     {
     	resetColors();
     	
-    	String nom = tfNom.getText();
-    	String prenom = tfPrenom.getText();
-    	String email = tfEmail.getText();
-		String mdp = pfMdp.getText();
-		String mdp2 = pfMdp2.getText();
-    	String rue = tfRue.getText();
-    	String ville = tfVille.getText();
-    	String adr = tfAdr.getText();
-    	String code = tfCode.getText();
-    	String pays = tfPays.getText();
+    	String idClient = tfIdClient.getText();
+    	String prix = tfPrix.getText();
+    	String qte = tfQte.getText();
+		String date = tfDate.getText();
     	
-    	String errorMessage = new String();
+		Integer intIdCat = Integer.parseInt(idCat);
+    	
+		String errorMessage = new String();
     	
 		boolean correct = true;
 
-		if (nom.trim().equals("")) 
+		if (idClient.trim().equals("")) 
 		{
 			correct = false;
-			errorMessage = "- Nom non saisi. - ";
-			showError(tfNom);
+			errorMessage = "- ID Client non saisi. - ";
+			showError(tfIdClient);
 		}
 		
-		if (prenom.trim().equals("")) 
+		if (prix.trim().equals("")) 
 		{
 			correct = false;
-			errorMessage = errorMessage + "- Prénom non saisi. -";
-			showError(tfPrenom);
+			errorMessage = errorMessage + "- Prix unitaire non saisi. -";
+			showError(tfPrix);
 		}
 		
-		if (email.trim().equals("")) 
+		if (qte.trim().equals("")) 
 		{
 			correct = false;
-			errorMessage = errorMessage + "- Email non saisi. -";
-			showError(tfEmail);
+			errorMessage = errorMessage + "- Quantitée non saisi. -";
+			showError(tfQte);
 		}
 		
-		if (mdp.trim().equals("")) 
+		if (date.trim().equals("")) 
 		{
 			correct = false;
-			errorMessage = errorMessage + "- Mot de passe non saisi. -";
-			showError(pfMdp);
-		}
-		
-		if (!mdp.equals(mdp2)) 
-		{
-			correct = false;
-			errorMessage = errorMessage + "- Les mot de passe sont différents ! -";
-			showError(pfMdp);
-			showError(pfMdp2);
-		}
-		
-		if (rue.trim().equals("")) 
-		{
-			correct = false;
-			errorMessage = errorMessage + "- N° de rue non saisie. -";
-			showError(tfRue);
-		}
-		
-		if (adr.trim().equals("")) 
-		{
-			correct = false;
-			errorMessage = errorMessage + "- Nom de voie non saisie. -";
-			showError(tfAdr);
-		}
-		
-		if (code.trim().equals("")) 
-		{
-			correct = false;
-			errorMessage = errorMessage + "- Code postal non saisi. -";
-			showError(tfCode);
-		}
-		
-		if (ville.trim().equals("")) 
-		{
-			correct = false;
-			errorMessage = errorMessage + "- Ville non saisie. -";
-			showError(tfVille);
-		}
-		
-		if (pays.trim().equals("")) 
-		{
-			correct = false;
-			errorMessage = errorMessage + "- Pays non saisi. -";
-			showError(tfPays);
+			errorMessage = errorMessage + "- Date non saisie. -";
+			showError(tfDate);
 		}
 		
 		if (correct) 
 		{
-			Client c = new Client(nom, prenom, email, mdp, rue, adr, code, ville, pays);
+			Client c = new Client(IdClient, prenom, email, mdp, rue, adr, code, ville, pays);
 			
 			if (ajout == true) 
 			{

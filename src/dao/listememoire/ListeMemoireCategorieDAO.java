@@ -17,13 +17,15 @@ public class ListeMemoireCategorieDAO implements CategorieDAO{
 			instance = new ListeMemoireCategorieDAO();
 		}
        
-		Categorie cat = new Categorie(1, "titre", "visuel");
-		instance.create(cat);
 		return (instance);
 	}
 
 	public ListeMemoireCategorieDAO() {
 		donnees = new ArrayList<Categorie>();
+		donnees.add(new Categorie(1, "Pulls", "/visuels/categorie/lespulls.png"));
+		donnees.add(new Categorie(2, "Bonnets", "/visuels/categorie/lesbonnets.png"));
+		donnees.add(new Categorie(3, "Chaussettes", "/visuels/categorie/leschaussettes.png"));
+
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

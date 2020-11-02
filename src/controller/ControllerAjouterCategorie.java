@@ -4,23 +4,19 @@ import java.io.File;
 import java.io.IOException;
 
 import categorie.Categorie;
-import produits.Produit;
 import dao.factory.DAOFactory;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -29,7 +25,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
-public class ControllerAjouterProduit
+public class ControllerAjouterCategorie
 {
 
 	
@@ -60,13 +56,13 @@ public class ControllerAjouterProduit
     private Button btnImport;
     
     @FXML
-    private TextField tfNom;
+    private TextField tfTitre;
     @FXML
     private TextField tfVisu;
     @FXML
     private TextField tfTarif;
     @FXML
-    private TextField tfCat;
+    private TextField tfId;
 
 
     @FXML
@@ -108,45 +104,29 @@ public class ControllerAjouterProduit
     {
     	resetColors();
     	
-    	String nom = tfNom.getText();
-    	String cat = tfCat.getText();
-    	String desc = taDesc.getText();
-		String tarif = tfTarif.getText();
+    	String titre = tfTitre.getText();
+    	String idCat = tfId.getText();
 		String visuel = tfVisu.getText();
     	
-		Float fTarif = Float.parseFloat(tarif);
-		Integer intCat = Integer.parseInt(cat);
+
+		Integer intIdCat = Integer.parseInt(idCat);
     	
 		String errorMessage = new String();
     	
 		boolean correct = true;
 
-		if (nom.trim().equals("")) 
+		if (titre.trim().equals("")) 
 		{
 			correct = false;
-			errorMessage = "- Nom non saisi. - ";
-			showError(tfNom);
+			errorMessage = "- Titre non saisi. - ";
+			showError(tfTitre);
 		}
 		
-		if (cat.trim().equals("")) 
+		if (idCat.trim().equals("")) 
 		{
 			correct = false;
-			errorMessage = errorMessage + "- Catégorie non choisie. -";
-			showError(tfCat);
-		}
-		
-		if (desc.trim().equals("")) 
-		{
-			correct = false;
-			errorMessage = errorMessage + "- Description non saisie. -";
-			showError(taDesc);
-		}
-		
-		if (tarif.trim().equals("")) 
-		{
-			correct = false;
-			errorMessage = errorMessage + "- Tarif non saisi. -";
-			showError(tfTarif);
+			errorMessage = errorMessage + "- ID Catégorie non choisie. -";
+			showError(tfId);
 		}
 		
 		if (visuel.trim().equals("")) 
@@ -157,15 +137,15 @@ public class ControllerAjouterProduit
 		}
 		if (correct) 
 		{
-			Produit p = new Produit(nom, desc, fTarif, visuel, intCat);
+			Categorie c = new Categorie(intIdCat, titre, visuel);
 			
 			if (ajout == true) 
 			{
-				daof.getProduitDAO().create(p);
+				daof.getCategorieDAO().create(c);
 				
 		    	Alert alert = new Alert(AlertType.INFORMATION);
-		    	alert.setTitle("Creation du produit");
-		    	alert.setHeaderText("Le produit a bien été crée !");
+		    	alert.setTitle("Creation de categorie");
+		    	alert.setHeaderText("La catégorie a bien été créée !");
 		    	alert.setContentText("Pensez à rafraîchir le tableau !");
 		    	alert.showAndWait();
 				Stage stage = (Stage) btnOk.getScene().getWindow();
@@ -173,12 +153,12 @@ public class ControllerAjouterProduit
 			}
 			else 
 			{
-				p.setIdProduit(id);
-				daof.getProduitDAO().update(p);
+				c.setIdCategorie(id);
+				daof.getCategorieDAO().update(c);
 				
 		    	Alert alert = new Alert(AlertType.INFORMATION);
-		    	alert.setTitle("Modification du produit");
-		    	alert.setHeaderText("Le produit a bien été modifié !");
+		    	alert.setTitle("Modification de la categorie");
+		    	alert.setHeaderText("La catégorie a bien été modifiée !");
 		    	alert.setContentText("Pensez à rafraîchir le tableau !");
 		    	alert.showAndWait();
 				Stage stage = (Stage) btnOk.getScene().getWindow();
@@ -195,25 +175,22 @@ public class ControllerAjouterProduit
 
 
 
-    public void modifierProduit(Produit pro)
+    public void modifierCategorie(Categorie pro)
     {
     	ajout = false;
     	
-		String strCateg = Integer.toString(pro.getIdCategorie());
-		String strTar = Float.toString(pro.getTarif());
+		String strIdent = Integer.toString(pro.getIdCategorie());
     	
-		id = pro.getIdProduit();
-		tfNom.setText(pro.getNom());
+		id = pro.getIdCategorie();
+		tfTitre.setText(pro.getTitre());
 
-		tfCat.setText(strCateg);
-		taDesc.setText(pro.getDescription());
-		tfTarif.setText(strTar);
+		tfId.setText(strIdent);
 		tfVisu.setText(pro.getVisuel());
 		
 		Image image = new Image(pro.getVisuel());
         imgPrevisu.setImage(image);
 		
-		lblAfficher.setText("-- Modification de " + pro.getNom() + " ---");
+		lblAfficher.setText("-- Modification de " + pro.getTitre() + " ---");
     }
     
  
@@ -222,10 +199,8 @@ public class ControllerAjouterProduit
     {
 		this.lblAfficher.setTextFill(Color.BLACK);
 		
-		this.tfNom.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
-		this.tfCat.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
-		this.taDesc.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
-		this.tfTarif.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
+		this.tfTitre.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
+		this.tfId.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));
 		this.tfVisu.setBorder(new Border(new BorderStroke(Color.web("#25221e"), BorderStrokeStyle.SOLID, null, null)));	
 	}
 
@@ -238,9 +213,9 @@ public class ControllerAjouterProduit
 	
 	
 	
-	public void setVue(Stage vueAjouterProduit) 
+	public void setVue(Stage vueAjouterCategorie) 
 	{
-		this.vue = vueAjouterProduit;
+		this.vue = vueAjouterCategorie;
 	}
  
 
@@ -259,9 +234,9 @@ public class ControllerAjouterProduit
     	 
     	 String s = selectedFile.getPath();
 
-    	 if (!s.contains("\\produit\\")) 
+    	 if (!s.contains("\\categorie\\")) 
     	 {
-    		 lblAfficher.setText("Prendre une image du fichier \"produit\"");
+    		 lblAfficher.setText("Prendre une image du fichier \"categorie\"");
     	 }
     	 else 
     	 {

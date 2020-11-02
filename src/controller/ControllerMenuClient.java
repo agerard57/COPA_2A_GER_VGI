@@ -157,7 +157,7 @@ public class ControllerMenuClient
     @FXML
     void pageAjoutClient(MouseEvent event) throws IOException 
     {
-    	@SuppressWarnings("unused")
+		@SuppressWarnings("unused")
 		VueAjouterClient vac = new VueAjouterClient();
     }
 
@@ -235,6 +235,8 @@ public class ControllerMenuClient
 	public void reset() 
 	{
 		tfRech.setText("");
+		
+		
 		lblNom.setText("");
 		lblPrenom.setText("");
 		lblID.setText("");
@@ -242,6 +244,8 @@ public class ControllerMenuClient
 		lblAdr1.setText("");
 		lblAdr2.setText("");
 		lblAdr3.setText("");
+		
+		
 		lblNom.setOpacity(0);
 		lblPrenom.setOpacity(0);
 		lblID.setOpacity(0);
@@ -305,9 +309,3 @@ public class ControllerMenuClient
     
 
 }
-
-    
-
-
-
-    

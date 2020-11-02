@@ -22,7 +22,7 @@ public class ListeMemoireCommandeDAO implements CommandeDAO{
 	
 	private ListeMemoireCommandeDAO() {
 		donnees = new ArrayList<Commande>();
-
+		donnees.add(new Commande(1,"d","c","c"));
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

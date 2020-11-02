@@ -2,6 +2,7 @@ package dao.listememoire;
 
 import java.util.ArrayList;
 
+import clients.Client;
 import dao.ProduitDAO;
 import produits.Produit;
 
@@ -26,6 +27,9 @@ public class ListeMemoireProduitDAO implements ProduitDAO{
 		
 		donnees = new ArrayList<Produit>();
 		
+		donnees.add(new Produit(1,"Sonic","Pull Sonic de noel",(float) 20.0,"/visuels/produit/pull1.png", 1));
+		donnees.add(new Produit(2,"Star Wars","Pull \"je suis ton pere\"",(float) 30.0,"/visuels/produit/pull2.png", 1));
+	   	donnees.add(new Produit(3,"Classique","Le grand classique", (float) 15.0,"/visuels/produit/pull3.png", 1));
 //		this.donnees.add(new Abonnement(2, 3, LocalDate.of(2019, 12, 12), LocalDate.of(2020, 12, 11)));
 	}
 	

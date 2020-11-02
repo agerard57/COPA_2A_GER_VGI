@@ -10,6 +10,20 @@
     -fx-background-color: white;
 }
 
+.background2 {
+    -fx-background-color: #bbbbbb;
+    -fx-font-size: 16px;
+    -fx-font-family: "Calibri";
+    -fx-text-fill: black;
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+}
+
+.gridpane {
+    -fx-background-color: #bbbbbb;
+    -fx-border-color: black;
+}
+
 
 /* ------------------ */
 
@@ -54,7 +68,57 @@
     -fx-font-family: "Calibri";
     -fx-font-style: italic;
     -fx-font-weight: bold;
+    -fx-text-fill: #222222;
+}
+
+.lbl-desc {
+    -fx-font-size: 12px;
+    -fx-font-family: "System";
+    -fx-font-weight: bold;
     -fx-text-fill: black;
+}
+
+.lbl-sous-desc {
+    -fx-font-size: 12px;
+    -fx-font-family: "System";
+    -fx-text-fill: black;
+}
+
+.lbl-about-titres {
+    -fx-font-size: 15px;
+    -fx-font-family: "System";
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
+.lbl-about-contenu {
+    -fx-font-size: 15px;
+    -fx-font-family: "System";
+    -fx-text-fill: black;
+}
+
+.btn-ok {
+    -fx-font-size: 12px;
+    -fx-font-family: "System";
+    -fx-font-weight: bold;
+    -fx-text-fill: #00a113;
+}
+
+.btn-annuler {
+    -fx-font-size: 12px;
+    -fx-font-family: "System";
+    -fx-text-fill: #e40000;
+}
+
+.btn-import {
+    -fx-font-size: 15px;
+    -fx-font-family: "Calibri";
+    -fx-text-fill: black;
+}
+
+.radio-button {
+    -fx-text-fill: white;
+    -fx-font-size: 20px
 }
 
 
